@@ -227,9 +227,9 @@ input[type=checkbox]:checked+label:after {
   margin-top: 10px;
   text-align: center;
 
-  position: fixed;
+  /* position: fixed;
   top: 90%;
-  margin-left: 1.5rem;
+  margin-left: 1.5rem; */
 }
 
 button {

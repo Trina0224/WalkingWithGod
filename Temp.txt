@@ -1,0 +1,7 @@
+//解決REACT 偵測使用者輸入的問題, (還沒submit)
+https://upmostly.com/tutorials/react-onchange-events-with-examples
+
+
+
+https://getbible.net/api
+https://www.pluralsight.com/guides/creating-select-elements-in-reactjs

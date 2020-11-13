@@ -1,8 +1,16 @@
 import React, { useState,  useContext } from 'react';
-import {useForm} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
 import { AppContext } from './App';
-import {countryData, chineseBooks} from './bookName';
+import {bibleBooks} from './bookName0';
+import ReactSelect from "react-select";
+import options from "./constants/reactSelectOptions";
+import languageOptions from "./constants/languageOptions.js";
 
+//import {countryData, bibleBooks} from './bookName';
+
+
+
+//const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 //import FetchBackground from './FetchBackground'
 
 //import ContextBP from './store/City_context.js'
@@ -26,6 +34,23 @@ import {countryData, chineseBooks} from './bookName';
 
 
 function MyForm(props){
+  const [book, setBookName] = useState('');
+  let chapters = [];
+
+  const {register, handleSubmit, control, errors } = useForm({
+    defaultValues:
+    {
+      "languageSelect":"cnt",
+      "book":"0",
+      "chapterNumber":"3",
+      "verseStartNumber":"16",
+      "verseEndNumber":"16",
+    }
+  });
+
+  const onSubmit = data =>{
+    console.log(data);
+  }
 
   // let newChineseBooks;
   // function  renderOptions() {
@@ -35,42 +60,56 @@ function MyForm(props){
   //   }
 
 
+  // function handleChange(e) {
+  //   console.log(e.target.value);
+  // }
+  //            <select name="book" onChange={handleChange}>
+
+
+
+
+//return <option key={key} value={e.value}>{e.name}</option>;
+//            <h4>Language<span>*</span></h4>
 
     return (
       <div>
         <div className="testbox">
-          <form action="/">
-            <h4>Book</h4>
-            <select name="book">
-                {chineseBooks.map((e, key) => {
-                    return <option key={key} value={e.value}>{e.name}</option>;
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <section>
+              <label>Language<span>*</span></label>
+              <Controller
+                as={ReactSelect}
+                options={languageOptions}
+                name="languageSelect"
+                isClearable
+                control={control}
+              />
+            </section>
+
+            <h4>Book<span>*</span></h4>
+            <select name="book" onChange={e => setBookName(e.target.value)}>
+                {bibleBooks.map((e, key) => {
+                    return <option key={key} value={key}>{e.nameTW}</option>;
                 })}
             </select>
 
 
-            <h4>Feedback/Enquiry on<span>*</span></h4>
-            <select>
-              <option value=""></option>
-              <option value="1">Credit and Debit Cards</option>
-              <option value="2">Deposit</option>
-              <option value="3">Housing and Renovation Loan</option>
-              <option value="4">iBanking</option>
-              <option value="5">Treasures</option>
-            </select>
-            <h4>Name<span>*</span></h4>
-            <div className="title-block">
-              <select>
-                <option value="title" selected>Title</option>
-                <option value="ms">Ms</option>
-                <option value="miss">Miss</option>
-                <option value="mrs">Mrs</option>
-                <option value="mr">Mr</option>
-              </select>
-              <input className="name" type="text" name="name" placeholder="First" />
-              <input className="name" type="text" name="name" placeholder="Last" />
+            <h4>Chapter and Verse<span>*</span></h4>
+            <div className="item">
+              <p>Chapter</p>
+              <input type="number" step="1" name="chapterNumber" ref={register({ required: true })} />
             </div>
+            <div className="item">
+              <p>Verse Start</p>
+              <input type="number" step="1" name="verseStartNumber" ref={register({ required: true })} />
+            </div>
+            <div className="item">
+              <p>Verse End</p>
+              <input type="number" step="1" name="verseEndNumber" ref={register({ required: true })} />
+            </div>
+
             <div className="btn-block">
-              <button type="submit" href="/">Send Feedback</button>
+              <button type="submit" >Search</button>
             </div>
           </form>
         </div>
