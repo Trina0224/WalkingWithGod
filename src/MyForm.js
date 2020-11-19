@@ -10,40 +10,15 @@ import FetchBackground from './FetchBackground';
 import FetchResult from './FetchResult';
 
 
-//import GetBible from 'getbible';
-//import https from 'https';
-//let bibleAPI = new GetBible();
-
-
-
-//import {countryData, bibleBooks} from './bookName';
-
-
-
-//const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-//import FetchBackground from './FetchBackground'
-
-//import ContextBP from './store/City_context.js'
-
-//import {helpMeTranslate} from './translate.js'
-//import { googleTranslate } from "./utils/googleTranslate";
-//import cookie from "react-cookies";
-
-//import LanguageDetect from 'languagedetect';
-//const LanguageDetect = require('languagedetect');
-//const lngDetector = new LanguageDetect();
-
-
-// <form onSubmit={this.mySubmitHandler}>
-//<form action="/" method="post" >
-//https://codesandbox.io/s/tutorial-base-done-g2n24?file=/src/index.js
-
-
 
 
 
 
 function MyForm(props){
+  //from App.js
+  const {state, dispatch} = useContext(AppContext);
+
+  //use in this file.
   const [language, setLanguage] = useState('niv'); //for input data
   const [book, setBookName] = useState('John');
   const [bookAbbreviation,setBookAbbreviation ] =useState('Jhn');
@@ -52,9 +27,7 @@ function MyForm(props){
   const [verseEnd,setVerseEnd] = useState('16');
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
-  let chapters = [];
-//  let books = bibleAPI.getBooks();
-//  console.log(typeof books);
+
 
   const {register, handleSubmit, control, errors } = useForm({
     defaultValues:
@@ -86,6 +59,25 @@ function MyForm(props){
         .then(response => response.text())// not .json at this website. because it reutrn HTML.
         .then((responseData) => {
           console.log(responseData);
+          //becuase we got HTML, need to extract what we need and save it.
+          //below is an example:
+          // <!doctype html>
+          // <html>
+          // <head>
+          // <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+          // <title>Bible Quote</title>
+          // </head>
+          // <body bgcolor="#e0e0e0">
+          // <small>1:13</small> For he has rescued us from the dominion of darkness and brought us into the kingdom of the Son he loves, <br>
+          // </body>
+          // </html>
+          const extractFirstPlace = responseData.indexOf("<small>");
+          const extractFinalPlace = responseData.indexOf("</body>");
+          const extracted = responseData.substring(extractFirstPlace,extractFinalPlace);
+          console.log(extracted);
+          //save to context for other components use.
+          dispatch({ type: 'UPDATE_INPUT', data: extracted,});
+
           return responseData;
           //this.setState({ author: responseData});
         })
@@ -98,6 +90,7 @@ function MyForm(props){
 
     }else{
       //用第二種方式取得資料
+      //參考FetchREsult.js 的url2 or url. 放入TODO.
     }
 
 
@@ -142,6 +135,7 @@ function MyForm(props){
     temp1.then(function(result) {  //因為temp1是 promise狀態, 需要用then取出
    // console.log(result.main.temp);
    // console.log(result.main.feels_like);
+      console.log(result);
 
  });
 
@@ -149,44 +143,7 @@ function MyForm(props){
 
 
 
-
-
-
-  // //聖書データを取得する
-  // const { dataGot, error } = useFetch(
-  // //  `https://api.scripture.api.bible/v1/bibles/${bibleId}/books`,
-  //   `https://api.scripture.api.bible/v1/bibles/`,
-  // );
-  //   //const temp1 = api_call();
-  //   console.log(dataGot);
-  //   temp1.then(function(result) {  //因為temp1是 promise狀態, 需要用then取出
-  //   console.log(result);
-  //  // console.log(result.main.feels_like);
-  //
-  //
-  //  //  if(result.cod === 200){
-  //  // //氣象資料加入data
-  //  //  }
-  //  //  else{
-  //  //    alert("The city name is not in database, please try different one.");
-  //  //  }
-  // })
-
   }//onSubmit end.
-
-  // let newChineseBooks;
-  // function  renderOptions() {
-  //         newChineseBooks.map((chineseBooks, index) => {
-  //           return <option value={index}>{newChineseBooks}</option>;
-  //           })
-  //   }
-
-
-  // function handleChange(e) {
-  //   console.log(e.target.value);
-  // }
-  //            <select name="book" onChange={handleChange}>
-
 
 
 

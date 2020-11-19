@@ -33,7 +33,7 @@ const loadData = (options) => {
 //function FetchBackground({ContextBP}){
 function FetchBackground(){
   let [photos, setPhotos] = useState([]);
-  let searchQuery='christian';
+  let searchQuery='bible';//'christian';
   const numberOfPhotos = 1;
   const url =
     "https://api.unsplash.com/photos/random/?count=" +
