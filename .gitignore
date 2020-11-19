@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 Temp.txt
+temp2.txt
+.env

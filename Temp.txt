@@ -3,5 +3,157 @@ https://upmostly.com/tutorials/react-onchange-events-with-examples
 
 
 
-https://getbible.net/api
 https://www.pluralsight.com/guides/creating-select-elements-in-reactjs
+
+https://forum.freecodecamp.org/t/fetch-api-with-api-key/317584/3 這個好API reference
+https://rapidapi.com/blog/how-to-use-an-api-with-react/
+
+//example
+https://github.com/jasonbrandoo/bible-app-react/tree/master/src/pages
+
+
+//bible links
+http://m.ibibles.net/index.htm  回傳HTML, 有中文日文
+
+1	Chinese	Union Simplified 简体和合本	CUS
+ 2	Chinese	Union Traditional 繁體和合本	CUT
+ 3	English	American Standard Version	ASV
+ 4	English	Bible in Basic English	BBE
+ 5	English	King James Version	KJV
+ 6	English	New International Version	NIV
+ 7	Greek	Modern Version σύγχρονη εκδοχή	GMV
+ 8	Greek	Septuagint Version Εβδομήκοντα εκδοχή	LXX
+ 9	Greek	Textus Receptus Κείμενο Αποδεκτές	GTR
+ 10	Greek	Westcott Hort 1881 NA27/UBS4 με παραλλαγές	GWH
+ 11	Hebrew	Modern Version הגרסה מודרנית	HMV
+ 12	Hebrew	Aleppo Codex כֶּתֶר אֲרָם צוֹבָא	HAC
+ 13	Hebrew	Biblia Hebraica Stuttgartensia הבראיקה	BHS
+ 14	Hebrew	Westminster Leningrad Codex וסטמינסטר לנינגרד קודקס	HWL
+ 15	Latin	Vulgata Clementina Vulgatae Clementina	LVC
+ 16	Latin	New Vulgata Nova Vulgatae	LVN
+ 17	French	Français Darby	FDA
+ 18	French	Français David Martin	FDM
+ 19	French	Français Ostervald	FOS
+ 20	French	Français Louis Segond	LSG
+ 21	German	Deutsch Luther Modern	GLM
+ 22	German	Deutsch Luther Original	GLO
+ 23	German	Deutsch Elberfelder	GEL
+ 24	German	Deutsch Schlachter	GSC
+ 25	Japanese	Japanese Classical 文語訳	JCL
+ 26	Japanese	Japanese Colloquial 口語訳	JCO
+ 27	Korean	Korean 한국어 성경	KOR
+
+https://getbible.net/api 回傳()裡面放JSON, 有中文
+AVAILABLE VERSIONS
+Most of the translations are provided by The Unbound Bible. The code that should be passed as the version parameter is shown in brackets.
+
+Afrikaans: Ou Vertaling (aov)
+Albanian: Albanian (albanian)
+Amharic: Amharic NT (amharic)
+Amharic: Haile Selassie Amharic Bible (hsab)
+Arabic: Smith and Van Dyke (arabicsv)
+Aramaic: Peshitta NT (peshitta)
+Armenian: Eastern (Genesis Exodus Gospels) (easternarmenian)
+Armenian: Western NT (westernarmenian)
+Basque: (Navarro Labourdin) NT (basque)
+Breton: Gospels (breton)
+Bulgarian: Bulgarian Bible (1940) (bulgarian1940)
+Chamorro: (Psalms Gospels Acts) (chamorro)
+Chinese: NCV Simplified (cns)
+Chinese: NCV Traditional (cnt)
+Chinese: Union Simplified (cus)
+Chinese: Union Traditional (cut)
+Coptic: Bohairic NT (bohairic)
+Coptic: New Testament (coptic)
+Coptic: Sahidic NT (sahidic)
+Croatian: Croatian (croatia)
+Czech: Czech BKR (bkr)
+Czech: Czech CEP (cep)
+Czech: Czech KMS (kms)
+Czech: Czech NKB (nkb)
+Danish: Danish (danish)
+Dutch: Dutch Staten Vertaling (statenvertaling)
+English: King James Version (kjv)
+English: American King James Version (akjv)
+English: American Standard Version (asv)
+English: Basic English Bible (basicenglish)
+English: Douay Rheims (douayrheims)
+English: Webster's Bible (wb)
+English: Weymouth NT (weymouth)
+English: World English Bible (web)
+English: Young's Literal Translation (ylt)
+Esperanto: Esperanto (esperanto)
+Estonian: Estonian (estonian)
+Finnish: Finnish Bible (1776) (finnish1776)
+Finnish: Pyha Raamattu (1933 1938) (pyharaamattu1933)
+Finnish: Pyha Raamattu (1992) (pyharaamattu1992)
+French: Darby (darby)
+French: Louis Segond (1910) (ls1910)
+French: Martin (1744) (martin)
+French: Ostervald (1996 revision) (ostervald)
+Georgian: Georgian (Gospels Acts James) (georgian)
+German: Elberfelder (1871) (elberfelder)
+German: Elberfelder (1905) (elberfelder1905)
+German: Luther (1545) (luther1545)
+German: Luther (1912) (luther1912)
+German: Schlachter (1951) (schlachter)
+Gothic: Gothic (Nehemiah NT Portions) (gothic)
+Greek: Greek Modern (moderngreek)
+Greek: NT Byzantine Majority Text (2000) Parsed (majoritytext)
+Greek: NT Byzantine Majority Text (2000) (byzantine)
+Greek: NT Textus Receptus (1550 1894) Parsed (textusreceptus)
+Greek: Textus Receptus (text)
+Greek: NT Tischendorf 8th Ed (tischendorf)
+Greek: NT Westcott Hort UBS4 variants Parsed (westcotthort)
+Greek: NT Westcott Hort UBS4 variants (westcott)
+Greek: OT LXX Accented Roots Parsing (lxxpar)
+Greek: OT LXX Accented (lxx)
+Greek: OT LXX Unaccented Roots Parsing (lxxunaccentspar)
+Greek: OT LXX Unaccented (lxxunaccents)
+Hebrew: Aleppo Codex (aleppo)
+Hebrew: Hebrew Modern (modernhebrew)
+Hebrew: OT BHS (Consonants Only) (bhsnovowels)
+Hebrew: OT BHS (Consonants and Vowels) (bhs)
+Hebrew: OT WLC (Consonants Only) (wlcnovowels)
+Hebrew: OT WLC (Consonants and Vowels) (wlc)
+Hebrew: OT Westminster Leningrad Codex (codex)
+Hungarian: Hungarian Karoli (karoli)
+Italian: Giovanni Diodati Bible (1649) (giovanni)
+Italian: Riveduta Bible (1927) (riveduta)
+Kabyle: Kabyle NT (kabyle)
+Korean: Korean (korean)
+Latin: Nova Vulgata (newvulgate)
+Latin: Vulgata Clementina (vulgate)
+Latvian: New Testament (latvian)
+Lithuanian: Lithuanian (lithuanian)
+Manx_Gaelic: Manx Gaelic (Esther Jonah 4 Gospels) (manxgaelic)
+Maori: Maori (maori)
+Myanmar_Burmse: Judson (1835) (judson)
+Norwegian: Det Norsk Bibelselskap (1930) (bibelselskap)
+Portuguese: Almeida Atualizada (almeida)
+Potawatomi: Potawatomi (Matthew Acts) (Lykins 1844) (potawatomi)
+Romani: Romani NT E Lashi Viasta (Gypsy) (rom)
+Romanian: Cornilescu (cornilescu)
+Russian: Makarij Translation Pentateuch (1825) (makarij)
+Russian: Synodal Translation (1876) (synodal)
+Russian: Victor Zhuromsky NT (zhuromsky)
+Scottish_Gaelic: Scots Gaelic (Gospel of Mark) (gaelic)
+Spanish: Reina Valera (1909) (valera)
+Spanish: Reina Valera NT (1858) (rv1858)
+Spanish: Sagradas Escrituras (1569) (sse)
+Swahili: Swahili (swahili)
+Swedish: Swedish (1917) (swedish)
+Tagalog: Ang Dating Biblia (1905) (tagalog)
+Tamajaq: Tamajaq Portions (tamajaq)
+Thai: Thai from kjv (thai)
+Turkish: NT (1987 1994) (tnt)
+Turkish: Turkish (turkish)
+Ukrainian: NT (P Kulish 1871) (ukranian)
+Uma: Uma NT (uma)
+Vietnamese: Vietnamese (1934) (vietnamese)
+Wolof: Wolof NT (wolof)
+Xhosa: Xhosa (xhosa)
+
+
+https://scripture.api.bible/ 需要KEY, 沒中文
+請自行去 https://docs.api.bible/guides/bibles

@@ -76,16 +76,35 @@ h2 {
   align-items: center;
   height: inherit;
   padding: 20px;
-  width: 30vw;
+  /* width: 20vw; */
+  width: 20vw;
+}
+
+.Display{
+  display:block;
+  /* transition: display 1s; */
+}
+
+.noDisplay{
+  display:none;
+  /* transition: display 1s; */
+}
+
+.grabePhrase{
+  width: 3vw;
+  padding: 2px;
 }
 
 form {
-  width: 100%;
+  width: 80%;
+  /* height: 50px; */
   padding: 20px;
   border-radius: 6px;
   background: rgba(255,255,255,1);
   box-shadow: 0 0 20px 0 #095484;
   /* transition: background 0.5s; */
+  /* display: flex;
+  justify-content: space-around; */
 }
 /* form:hover {
   width: 100%;
@@ -246,6 +265,7 @@ button {
 button:hover {
   background: #0666a3;
 }
+
 
 
 @media (min-width: 568px) {

@@ -3,8 +3,18 @@ import {useForm, Controller} from 'react-hook-form';
 import { AppContext } from './App';
 import {bibleBooks} from './bookName0';
 import ReactSelect from "react-select";
-import options from "./constants/reactSelectOptions";
+import bookOptions from "./constants/bookOptionsEng.js"; //英文
+//import bookOptions from "./constants/bookOptionsCht.js"; //中文
 import languageOptions from "./constants/languageOptions.js";
+import FetchBackground from './FetchBackground';
+import FetchResult from './FetchResult';
+
+
+//import GetBible from 'getbible';
+//import https from 'https';
+//let bibleAPI = new GetBible();
+
+
 
 //import {countryData, bibleBooks} from './bookName';
 
@@ -34,23 +44,135 @@ import languageOptions from "./constants/languageOptions.js";
 
 
 function MyForm(props){
-  const [book, setBookName] = useState('');
+  const [language, setLanguage] = useState('niv'); //for input data
+  const [book, setBookName] = useState('John');
+  const [bookAbbreviation,setBookAbbreviation ] =useState('Jhn');
+  const [chapter,setChapter] = useState('3');
+  const [verseStart,setVerseStart] = useState('16');
+  const [verseEnd,setVerseEnd] = useState('16');
+
+  const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
   let chapters = [];
+//  let books = bibleAPI.getBooks();
+//  console.log(typeof books);
 
   const {register, handleSubmit, control, errors } = useForm({
     defaultValues:
     {
-      "languageSelect":"cnt",
-      "book":"0",
-      "chapterNumber":"3",
-      "verseStartNumber":"16",
-      "verseEndNumber":"16",
+      "chapterNumber": chapter,
+      "verseStartNumber": verseStart,
+      "verseEndNumber": verseEnd,
+      "bookSelect": book,
+      "languageSelect": language
     }
   });
 
+
+
+  const api_call = async (e) => {
+    if(book!=="cnt" && book!=="nrsv" && book!=="akjv"){
+      // 我們預設從這個網站取得經節。沒包含最後三個。要用另一個處理。
+      //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
+      const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?
+        ${language}-${book}/${chapter}:${verseStart}-${verseEnd}`;
+      console.log(queryUrl);
+
+      await fetch(queryUrl,{
+          'method': 'GET',
+          'headers': {
+            //'accept': 'application/json'
+          }
+      })
+        .then(response => response.text())// not .json at this website. because it reutrn HTML.
+        .then((responseData) => {
+          console.log(responseData);
+          return responseData;
+          //this.setState({ author: responseData});
+        })
+        .catch(err =>{
+          console.log(err);
+        });
+
+      //.catch(function(error){console.log(`"No Data at this location. ${error}"`);});
+      //return response;
+
+    }else{
+      //用第二種方式取得資料
+    }
+
+
+}//api_call
+
+ function handleDisplay(){
+  if(hideOrNot == "testbox Display")
+    sethideOrNot("testbox noDisplay");
+  else
+    sethideOrNot("testbox Display");
+ }//handleDisplay()
+
+
   const onSubmit = data =>{
     console.log(data);
-  }
+    //整理一下輸入的資料
+    if(typeof data.bookSelect === 'undefined'){
+      ;
+    }else{
+      setBookName(data.bookSelect.label);
+      setBookAbbreviation(data.bookSelect.value);
+    }
+
+    if(typeof data.languageSelect === 'undefined'){
+      ;
+    }else{
+      setLanguage(data.languageSelect.value);
+    }
+
+    setChapter(data.chapterNumber);
+
+    if(data.verseStartNumber <= data.verseEndNumber){
+      setVerseStart(data.verseStartNumber);
+      setVerseEnd(data.verseEndNumber);
+    }else{
+      setVerseStart(data.verseEndNumber);
+      setVerseEnd(data.verseStartNumber);
+    }
+
+
+    const temp1 = api_call();
+    temp1.then(function(result) {  //因為temp1是 promise狀態, 需要用then取出
+   // console.log(result.main.temp);
+   // console.log(result.main.feels_like);
+
+ });
+
+//    let url = 'https://api.scripture.api.bible/v1/bibles/'
+
+
+
+
+
+
+  // //聖書データを取得する
+  // const { dataGot, error } = useFetch(
+  // //  `https://api.scripture.api.bible/v1/bibles/${bibleId}/books`,
+  //   `https://api.scripture.api.bible/v1/bibles/`,
+  // );
+  //   //const temp1 = api_call();
+  //   console.log(dataGot);
+  //   temp1.then(function(result) {  //因為temp1是 promise狀態, 需要用then取出
+  //   console.log(result);
+  //  // console.log(result.main.feels_like);
+  //
+  //
+  //  //  if(result.cod === 200){
+  //  // //氣象資料加入data
+  //  //  }
+  //  //  else{
+  //  //    alert("The city name is not in database, please try different one.");
+  //  //  }
+  // })
+
+  }//onSubmit end.
 
   // let newChineseBooks;
   // function  renderOptions() {
@@ -70,10 +192,16 @@ function MyForm(props){
 
 //return <option key={key} value={e.value}>{e.name}</option>;
 //            <h4>Language<span>*</span></h4>
+//            <h4>Chapter and Verse<span>*</span></h4>
 
     return (
       <div>
-        <div className="testbox">
+      <FetchBackground />
+      <section>
+      <h1 className="grabePhrase" onClick={handleDisplay}>🔍</h1>
+      </section>
+
+        <div className={hideOrNot}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <section>
               <label>Language<span>*</span></label>
@@ -86,26 +214,29 @@ function MyForm(props){
               />
             </section>
 
-            <h4>Book<span>*</span></h4>
-            <select name="book" onChange={e => setBookName(e.target.value)}>
-                {bibleBooks.map((e, key) => {
-                    return <option key={key} value={key}>{e.nameTW}</option>;
-                })}
-            </select>
+            <section>
+              <label>Book<span>*</span></label>
+              <Controller
+                as={ReactSelect}
+                options={bookOptions}
+                name="bookSelect"
+                isClearable
+                control={control}
+              />
+            </section>
 
 
-            <h4>Chapter and Verse<span>*</span></h4>
             <div className="item">
               <p>Chapter</p>
-              <input type="number" step="1" name="chapterNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" name="chapterNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse Start</p>
-              <input type="number" step="1" name="verseStartNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" name="verseStartNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse End</p>
-              <input type="number" step="1" name="verseEndNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" name="verseEndNumber" ref={register({ required: true })} />
             </div>
 
             <div className="btn-block">
@@ -119,6 +250,7 @@ function MyForm(props){
     );
 
 }
+// <FetchResult />
 
 
 
