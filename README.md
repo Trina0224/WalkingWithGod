@@ -6,4 +6,5 @@
 1. other API search.  
 2. Modify webpage name and Favicon  
 3. background change  
-4. smart background change. 
+4. smart background change.  
+5. Book name to capital.
