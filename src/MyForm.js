@@ -46,8 +46,7 @@ function MyForm(props){
     if(book!=="cnt" && book!=="nrsv" && book!=="akjv"){
       // 我們預設從這個網站取得經節。沒包含最後三個。要用另一個處理。
       //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
-      const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?
-        ${language}-${book}/${chapter}:${verseStart}-${verseEnd}`;
+      const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${language}-${book}/${chapter}:${verseStart}-${verseEnd}`;
       console.log(queryUrl);
 
       await fetch(queryUrl,{
