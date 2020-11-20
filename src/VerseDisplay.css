@@ -1,0 +1,99 @@
+.pueDIV{
+  background-color: rgba(0,0,0,0);
+  color: blue;
+  /* width: 700px; */
+  width: 90vw;
+  /* height: 600px; */
+  height: 100vh;
+  margin-left: auto;
+  /* margin-right: auto; */
+  margin-top: 10vh;
+  padding-right: 3vw;
+  text-align: right;
+
+
+}
+/* flex: 1 1 auto; */
+
+.dim{
+  z-index:-1;
+
+  position:fixed;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  /* background:rgba(255,255,255,0.5);    #33ccff 0%, #ff99cc 100%  */
+  background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 5%, rgba(255, 255, 255, 0.03) 70%);
+}
+
+.Hero{
+  color: #fff;
+  /* box-shadow: 0 0 20px 0 #095484; */
+/* 2px 2px #095484; */
+  text-shadow: 3px 3px 20px #095484;
+  font-size: 2em;
+  /* background-color: white; */
+  /* margin-top: 30px; */
+  margin-left: auto;
+  /* padding-top: 40px; */
+  padding-bottom: 20px;
+  position: relative;
+
+
+  /* display: inline; */
+}
+
+.highlight{
+  /* background: linear-gradient(180deg, rgba(255,255,255,0) 70%, #FFD0AE 80%);   */
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* background-color: yellow;
+  padding: 50px;
+  font-size: 20px; */
+}
+
+
+
+@media (max-width: 1000px) {
+  .pueDIV{
+    background-color: rgba(0,0,0,0);
+    color: blue;
+    /* width: 700px; */
+    width: 90vw;
+    /* height: 600px; */
+    height: 100vh;
+    margin-left: auto;
+    /* margin-right: auto; */
+    margin-top: 10vh;
+    padding-right: 5vw;
+    text-align: right;
+  }
+
+  .Hero{
+    color: #fff;
+    /* box-shadow: 0 0 20px 0 #095484; */
+  /* 2px 2px #095484; */
+    text-shadow: 3px 3px 20px #095484;
+    font-size: 1em;
+    /* background-color: white; */
+    /* margin-top: 30px; */
+    margin-left: auto;
+    /* padding-top: 40px; */
+    padding-bottom: 20px;
+    position: relative;
+
+
+    /* display: inline; */
+  }
+
+
+}

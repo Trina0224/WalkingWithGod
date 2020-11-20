@@ -19,7 +19,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'UPDATE_INPUT':
-      console.log("// DEBUG: Here");
+      console.log("// DEBUG: In reducer().");
       return update(state, { "grabbedText": {$set: action.data}});
       // return {
       //     "grabbedText": action.data  //<======

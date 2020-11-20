@@ -46,7 +46,8 @@ function MyForm(props){
     if(book!=="cnt" && book!=="nrsv" && book!=="akjv"){
       // 我們預設從這個網站取得經節。沒包含最後三個。要用另一個處理。
       //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
-      const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${language}-${book}/${chapter}:${verseStart}-${verseEnd}`;
+      const queryIndex = `${language}-${book}/${chapter}:${verseStart}-${verseEnd}`;
+      const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;
       console.log(queryUrl);
 
       await fetch(queryUrl,{
@@ -73,9 +74,11 @@ function MyForm(props){
           const extractFirstPlace = responseData.indexOf("<small>");
           const extractFinalPlace = responseData.indexOf("</body>");
           const extracted = responseData.substring(extractFirstPlace,extractFinalPlace);
-          console.log(extracted);
+          //console.log(extracted);
+          const data4Reducer = `${extracted} Ref:${queryIndex}`; //add index data for display work easier.
+          console.log(data4Reducer);
           //save to context for other components use.
-          dispatch({ type: 'UPDATE_INPUT', data: extracted,});
+          dispatch({ type: 'UPDATE_INPUT', data: data4Reducer,});
 
           return responseData;
           //this.setState({ author: responseData});
