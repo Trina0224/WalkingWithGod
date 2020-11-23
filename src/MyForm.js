@@ -93,7 +93,7 @@ function MyForm(props){
       chapter:"",
       verseStart:"",
       verseEnd:""
-    }
+    };
     if(typeof data.bookSelect === 'undefined'){
       queryData.bookName="1 Corinthians";
       queryData.bookAbbreviation="1Co"

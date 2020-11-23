@@ -1,7 +1,10 @@
 # Issues  
 1. Need to double click search.  <==
 https://stackoverflow.com/questions/54069253/usestate-set-method-not-reflecting-change-immediately
-The easy answer: useEffect instead useState.
+The easy answer: useEffect instead useState.  
+2. In REACT, if you see something undefined in object but you are sure it's right. The problem is from
+react will run page two times and one is without data, so, we need to check the object is really exist.
+In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen. 
 
 
 # Todos:  

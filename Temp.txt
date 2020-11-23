@@ -12,6 +12,11 @@ https://rapidapi.com/blog/how-to-use-an-api-with-react/
 https://github.com/jasonbrandoo/bible-app-react/tree/master/src/pages
 
 
+//Solve react cannot access a property issue.
+https://forum.freecodecamp.org/t/react-cant-access-a-property-of-an-object-stored-in-state/138169
+
+
+
 //bible links
 http://m.ibibles.net/index.htm  回傳HTML, 有中文日文
 
