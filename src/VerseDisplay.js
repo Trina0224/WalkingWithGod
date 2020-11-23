@@ -55,8 +55,24 @@ function VerseDisplay(props){
             //console.log(extracted);
             const data4Reducer = `${extracted} Ref:${queryIndex}`; //add index data for display work easier.
             console.log(data4Reducer);
+            //state.grabbedText example:
+            //<small>1:1</small> これはソロモンの雅歌なり <br>
+            //<small>1:2</small> ねがはしきは彼その口の接吻をもて我にくちつけせんことなり 汝の愛は酒よりもまさりぬ <br>
+            //<small>1:3</small> なんぢの香膏は其香味たへに馨しくなんぢの名はそそがれたる香膏のごとし 是をもて女子等なんぢを愛す <br>
+            //Ref:jcl-Song of Songs/1:1-3
+            //xxx.replaceAll() with RegExp()
+
+            let noSmallTag = data4Reducer.replaceAll("<small>","@");
+            noSmallTag = noSmallTag.replaceAll("</small>","@");
+            var regEx = new RegExp("@.*@", "g"); //we must use RegExp() to create regEx. or JS is not working.
+            noSmallTag = noSmallTag.replaceAll(regEx,"");
+            noSmallTag = noSmallTag.replaceAll("<br>"," ");
+            noSmallTag = noSmallTag.replaceAll("Ref:","✝︎ ");
+
+
             //save to context for other components use.
-            dispatch({ type: 'UPDATE_INPUT', data: data4Reducer,});
+            //dispatch({ type: 'UPDATE_INPUT', data: data4Reducer,});
+            dispatch({ type: 'UPDATE_INPUT', data: noSmallTag,});
 
             return responseData;
             //this.setState({ author: responseData});
@@ -71,10 +87,83 @@ function VerseDisplay(props){
       }else{
         //用第二種方式取得資料
         //參考FetchREsult.js 的url2 or url. 放入TODO.
+        //passage=Acts15:1-5&version=akjv
+        const queryIndex = `${data.bookAbbreviation} ${data.chapter}:${data.verseStart}-${data.verseEnd}&version=${data.language}`;
+        const queryUrl = `https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=${queryIndex}`;
+        console.log(queryUrl);
+        await fetch(queryUrl,{
+            'method': 'GET',
+            'headers': {
+              //'accept': 'application/json'
+            }
+        })
+          .then(response => response.text())// not .json at this website. because it reutrn HTML.
+          .then((responseData) => {
+            //console.log(responseData);
+            // we got something like below:
+            //remove '()' and it's a JSON.
+            //(
+            //{"book":[{
+            //  "book_ref":"Jn",
+            //  "book_name":"John",
+            //  "book_nr":"43",
+            //  "chapter_nr":"3",
+            //  "chapter":{
+            //    "16":{
+            //      "verse_nr":"16",
+            //      "verse":"\u201c\u3000\u795e\u611b\u4e16\u4eba\uff0c\u751a\u81f3\u628a\u4ed6\u7684\u7368\u751f\u5b50\u8cdc\u7d66\u4ed6\u5011\uff0c\u53eb\u4e00\u5207\u4fe1\u4ed6\u7684\uff0c\u4e0d\u81f3\u6ec5\u4ea1\uff0c\u53cd\u5f97\u6c38\u751f\u3002\r\n"
+            //    }
+            //  }
+            //}],
+            //"direction":"LTR",
+            //"type":"verse",
+            //"version":"cnt"}
+            //);
+
+            let cleanData = responseData.replaceAll("(","");
+            cleanData = cleanData.replaceAll(")","");
+            //remove the last ';' use slice(0,-1) is the easist.
+            cleanData = cleanData.slice(0,-1);
+            //console.log(cleanData);
+            let obj = JSON.parse(cleanData);
+            console.log(obj);
+            if(obj){
+              //from obj.book[0].chpater, we could get something like this:
+              //16: {verse_nr: "16", verse: "And I will make your seed as the dust of the earth…e earth, then shall your seed also be numbered."}
+              //17: {verse_nr: 17, verse: "Arise, walk through the land in the length of it a…n the breadth of it; for I will give it to you."}
+              console.log(obj.book[0].chapter);
+              //console.log(obj.book[0].chapter.[16].verse);
+              //console.log(obj.book[0].chapter.[17].verse);
+              let displayString="";
+              for(let i=data.verseStart; i<=data.verseEnd;i++){
+                displayString = displayString.concat(obj.book[0].chapter.[i].verse);
+              }
+              //expand final substring
+              let tempsub= `✝︎ ${data.language}-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
+              displayString = displayString.concat(tempsub);
+              //console.log(tempsub);
+              console.log(displayString);
+              dispatch({ type: 'UPDATE_INPUT', data: displayString,});
+
+
+
+
+            }else{
+              ;
+            }//if(obj)
+
+            return responseData;
+            //this.setState({ author: responseData});
+          })
+          .catch(err =>{
+            console.log(err);
+          });
+
+
       }
 
     }else{
-
+      ;
     }//else,if(state.searchQuery)
 
 
@@ -98,20 +187,8 @@ function VerseDisplay(props){
 
 
 
-  //state.grabbedText example:
-  //<small>1:1</small> これはソロモンの雅歌なり <br>
-  //<small>1:2</small> ねがはしきは彼その口の接吻をもて我にくちつけせんことなり 汝の愛は酒よりもまさりぬ <br>
-  //<small>1:3</small> なんぢの香膏は其香味たへに馨しくなんぢの名はそそがれたる香膏のごとし 是をもて女子等なんぢを愛す <br>
-  //Ref:jcl-Song of Songs/1:1-3
-  //xxx.replaceAll() with RegExp()
-  let noSmallTag = state.grabbedText.replaceAll("<small>","@");
-  noSmallTag = noSmallTag.replaceAll("</small>","@");
-  var regEx = new RegExp("@.*@", "g"); //we must use RegExp() to create regEx. or JS is not working.
-  noSmallTag = noSmallTag.replaceAll(regEx,"");
-  noSmallTag = noSmallTag.replaceAll("<br>"," ");
-  noSmallTag = noSmallTag.replaceAll("Ref:","✝︎ ");
 
-
+  let noSmallTag = state.grabbedText;
   console.log(noSmallTag);
 //          {state.grabbedText}
 
