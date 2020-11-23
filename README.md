@@ -9,7 +9,7 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 
 # Todos:  
 1. other API search.   ok.
-2. Modify webpage name and Favicon  
+2. Modify webpage name and Favicon ok.  
 3. background change  
 4. smart background change.  
 5. Book name to capital.
