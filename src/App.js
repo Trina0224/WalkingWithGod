@@ -19,11 +19,14 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'UPDATE_INPUT':
-      console.log("// DEBUG: In reducer().");
+      console.log("// DEBUG: In reducer() Update Input.");
       return update(state, { "grabbedText": {$set: action.data}});
       // return {
       //     "grabbedText": action.data  //<======
       // };
+      case 'UPDATE_SEARCH':
+        console.log("// DEBUG: In reducer() Update Search.");
+        return update(state, { "searchQuery": {$set: action.data}});
 
     default:
       return initialState;

@@ -19,12 +19,12 @@ function MyForm(props){
   const {state, dispatch} = useContext(AppContext);
 
   //use in this file.
-  const [language, setLanguage] = useState('niv'); //for input data
-  const [book, setBookName] = useState('John');
-  const [bookAbbreviation,setBookAbbreviation ] =useState('Jhn');
-  const [chapter,setChapter] = useState('3');
-  const [verseStart,setVerseStart] = useState('16');
-  const [verseEnd,setVerseEnd] = useState('16');
+  // const [language, setLanguage] = useState('niv'); //for input data
+  // const [book, setBookName] = useState('John');
+  // const [bookAbbreviation,setBookAbbreviation ] = useState('Jhn');
+  // const [chapter,setChapter] = useState('3');
+  // const [verseStart,setVerseStart] = useState('16');
+  // const [verseEnd,setVerseEnd] = useState('16');
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
 
@@ -32,71 +32,15 @@ function MyForm(props){
   const {register, handleSubmit, control, errors } = useForm({
     defaultValues:
     {
-      "chapterNumber": chapter,
-      "verseStartNumber": verseStart,
-      "verseEndNumber": verseEnd,
-      "bookSelect": book,
-      "languageSelect": language
+      "chapterNumber": 3,
+      "verseStartNumber": 16,
+      "verseEndNumber": 16,
+      "bookSelect": "John",
+      "languageSelect": "niv"
     }
   });
 
 
-
-  const api_call = async (e) => {
-    if(book!=="cnt" && book!=="nrsv" && book!=="akjv"){
-      // 我們預設從這個網站取得經節。沒包含最後三個。要用另一個處理。
-      //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
-      const queryIndex = `${language}-${book}/${chapter}:${verseStart}-${verseEnd}`;
-      const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;
-      console.log(queryUrl);
-
-      await fetch(queryUrl,{
-          'method': 'GET',
-          'headers': {
-            //'accept': 'application/json'
-          }
-      })
-        .then(response => response.text())// not .json at this website. because it reutrn HTML.
-        .then((responseData) => {
-          console.log(responseData);
-          //becuase we got HTML, need to extract what we need and save it.
-          //below is an example:
-          // <!doctype html>
-          // <html>
-          // <head>
-          // <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-          // <title>Bible Quote</title>
-          // </head>
-          // <body bgcolor="#e0e0e0">
-          // <small>1:13</small> For he has rescued us from the dominion of darkness and brought us into the kingdom of the Son he loves, <br>
-          // </body>
-          // </html>
-          const extractFirstPlace = responseData.indexOf("<small>");
-          const extractFinalPlace = responseData.indexOf("</body>");
-          const extracted = responseData.substring(extractFirstPlace,extractFinalPlace);
-          //console.log(extracted);
-          const data4Reducer = `${extracted} Ref:${queryIndex}`; //add index data for display work easier.
-          console.log(data4Reducer);
-          //save to context for other components use.
-          dispatch({ type: 'UPDATE_INPUT', data: data4Reducer,});
-
-          return responseData;
-          //this.setState({ author: responseData});
-        })
-        .catch(err =>{
-          console.log(err);
-        });
-
-      //.catch(function(error){console.log(`"No Data at this location. ${error}"`);});
-      //return response;
-
-    }else{
-      //用第二種方式取得資料
-      //參考FetchREsult.js 的url2 or url. 放入TODO.
-    }
-
-
-}//api_call
 
  function handleDisplay(){
   if(hideOrNot == "testbox Display")
@@ -109,43 +53,83 @@ function MyForm(props){
   const onSubmit = data =>{
     console.log(data);
     //整理一下輸入的資料
-    if(typeof data.bookSelect === 'undefined'){
-      ;
-    }else{
-      setBookName(data.bookSelect.label);
-      setBookAbbreviation(data.bookSelect.value);
-    }
+    setStateSuccess(data);
+    // if(typeof data.bookSelect === 'undefined'){
+    //   ;
+    // }else{
+    //   setBookName(data.bookSelect.label);
+    //   setBookAbbreviation(data.bookSelect.value);
+    // }
+    //
+    // if(typeof data.languageSelect === 'undefined'){
+    //   ;
+    // }else{
+    //   setLanguage(data.languageSelect.value);
+    // }
+    //
+    // setChapter(data.chapterNumber);
+    //
+    // if(data.verseStartNumber <= data.verseEndNumber){
+    //   setVerseStart(data.verseStartNumber);
+    //   setVerseEnd(data.verseEndNumber);
+    // }else{
+    //   setVerseStart(data.verseEndNumber);
+    //   setVerseEnd(data.verseStartNumber);
+    // }
 
-    if(typeof data.languageSelect === 'undefined'){
-      ;
-    }else{
-      setLanguage(data.languageSelect.value);
-    }
 
-    setChapter(data.chapterNumber);
-
-    if(data.verseStartNumber <= data.verseEndNumber){
-      setVerseStart(data.verseStartNumber);
-      setVerseEnd(data.verseEndNumber);
-    }else{
-      setVerseStart(data.verseEndNumber);
-      setVerseEnd(data.verseStartNumber);
-    }
-
-
-    const temp1 = api_call();
-    temp1.then(function(result) {  //因為temp1是 promise狀態, 需要用then取出
-   // console.log(result.main.temp);
-   // console.log(result.main.feels_like);
-      console.log(result);
-
- });
-
-//    let url = 'https://api.scripture.api.bible/v1/bibles/'
 
 
 
   }//onSubmit end.
+
+  //const setStateSuccess = async (data,e)=>{
+  async function setStateSuccess(data){
+    console.log("in setStateSuccess()");
+    let queryData={
+      language:"",
+      bookName:"",
+      bookAbbreviation:"",
+      chapter:"",
+      verseStart:"",
+      verseEnd:""
+    }
+    if(typeof data.bookSelect === 'undefined'){
+      queryData.bookName="1 Corinthians";
+      queryData.bookAbbreviation="1Co"
+    }else{
+      // await setBookName(data.bookSelect.label);
+      // await setBookAbbreviation(data.bookSelect.value);
+      queryData.bookName=data.bookSelect.label;
+      queryData.bookAbbreviation=data.bookSelect.value;
+    }
+
+    if(typeof data.languageSelect === 'undefined'){
+      queryData.language="niv";
+    }else{
+      // await setLanguage(data.languageSelect.value);
+      queryData.language=data.languageSelect.value;
+    }
+
+    // await setChapter(data.chapterNumber);
+    queryData.chapter=data.chapterNumber;
+
+    if(data.verseStartNumber <= data.verseEndNumber){
+      // await setVerseStart(data.verseStartNumber);
+      // await setVerseEnd(data.verseEndNumber);
+      queryData.verseStart=data.verseStartNumber;
+      queryData.verseEnd=data.verseEndNumber;
+
+    }else{
+      // await setVerseStart(data.verseEndNumber);
+      // await setVerseEnd(data.verseStartNumber);
+      queryData.verseStart=data.verseEndNumber;
+      queryData.verseEnd=data.verseStartNumber;
+    }
+
+    dispatch({ type: 'UPDATE_SEARCH', data: queryData,});
+
+  }//setStateSuccess end.
 
 
 
