@@ -1,5 +1,5 @@
 import React, { useState,  useContext } from 'react';
-import {useForm, Controller} from 'react-hook-form';
+//simport {useForm, Controller} from 'react-hook-form';
 import { AppContext } from './App';
 import './VerseDisplay.css';
 
@@ -17,12 +17,53 @@ function VerseDisplay(props){
     //console.log(state.searchQuery);
     const data= state.searchQuery;
     //console.log(typeof datat);
+
     if(state.searchQuery){
       console.log(data.language);
+
+      //first API query is for BBE only.
+      const bbeVersionIndex = `bbe-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
+      const bbeQueryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${bbeVersionIndex}`;
+      console.log(bbeQueryUrl);
+
+      await fetch(bbeQueryUrl,{
+          'method': 'GET',
+          'headers': {
+            //'accept': 'application/json'
+          }
+
+      })
+        .then(response => response.text())// not .json at this website. because it reutrn HTML.
+        .then((responseData) => {
+          const extractFirstPlace = responseData.indexOf("<small>");
+          const extractFinalPlace = responseData.indexOf("</body>");
+          const extracted = responseData.substring(extractFirstPlace,extractFinalPlace);
+          //console.log(extracted);
+
+          let noSmallTag = extracted.replaceAll("<small>","@");
+          noSmallTag = noSmallTag.replaceAll("</small>","@");
+          var regEx = new RegExp("@.*@", "g"); //we must use RegExp() to create regEx. or JS is not working.
+          noSmallTag = noSmallTag.replaceAll(regEx,"");
+          noSmallTag = noSmallTag.replaceAll("<br>"," ");
+          console.log(noSmallTag);
+
+          dispatch({ type: 'UPDATE_BACKGROUNDKEYWORD', data: noSmallTag,});//it's only for background search.
+
+          //this.setState({ author: responseData});
+        })
+        .catch(err =>{
+          console.log(err);
+        });
+
+
+
+      //below is depend on whcih book version we selected. cnt, nrsv and akjv need API2, other
+      //using ibible is enough.
+
       if(data.language!=="cnt" &&
         data.language!=="nrsv" &&
         data.language!=="akjv"){
-        // 我們預設從這個網站取得經節。沒包含最後三個。要用另一個處理。
+        // We got verse from here for default.
         //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
         const queryIndex = `${data.language}-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
         const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;

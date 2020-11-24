@@ -7,6 +7,7 @@ import update from 'immutability-helper';
 
 
 
+
 // Create context object
 export const AppContext = React.createContext();
 
@@ -27,6 +28,10 @@ function reducer(state, action) {
       case 'UPDATE_SEARCH':
         console.log("// DEBUG: In reducer() Update Search.");
         return update(state, { "searchQuery": {$set: action.data}});
+
+      case 'UPDATE_BACKGROUNDKEYWORD':
+        console.log("// DEBUG: In reducer() Update background keyword.");
+        return update(state, { "searchBackgroundQuery": {$set: action.data}});
 
     default:
       return initialState;

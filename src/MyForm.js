@@ -6,8 +6,8 @@ import ReactSelect from "react-select";
 import bookOptions from "./constants/bookOptionsEng.js"; //英文
 //import bookOptions from "./constants/bookOptionsCht.js"; //中文
 import languageOptions from "./constants/languageOptions.js";
+//import FetchResult from './FetchResult';
 import FetchBackground from './FetchBackground';
-import FetchResult from './FetchResult';
 
 
 
@@ -18,13 +18,6 @@ function MyForm(props){
   //from App.js
   const {state, dispatch} = useContext(AppContext);
 
-  //use in this file.
-  // const [language, setLanguage] = useState('niv'); //for input data
-  // const [book, setBookName] = useState('John');
-  // const [bookAbbreviation,setBookAbbreviation ] = useState('Jhn');
-  // const [chapter,setChapter] = useState('3');
-  // const [verseStart,setVerseStart] = useState('16');
-  // const [verseEnd,setVerseEnd] = useState('16');
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
 
@@ -54,28 +47,6 @@ function MyForm(props){
     console.log(data);
     //整理一下輸入的資料
     setStateSuccess(data);
-    // if(typeof data.bookSelect === 'undefined'){
-    //   ;
-    // }else{
-    //   setBookName(data.bookSelect.label);
-    //   setBookAbbreviation(data.bookSelect.value);
-    // }
-    //
-    // if(typeof data.languageSelect === 'undefined'){
-    //   ;
-    // }else{
-    //   setLanguage(data.languageSelect.value);
-    // }
-    //
-    // setChapter(data.chapterNumber);
-    //
-    // if(data.verseStartNumber <= data.verseEndNumber){
-    //   setVerseStart(data.verseStartNumber);
-    //   setVerseEnd(data.verseEndNumber);
-    // }else{
-    //   setVerseStart(data.verseEndNumber);
-    //   setVerseEnd(data.verseStartNumber);
-    // }
 
 
 
@@ -114,17 +85,17 @@ function MyForm(props){
     // await setChapter(data.chapterNumber);
     queryData.chapter=data.chapterNumber;
 
-    if(data.verseStartNumber <= data.verseEndNumber){
+    if(parseInt(data.verseStartNumber) <= parseInt(data.verseEndNumber)){
       // await setVerseStart(data.verseStartNumber);
       // await setVerseEnd(data.verseEndNumber);
-      queryData.verseStart=data.verseStartNumber;
-      queryData.verseEnd=data.verseEndNumber;
+      queryData.verseStart=parseInt(data.verseStartNumber);
+      queryData.verseEnd=parseInt(data.verseEndNumber);
 
     }else{
       // await setVerseStart(data.verseEndNumber);
       // await setVerseEnd(data.verseStartNumber);
-      queryData.verseStart=data.verseEndNumber;
-      queryData.verseEnd=data.verseStartNumber;
+      queryData.verseStart=parseInt(data.verseEndNumber);
+      queryData.verseEnd=parseInt(data.verseStartNumber);
     }
 
     dispatch({ type: 'UPDATE_SEARCH', data: queryData,});
@@ -136,6 +107,7 @@ function MyForm(props){
 //return <option key={key} value={e.value}>{e.name}</option>;
 //            <h4>Language<span>*</span></h4>
 //            <h4>Chapter and Verse<span>*</span></h4>
+//      <FetchBackground />
 
     return (
       <div>

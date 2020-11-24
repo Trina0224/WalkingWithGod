@@ -5,13 +5,15 @@ import fetch from 'node-fetch';
 
 //import {Helmet} from 'react-helmet';
 
-//import { AppContext } from './App'
+import { AppContext } from './App'
 
 import './FetchBackground.css';
+import vocabulary4Search from './constants/words.js';
+import queryWordsCreate from './hook/queryWordsCreate.js';
 
 //import ContextBP from './store/City_context.js'
 
-
+const defaultword = 'bible';
 
 
 
@@ -32,8 +34,30 @@ const loadData = (options) => {
 
 //function FetchBackground({ContextBP}){
 function FetchBackground(){
+  const {state, dispatch} = useContext(AppContext);
+  //below is an example code to check vocabulary.
+  //console.log(state.searchBackgroundQuery);//any change, and background will also changed.
+  //extract values to a new array for usage.
+  const map = vocabulary4Search.map(function(x){
+    return x.value;
+  });
+  // console.log(map1);
+  //compare state.searchBackgroundQuery and vocabulary4Search.
+  let verse;
+  if(state.searchBackgroundQuery){
+    verse = state.searchBackgroundQuery;
+  }
+  else{
+    verse = defaultword; //default word.
+  }
+  let searchQuery = queryWordsCreate(verse, map);
+  if(searchQuery === state.searchBackgroundQuery){
+    searchQuery = defaultword; //no mapping word in record. use default word.
+  }
+  console.log(searchQuery);
+
   let [photos, setPhotos] = useState([]);
-  let searchQuery='bible';//'christian';
+  //let searchQuery='bible';//'christian';
   const numberOfPhotos = 1;
   const url =
     "https://api.unsplash.com/photos/random/?count=" +
