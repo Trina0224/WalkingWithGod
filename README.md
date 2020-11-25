@@ -11,12 +11,15 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 1. other API search.   ok.
 2. Modify webpage name and Favicon ok.  
 3. background change  ok.
-4. smart background change.  
+4. smart background change.  (can be better)
 5. No matter which version BIBLE user select. We still need to extract from BBE. ok.
 6. Using BBE to create dictionary for AI.
 7. CopyRight Page.  
 8. Clean non-necessary console.log().  
-9. no verse returned processing.
+9. no verse returned processing. ok.  
+10. book name in different language.  
+11. control book chapter and max vase number.  
+12. Default generate random verses.
 
 
 https://cors-anywhere.herokuapp.com/

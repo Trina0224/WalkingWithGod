@@ -4,9 +4,9 @@
 //https://www.vocabulary.com/lists/185056
 
 export default [
-  {key:"", value: "jesus", label: "Jesus"}, //0
+  {key:"", value: "Jesus", label: "Jesus"}, //0
   {key:"", value: "cross", label: "cross"},
-  {key:"", value: "israel", label: "Israel"},
+  {key:"", value: "Israel", label: "Israel"},
   {key:"", value: "father", label: "Father"},
   {key:"", value: "biblical", label: "biblical"},
   {key:"", value: "bible", label: "bible"},
@@ -39,6 +39,7 @@ export default [
   {key:"", value: "husband", label: "husband"},
   {key:"", value: "sheep", label: "sheep"},
   {key:"", value: "valley", label: "valley"},
+  {key:"", value: "Christ", label: "Christ"},
   {key:"", value: "love", label: "love"}
 
 ];

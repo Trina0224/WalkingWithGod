@@ -4,7 +4,7 @@ import { AppContext } from './App';
 import {bibleBooks} from './bookName0';
 import ReactSelect from "react-select";
 import bookOptions from "./constants/bookOptionsEng.js"; //英文
-//import bookOptions from "./constants/bookOptionsCht.js"; //中文
+import bookOptionsCht from "./constants/bookOptionsCht.js"; //中文
 import languageOptions from "./constants/languageOptions.js";
 //import FetchResult from './FetchResult';
 import FetchBackground from './FetchBackground';
@@ -126,6 +126,10 @@ function MyForm(props){
                 name="languageSelect"
                 isClearable
                 control={control}
+                onChange = {e =>{
+                  console.log("input changed.");
+                  return e[0].target.value;
+                }}
               />
             </section>
 
