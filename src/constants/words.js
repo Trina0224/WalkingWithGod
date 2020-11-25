@@ -40,6 +40,7 @@ export default [
   {key:"", value: "sheep", label: "sheep"},
   {key:"", value: "valley", label: "valley"},
   {key:"", value: "Christ", label: "Christ"},
+  {key:"", value: "God", label: "God"},
   {key:"", value: "love", label: "love"}
 
 ];

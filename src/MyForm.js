@@ -28,8 +28,8 @@ function MyForm(props){
       "chapterNumber": 3,
       "verseStartNumber": 16,
       "verseEndNumber": 16,
-      "bookSelect": "John",
-      "languageSelect": "niv"
+      "bookSelect": {value:"Jhn",label:"John"},
+      "languageSelect": {value: "niv", label: "English NIV"},
     }
   });
 
@@ -102,6 +102,22 @@ function MyForm(props){
 
   }//setStateSuccess end.
 
+  // function languageChange(){
+  //   console.log("lanugage changed.");
+  // }
+
+  function languageChange(selectedOption){
+  console.log(`Option selected:`, selectedOption);
+}
+
+const options = [
+  { value: 'Food', label: 'Food' },
+  { value: 'Being Fabulous', label: 'Being Fabulous' },
+  { value: 'Ken Wheeler', label: 'Ken Wheeler' },
+  { value: 'ReasonML', label: 'ReasonML' },
+  { value: 'Unicorns', label: 'Unicorns' },
+  { value: 'Kittens', label: 'Kittens' },
+];
 
 
 //return <option key={key} value={e.value}>{e.name}</option>;
@@ -126,10 +142,16 @@ function MyForm(props){
                 name="languageSelect"
                 isClearable
                 control={control}
-                onChange = {e =>{
-                  console.log("input changed.");
-                  return e[0].target.value;
-                }}
+              />
+            </section>
+
+            <section>
+              <ReactSelect
+                id="color"
+                options={options}
+                multi={true}
+                onChange={languageChange}
+                value={options.value}
               />
             </section>
 

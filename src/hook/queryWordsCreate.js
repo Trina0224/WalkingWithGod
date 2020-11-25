@@ -26,6 +26,11 @@ function queryWordsCreate(verse, keywordsDictionary){
   }
 
   //finalString = includingKeywords.join(" "); //it's for testing.
+  if(finalString === "God"){
+    finalString = "Jesus"; //if we just search God, other strange picture is coming.
+  }else{
+    ;
+  }
   console.log(finalString);
     if(finalString){
       return finalString;

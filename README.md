@@ -19,8 +19,12 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 9. no verse returned processing. ok.  
 10. book name in different language.  
 11. control book chapter and max vase number.  
-12. Default generate random verses.
+12. Default generate random verses.  
+13. Default book, language value. ok.
 
+MEMO: work on this link:
+https://codesandbox.io/s/jrze53pqr?file=/index.js:1092-1102
+because there is no onChange for Controller... = ="
 
 https://cors-anywhere.herokuapp.com/
 https://getbible.net/json?passage=Gen 1:1-5&version=cnt
