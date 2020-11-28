@@ -1,4 +1,4 @@
-import React, { useState,  useContext } from 'react';
+import React, { useState,  useContext, useEffect } from 'react';
 import {useForm, Controller} from 'react-hook-form';
 import { AppContext } from './App';
 import {bibleBooks} from './bookName0';
@@ -11,7 +11,9 @@ import FetchBackground from './FetchBackground';
 
 
 
-
+//let currentLanguageUserSelect="niv"; //default use niv.
+//let currentBookUserSelect="John";
+let defaultBibleVersion = bookOptions;
 
 
 function MyForm(props){
@@ -20,6 +22,7 @@ function MyForm(props){
 
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
+  const [languageSelected, setlanguageInUI] = useState('niv'); //langauge select
 
 
   const {register, handleSubmit, control, errors } = useForm({
@@ -106,18 +109,61 @@ function MyForm(props){
   //   console.log("lanugage changed.");
   // }
 
-  function languageChange(selectedOption){
+async function languageChange(selectedOption){
   console.log(`Option selected:`, selectedOption);
+  await setlanguageInUI(selectedOption.value);
+  //dispatch({ type: 'UPDATE_BIBLEVERSION', data: selectedOption.value,});
+  //currentLanguageUserSelect=selectedOption.value;
+  //console.log(currentLanguageUserSelect);
+  console.log(state.searchBibleVersionQuery);
+
 }
 
-const options = [
-  { value: 'Food', label: 'Food' },
-  { value: 'Being Fabulous', label: 'Being Fabulous' },
-  { value: 'Ken Wheeler', label: 'Ken Wheeler' },
-  { value: 'ReasonML', label: 'ReasonML' },
-  { value: 'Unicorns', label: 'Unicorns' },
-  { value: 'Kittens', label: 'Kittens' },
-];
+async function bookChange(selectedOption){
+  console.log(`Option selected:`, selectedOption);
+  //await setlanguageInUI(selectedOption.value);
+  //currentBookUserSelect=selectedOption.label;
+  //console.log(currentBookUserSelect);
+
+}
+
+useEffect(() => {
+  if (languageSelected) {
+    // Make API call to /beer
+    console.log(languageSelected);
+    switch(languageSelected){
+      case 'cut':
+        defaultBibleVersion = bookOptionsCht;
+      break;
+      case 'cnt':
+        defaultBibleVersion = bookOptionsCht;
+      break;
+      case 'niv':
+        defaultBibleVersion = bookOptions;
+      break;
+      case 'glm':
+        defaultBibleVersion = bookOptions;
+      break;
+      case 'kjv':
+        defaultBibleVersion = bookOptions;
+      break;
+      case 'jcl':
+        defaultBibleVersion = bookOptions;
+      break;
+      case 'jco':
+        defaultBibleVersion = bookOptions;
+      break;
+
+      default:
+        defaultBibleVersion = bookOptions;
+    }//switch
+    console.log(defaultBibleVersion);
+    //below line is force re-render MyForm() only.
+    dispatch({ type: 'UPDATE_BIBLEBOOKLANGUAGE', data: defaultBibleVersion,});
+  } else {
+    // Throw error 404, beer not found
+  }
+}, [languageSelected]);
 
 
 //return <option key={key} value={e.value}>{e.name}</option>;
@@ -147,11 +193,13 @@ const options = [
 
             <section>
               <ReactSelect
-                id="color"
-                options={options}
+                id="languageop"
+                options={languageOptions}
                 multi={true}
                 onChange={languageChange}
-                value={options.value}
+                value={languageOptions.value}
+                defaultValue={{value: "niv", label: "English NIV"}}
+                name = "testing"
               />
             </section>
 
@@ -159,12 +207,25 @@ const options = [
               <label>Book<span>*</span></label>
               <Controller
                 as={ReactSelect}
-                options={bookOptions}
+                options={defaultBibleVersion}
                 name="bookSelect"
                 isClearable
                 control={control}
               />
             </section>
+
+            <section>
+              <ReactSelect
+                id="bookop"
+                options={defaultBibleVersion}
+                multi={true}
+                onChange={bookChange}
+                value={defaultBibleVersion.value}
+                defaultValue={{value:"Jhn",label:"John"}}
+                name = "testing"
+              />
+            </section>
+
 
 
             <div className="item">

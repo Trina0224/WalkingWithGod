@@ -33,6 +33,10 @@ function reducer(state, action) {
         console.log("// DEBUG: In reducer() Update background keyword.");
         return update(state, { "searchBackgroundQuery": {$set: action.data}});
 
+      case 'UPDATE_BIBLEBOOKLANGUAGE':
+        console.log("// DEBUG: In reducer() Update background keyword.");
+        return update(state, { "changeBookLanguage": {$set: action.data}});
+
     default:
       return initialState;
   }
