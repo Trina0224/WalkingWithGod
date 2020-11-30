@@ -89,6 +89,12 @@ function FetchBackground(){
   // let parser4BP="";
 
 
+  function handleCopyrightDisplay(){
+    console.log("got clicked");
+    const copyright="All verses are from m.ibibles.net and getbible.net."
+    dispatch({ type: 'UPDATE_INPUT', data: copyright,});
+  }
+
 
   return (
     <div className="xxxxx divtest">
@@ -106,7 +112,7 @@ function FetchBackground(){
       }) : ""}
     </div>
     <footer className="myFooter">
-    <p className="myFooterP">Copyright © 2020 ART_Project
+    <p className="myFooterP"><span onclick={handleCopyrightDisplay}>Copyright</span> © 2020 ART_Project
     {
         photos.map(photo => {
         return (

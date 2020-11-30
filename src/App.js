@@ -19,7 +19,7 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'UPDATE_INPUT':
+    case 'UPDATE_INPUT'://save the string we really want to display on screen.
       console.log("// DEBUG: In reducer() Update Input.");
       return update(state, { "grabbedText": {$set: action.data}});
       // return {
@@ -34,8 +34,16 @@ function reducer(state, action) {
         return update(state, { "searchBackgroundQuery": {$set: action.data}});
 
       case 'UPDATE_BIBLEBOOKLANGUAGE':
-        console.log("// DEBUG: In reducer() Update background keyword.");
+        console.log("// DEBUG: In reducer() Update bible language.");
         return update(state, { "changeBookLanguage": {$set: action.data}});
+
+      case 'UPDATE_BOOKSELECT':
+        console.log("// DEBUG: In reducer() Update bible book.");
+        return update(state, { "selectedBook": {$set: action.data}});
+
+      case 'UPDATE_BOOKCHAPTER':
+        console.log("// DEBUG: In reducer() Update book max chapter.");
+        return update(state, { "changedMaxChapter": {$set: action.data}});
 
     default:
       return initialState;

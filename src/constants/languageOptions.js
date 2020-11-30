@@ -1,5 +1,5 @@
 export default [
-  {key:"", value: "cut", label: "繁體和合本"},
+  {key:"", value: "cut", label: "和合本"},
   {key:"", value: "glm", label: "Deutsch Luther Modern"},
   {key:"", value: "kjv", label: "English KJV"},
   {key:"", value: "niv", label: "English NIV"},
@@ -14,5 +14,5 @@ export default [
   {key:"", value: "kor", label: "한국어 성경"},
   {key:"", value: "nrsv", label: "English NRSV"},
   {key:"", value: "akjv", label: "English AKJV"},
-  {key:"", value: "cnt", label: "Chinese NCV"}
+  {key:"", value: "cnt", label: "新譯版"}
 ];

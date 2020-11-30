@@ -17,10 +17,11 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 7. CopyRight Page.  
 8. Clean non-necessary console.log().  
 9. no verse returned processing. ok.  
-10. book name in different language.  
-11. control book chapter and max vase number.  
-12. Default generate random verses.  
-13. Default book, language value. ok.
+10. book name in different language. ok.
+11. Default generate random verses.  
+12. Default book, language value. ok.  
+13. Constraint chapter number ok.  
+14. Constraint verse number.
 
 MEMO: work on this link:
 https://codesandbox.io/s/jrze53pqr?file=/index.js:1092-1102
@@ -30,7 +31,7 @@ BTW, because react-select cannot bind to onSubmit of Form, need to create state 
 Change to use global variable.  --> X
 Use useEffect() can solve this issue. But still go back no re-render issue. Solved by dispatch.
 
-下次開始改中文日文書也可以搜尋，必須多加欄位給英文用。搜尋API只能用英文
+11/30 Done New columns for Search, (searchkey) and took out language origianl controller.
 
 
 https://cors-anywhere.herokuapp.com/

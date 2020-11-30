@@ -3,8 +3,9 @@ import {useForm, Controller} from 'react-hook-form';
 import { AppContext } from './App';
 import {bibleBooks} from './bookName0';
 import ReactSelect from "react-select";
-import bookOptions from "./constants/bookOptionsEng.js"; //英文
-import bookOptionsCht from "./constants/bookOptionsCht.js"; //中文
+import bookOptions from "./constants/bookOptionsEng.js"; //English
+import bookOptionsCht from "./constants/bookOptionsCht.js"; //Chinese
+import bookOptionsJpn from "./constants/bookOptionsJpn.js"; //Japanese
 import languageOptions from "./constants/languageOptions.js";
 //import FetchResult from './FetchResult';
 import FetchBackground from './FetchBackground';
@@ -15,6 +16,7 @@ import FetchBackground from './FetchBackground';
 //let currentBookUserSelect="John";
 let defaultBibleVersion = bookOptions;
 
+//let maxChapter = 105;
 
 function MyForm(props){
   //from App.js
@@ -63,14 +65,19 @@ function MyForm(props){
       verseStart:"",
       verseEnd:""
     };
-    if(typeof data.bookSelect === 'undefined'){
+
+    //if(typeof data.bookSelect === 'undefined'){
+    if(typeof state.selectedBook[0] === 'undefined'){
       queryData.bookName="1 Corinthians";
       queryData.bookAbbreviation="1Co"
     }else{
       // await setBookName(data.bookSelect.label);
       // await setBookAbbreviation(data.bookSelect.value);
-      queryData.bookName=data.bookSelect.searchKey;
-      queryData.bookAbbreviation=data.bookSelect.value;
+      //queryData.bookName=data.bookSelect.searchKey;
+      //queryData.bookAbbreviation=data.bookSelect.value;
+      //selectedBook
+      queryData.bookName=state.selectedBook[0];
+      queryData.bookAbbreviation=state.selectedBook[1];
     }
 
     // if(typeof data.languageSelect === 'undefined'){
@@ -124,6 +131,11 @@ async function languageChange(selectedOption){
 
 async function bookChange(selectedOption){
   console.log(`Option selected:`, selectedOption);
+  //maxChapter = selectedOption.chapter;
+  dispatch({ type: 'UPDATE_BOOKCHAPTER', data: selectedOption.chapter,});
+  //UPDATE_BOOKSELECT
+  dispatch({ type: 'UPDATE_BOOKSELECT', data: [selectedOption.searchKey, selectedOption.value],});
+
   //await setlanguageInUI(selectedOption.value);
   //currentBookUserSelect=selectedOption.label;
   //console.log(currentBookUserSelect);
@@ -151,10 +163,10 @@ useEffect(() => {
         defaultBibleVersion = bookOptions;
       break;
       case 'jcl':
-        defaultBibleVersion = bookOptions;
+        defaultBibleVersion = bookOptionsJpn;
       break;
       case 'jco':
-        defaultBibleVersion = bookOptions;
+        defaultBibleVersion = bookOptionsJpn;
       break;
 
       default:
@@ -199,16 +211,6 @@ useEffect(() => {
 
             <section>
               <label>Book<span>*</span></label>
-              <Controller
-                as={ReactSelect}
-                options={defaultBibleVersion}
-                name="bookSelect"
-                isClearable
-                control={control}
-              />
-            </section>
-
-            <section>
               <ReactSelect
                 id="bookop"
                 options={defaultBibleVersion}
@@ -224,7 +226,7 @@ useEffect(() => {
 
             <div className="item">
               <p>Chapter</p>
-              <input type="number" step="1" min="1" name="chapterNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" max={state.changedMaxChapter} name="chapterNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse Start</p>
