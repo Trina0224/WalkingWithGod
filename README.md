@@ -30,7 +30,7 @@ BTW, because react-select cannot bind to onSubmit of Form, need to create state 
 Change to use global variable.  --> X
 Use useEffect() can solve this issue. But still go back no re-render issue. Solved by dispatch.
 
-
+下次開始改中文日文書也可以搜尋，必須多加欄位給英文用。搜尋API只能用英文
 
 
 https://cors-anywhere.herokuapp.com/

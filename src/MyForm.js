@@ -50,11 +50,6 @@ function MyForm(props){
     console.log(data);
     //整理一下輸入的資料
     setStateSuccess(data);
-
-
-
-
-
   }//onSubmit end.
 
   //const setStateSuccess = async (data,e)=>{
@@ -74,16 +69,24 @@ function MyForm(props){
     }else{
       // await setBookName(data.bookSelect.label);
       // await setBookAbbreviation(data.bookSelect.value);
-      queryData.bookName=data.bookSelect.label;
+      queryData.bookName=data.bookSelect.searchKey;
       queryData.bookAbbreviation=data.bookSelect.value;
     }
 
-    if(typeof data.languageSelect === 'undefined'){
+    // if(typeof data.languageSelect === 'undefined'){
+    //   queryData.language="niv";
+    // }else{
+    //   // await setLanguage(data.languageSelect.value);
+    //   queryData.language=data.languageSelect.value;
+    // }
+
+    if(typeof languageSelected === 'undefined'){
       queryData.language="niv";
     }else{
       // await setLanguage(data.languageSelect.value);
-      queryData.language=data.languageSelect.value;
+      queryData.language=languageSelected;
     }
+
 
     // await setChapter(data.chapterNumber);
     queryData.chapter=data.chapterNumber;
@@ -180,18 +183,9 @@ useEffect(() => {
 
         <div className={hideOrNot}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <section>
-              <label>Language<span>*</span></label>
-              <Controller
-                as={ReactSelect}
-                options={languageOptions}
-                name="languageSelect"
-                isClearable
-                control={control}
-              />
-            </section>
 
             <section>
+              <label>Language<span>*</span></label>
               <ReactSelect
                 id="languageop"
                 options={languageOptions}
