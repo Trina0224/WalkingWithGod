@@ -34,6 +34,7 @@ const loadData = (options) => {
 
 //function FetchBackground({ContextBP}){
 function FetchBackground(){
+
   const {state, dispatch} = useContext(AppContext);
   //below is an example code to check vocabulary.
   //console.log(state.searchBackgroundQuery);//any change, and background will also changed.
@@ -88,12 +89,12 @@ function FetchBackground(){
   // let myBackgroundURL="";
   // let parser4BP="";
 
-
   function handleCopyrightDisplay(){
     console.log("got clicked");
-    const copyright="All verses are from m.ibibles.net and getbible.net."
+    const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
     dispatch({ type: 'UPDATE_INPUT', data: copyright,});
   }
+
 
 
   return (
@@ -112,7 +113,7 @@ function FetchBackground(){
       }) : ""}
     </div>
     <footer className="myFooter">
-    <p className="myFooterP"><span onclick={handleCopyrightDisplay}>Copyright</span> © 2020 ART_Project
+    <p className="myFooterP"><span onClick={handleCopyrightDisplay}>Copyright © 2020 ART_Project</span>
     {
         photos.map(photo => {
         return (

@@ -7,6 +7,7 @@ import bookOptions from "./constants/bookOptionsEng.js"; //English
 import bookOptionsCht from "./constants/bookOptionsCht.js"; //Chinese
 import bookOptionsJpn from "./constants/bookOptionsJpn.js"; //Japanese
 import languageOptions from "./constants/languageOptions.js";
+import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
 import FetchBackground from './FetchBackground';
 
@@ -142,6 +143,10 @@ async function bookChange(selectedOption){
 
 }
 
+async function chapterChanged(changedValue){
+  console.log(changedValue);
+}
+
 useEffect(() => {
   if (languageSelected) {
     // Make API call to /beer
@@ -226,7 +231,7 @@ useEffect(() => {
 
             <div className="item">
               <p>Chapter</p>
-              <input type="number" step="1" min="1" max={state.changedMaxChapter} name="chapterNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" max={state.changedMaxChapter} onChange={chapterChanged} name="chapterNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse Start</p>
