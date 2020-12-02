@@ -73,7 +73,7 @@ function FetchBackground(){
       url: photosUrl,
       onSuccess: res => {
         //console.log(cityQuery);
-        console.log("debug Here!");
+        //console.log("debug Here!");
         //let deliverMsg = [cityQuery,false,city4Now[2]];
         //setCity(deliverMsg);
         setPhotos(res);
@@ -90,7 +90,7 @@ function FetchBackground(){
   // let parser4BP="";
 
   function handleCopyrightDisplay(){
-    console.log("got clicked");
+    //console.log("got clicked");
     const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
     dispatch({ type: 'UPDATE_INPUT', data: copyright,});
   }

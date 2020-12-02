@@ -57,7 +57,7 @@ function MyForm(props){
 
   //const setStateSuccess = async (data,e)=>{
   async function setStateSuccess(data){
-    console.log("in setStateSuccess()");
+    //console.log("in setStateSuccess()");
     let queryData={
       language:"",
       bookName:"",
@@ -116,37 +116,28 @@ function MyForm(props){
 
   }//setStateSuccess end.
 
-  // function languageChange(){
-  //   console.log("lanugage changed.");
-  // }
 
 async function languageChange(selectedOption){
-  console.log(`Option selected:`, selectedOption);
+  //console.log(`Option selected:`, selectedOption);
   await setlanguageInUI(selectedOption.value);
-  //dispatch({ type: 'UPDATE_BIBLEVERSION', data: selectedOption.value,});
-  //currentLanguageUserSelect=selectedOption.value;
-  //console.log(currentLanguageUserSelect);
-  console.log(state.searchBibleVersionQuery);
+  //console.log(state.searchBibleVersionQuery);
 
 }
 
 async function bookChange(selectedOption){
-  console.log(`Option selected:`, selectedOption);
+  //console.log(`Option selected:`, selectedOption);
   //maxChapter = selectedOption.chapter;
   dispatch({ type: 'UPDATE_BOOKCHAPTER', data: selectedOption.chapter,});
   //UPDATE_BOOKSELECT
   dispatch({ type: 'UPDATE_BOOKSELECT', data: [selectedOption.searchKey, selectedOption.value],});
 
-  //await setlanguageInUI(selectedOption.value);
-  //currentBookUserSelect=selectedOption.label;
-  //console.log(currentBookUserSelect);
 
 }
 
 async function chapterChanged(e){
-  console.log(e.target.value);
+  //console.log(e.target.value);
   let targetChapter = parseInt(e.target.value)-1;
-  console.log(state.selectedBook);
+  //console.log(state.selectedBook);
   let target = state.selectedBook[0];
   //
   let __FOUND = -1;
@@ -157,7 +148,7 @@ async function chapterChanged(e){
   		break;
   	}
   }
-  console.log(bookVerses[__FOUND].value[targetChapter]);
+  //console.log(bookVerses[__FOUND].value[targetChapter]);
   dispatch({ type: 'UPDATE_MAXVERSE', data: bookVerses[__FOUND].value[targetChapter],});
 
 
@@ -166,7 +157,7 @@ async function chapterChanged(e){
 useEffect(() => {
   if (languageSelected) {
     // Make API call to /beer
-    console.log(languageSelected);
+    //console.log(languageSelected);
     switch(languageSelected){
       case 'cut':
         defaultBibleVersion = bookOptionsCht;
@@ -193,7 +184,7 @@ useEffect(() => {
       default:
         defaultBibleVersion = bookOptions;
     }//switch
-    console.log(defaultBibleVersion);
+    //console.log(defaultBibleVersion);
     //below line is force re-render MyForm() only.
     dispatch({ type: 'UPDATE_BIBLEBOOKLANGUAGE', data: defaultBibleVersion,});
   } else {

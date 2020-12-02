@@ -20,7 +20,7 @@ function VerseDisplay(props){
     //console.log(typeof datat);
 
     if(state.searchQuery){
-      console.log(data.language);
+      //console.log(data.language);
 
       //first API query is for BBE only.
       const bbeVersionIndex = `bbe-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
@@ -46,7 +46,7 @@ function VerseDisplay(props){
           var regEx = new RegExp("@.*@", "g"); //we must use RegExp() to create regEx. or JS is not working.
           noSmallTag = noSmallTag.replaceAll(regEx,"");
           noSmallTag = noSmallTag.replaceAll("<br>"," ");
-          console.log(noSmallTag);
+          //console.log(noSmallTag);
 
           dispatch({ type: 'UPDATE_BACKGROUNDKEYWORD', data: noSmallTag,});//it's only for background search.
 
@@ -96,7 +96,7 @@ function VerseDisplay(props){
             const extracted = responseData.substring(extractFirstPlace,extractFinalPlace);
             //console.log(extracted);
             const data4Reducer = `${extracted} Ref:${queryIndex}`; //add index data for display work easier.
-            console.log(data4Reducer);
+            //console.log(data4Reducer);
             //state.grabbedText example:
             //<small>1:1</small> これはソロモンの雅歌なり <br>
             //<small>1:2</small> ねがはしきは彼その口の接吻をもて我にくちつけせんことなり 汝の愛は酒よりもまさりぬ <br>
@@ -168,14 +168,13 @@ function VerseDisplay(props){
             cleanData = cleanData.slice(0,-1);
             //console.log(cleanData);
             let obj = JSON.parse(cleanData);
-            console.log(obj);
+            //console.log(obj);
             if(obj){
               //from obj.book[0].chpater, we could get something like this:
               //16: {verse_nr: "16", verse: "And I will make your seed as the dust of the earth…e earth, then shall your seed also be numbered."}
               //17: {verse_nr: 17, verse: "Arise, walk through the land in the length of it a…n the breadth of it; for I will give it to you."}
-              console.log(obj.book[0].chapter);
+              //console.log(obj.book[0].chapter);
               //console.log(obj.book[0].chapter.[16].verse);
-              //console.log(obj.book[0].chapter.[17].verse);
               let displayString="";
               for(let i=data.verseStart; i<=data.verseEnd;i++){
                 displayString = displayString.concat(obj.book[0].chapter.[i].verse);
@@ -184,7 +183,7 @@ function VerseDisplay(props){
               let tempsub= `✝︎ ${data.language}-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
               displayString = displayString.concat(tempsub);
               //console.log(tempsub);
-              console.log(displayString);
+              //console.log(displayString);
               dispatch({ type: 'UPDATE_INPUT', data: displayString,});
 
 
@@ -231,7 +230,7 @@ function VerseDisplay(props){
 
 
   let noSmallTag = state.grabbedText;
-  console.log(noSmallTag);
+  //console.log(noSmallTag);
 //          {state.grabbedText}
 
 
