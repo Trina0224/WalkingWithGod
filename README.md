@@ -21,7 +21,7 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 11. Default generate random verses.  
 12. Default book, language value. ok.  
 13. Constraint chapter number ok.  
-14. Constraint verse number.
+14. Constraint verse number. ok.
 
 MEMO: work on this link:
 https://codesandbox.io/s/jrze53pqr?file=/index.js:1092-1102

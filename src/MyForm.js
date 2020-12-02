@@ -143,8 +143,24 @@ async function bookChange(selectedOption){
 
 }
 
-async function chapterChanged(changedValue){
-  console.log(changedValue);
+async function chapterChanged(e){
+  console.log(e.target.value);
+  let targetChapter = parseInt(e.target.value)-1;
+  console.log(state.selectedBook);
+  let target = state.selectedBook[0];
+  //
+  let __FOUND = -1;
+  for(let i=0; i<bookVerses.length; i++) {
+  	if(bookVerses[i].searchKey === target) {
+  		// __FOUND is set to the index of the element
+  		__FOUND = i;
+  		break;
+  	}
+  }
+  console.log(bookVerses[__FOUND].value[targetChapter]);
+  dispatch({ type: 'UPDATE_MAXVERSE', data: bookVerses[__FOUND].value[targetChapter],});
+
+
 }
 
 useEffect(() => {
@@ -235,11 +251,11 @@ useEffect(() => {
             </div>
             <div className="item">
               <p>Verse Start</p>
-              <input type="number" step="1" min="1" name="verseStartNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" max={state.changedMaxVerse} name="verseStartNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse End</p>
-              <input type="number" step="1" min="1" name="verseEndNumber" ref={register({ required: true })} />
+              <input type="number" step="1" min="1" max={state.changedMaxVerse} name="verseEndNumber" ref={register({ required: true })} />
             </div>
 
             <div className="btn-block">

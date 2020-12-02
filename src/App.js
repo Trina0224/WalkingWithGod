@@ -45,6 +45,10 @@ function reducer(state, action) {
         console.log("// DEBUG: In reducer() Update book max chapter.");
         return update(state, { "changedMaxChapter": {$set: action.data}});
 
+      case 'UPDATE_MAXVERSE':
+        console.log("// DEBUG: In reducer() Update chapter max verse.");
+        return update(state, { "changedMaxVerse": {$set: action.data}});
+
     default:
       return initialState;
   }
