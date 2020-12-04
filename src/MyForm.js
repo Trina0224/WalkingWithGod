@@ -67,27 +67,32 @@ function MyForm(props){
   async function setStateSuccess(data){
     //console.log("in setStateSuccess()");
     let queryData={
-      language:"",
-      bookName:"",
-      bookAbbreviation:"",
-      chapter:"",
-      verseStart:"",
-      verseEnd:""
+      language:"niv",
+      bookName:"John",
+      bookAbbreviation:"Jhn",
+      chapter:"3",
+      verseStart:"16",
+      verseEnd:"16"
     };
 
-    //if(typeof data.bookSelect === 'undefined'){
-    if(typeof state.selectedBook[0] === 'undefined'){
-      queryData.bookName="1 Corinthians";
-      queryData.bookAbbreviation="1Co"
+    if(typeof state.selectedBook === 'undefined'){
+      ;
     }else{
-      // await setBookName(data.bookSelect.label);
-      // await setBookAbbreviation(data.bookSelect.value);
-      //queryData.bookName=data.bookSelect.searchKey;
-      //queryData.bookAbbreviation=data.bookSelect.value;
-      //selectedBook
-      queryData.bookName=state.selectedBook[0];
-      queryData.bookAbbreviation=state.selectedBook[1];
-    }
+      //if(typeof data.bookSelect === 'undefined'){
+      if(typeof state.selectedBook[0] === 'undefined'){
+        queryData.bookName="1 Corinthians";
+        queryData.bookAbbreviation="1Co"
+      }else{
+        // await setBookName(data.bookSelect.label);
+        // await setBookAbbreviation(data.bookSelect.value);
+        //queryData.bookName=data.bookSelect.searchKey;
+        //queryData.bookAbbreviation=data.bookSelect.value;
+        //selectedBook
+        queryData.bookName=state.selectedBook[0];
+        queryData.bookAbbreviation=state.selectedBook[1];
+      }
+
+    }//if, solve no selection and just click search.
 
     // if(typeof data.languageSelect === 'undefined'){
     //   queryData.language="niv";
