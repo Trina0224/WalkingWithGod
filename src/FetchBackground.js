@@ -45,17 +45,21 @@ function FetchBackground(){
   // console.log(map1);
   //compare state.searchBackgroundQuery and vocabulary4Search.
   let verse;
+  let searchQuery;
+
+
   if(state.searchBackgroundQuery){
     verse = state.searchBackgroundQuery;
   }
   else{
     verse = defaultword; //default word.
   }
-  let searchQuery = queryWordsCreate(verse, map);
+  searchQuery = queryWordsCreate(verse, map);
   if(searchQuery === state.searchBackgroundQuery){
     searchQuery = defaultword; //no mapping word in record. use default word.
   }
   console.log(searchQuery);
+
 
   let [photos, setPhotos] = useState([]);
   //let searchQuery='bible';//'christian';
@@ -65,20 +69,29 @@ function FetchBackground(){
     numberOfPhotos +
     "&client_id=" +
     clientID;
+
   useEffect(() => {
 
     const photosUrl = `${url}&query=${searchQuery}`;
     //console.log(photosUrl);
-    loadData({
-      url: photosUrl,
-      onSuccess: res => {
-        //console.log(cityQuery);
-        //console.log("debug Here!");
-        //let deliverMsg = [cityQuery,false,city4Now[2]];
-        //setCity(deliverMsg);
-        setPhotos(res);
-      }
-    });
+//    if(state.enableBackgroundChange){
+//      //if only hide/unhide form, we dont need to go through this part.
+
+      loadData({
+        url: photosUrl,
+        onSuccess: res => {
+          //console.log(cityQuery);
+          //console.log("debug Here!");
+          //let deliverMsg = [cityQuery,false,city4Now[2]];
+          //setCity(deliverMsg);
+          setPhotos(res);
+        }
+      });
+
+//    }else{
+//      ;//only hide/unhide form.
+//    }//if
+
   }, [searchQuery, url]);
 
   const searchPhotos = e => {

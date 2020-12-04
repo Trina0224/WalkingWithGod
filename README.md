@@ -13,9 +13,9 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 3. background change  ok.
 4. smart background change.  (can be better)
 5. No matter which version BIBLE user select. We still need to extract from BBE. ok.
-6. Using BBE to create dictionary for AI.
+6. Using BBE to create dictionary for background. ok.
 7. CopyRight Page.  (ok, can be better)
-8. Clean non-necessary console.log(). ok. (Can do it again later) 
+8. Clean non-necessary console.log(). ok. (Can do it again later)
 9. no verse returned processing. ok.  ??
 10. book name in different language. ok.
 11. Default generate random verses.  
@@ -23,7 +23,10 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 13. Constraint chapter number ok.  
 14. Constraint verse number. ok.  
 15. Fix no select but just search issue.  
-16. Bug, click hide/unhide and cause background change.
+16. Bug, click hide/unhide and cause background change.  
+17. Click on verses and can change display location on the screen.  
+18. Can Also change shading location on the background.  
+19.
 
 MEMO: work on this link:
 https://codesandbox.io/s/jrze53pqr?file=/index.js:1092-1102

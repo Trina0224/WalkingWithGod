@@ -42,16 +42,24 @@ function MyForm(props){
 
 
  function handleDisplay(){
-  if(hideOrNot == "testbox Display")
+  if(hideOrNot == "testbox Display"){
     sethideOrNot("testbox noDisplay");
-  else
+    //fix hide/unhide form and cause background change.
+    //dispatch({ type: 'UPDATE_BACKGROUND_ENABLE', data: false,});
+  }
+  else{
     sethideOrNot("testbox Display");
+    //fix hide/unhide form and cause background change.
+    //dispatch({ type: 'UPDATE_BACKGROUND_ENABLE', data: false,});
+  }
  }//handleDisplay()
 
 
   const onSubmit = data =>{
     console.log(data);
     //整理一下輸入的資料
+    //dispatch({ type: 'UPDATE_BACKGROUND_ENABLE', data: true,});
+
     setStateSuccess(data);
   }//onSubmit end.
 

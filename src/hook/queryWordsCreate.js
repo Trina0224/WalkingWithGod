@@ -1,8 +1,8 @@
 
 function queryWordsCreate(verse, keywordsDictionary){
   if(verse.length){
-    console.log(verse); //from VerseDisplay.js
-    console.log(keywordsDictionary);//from words.js
+    //console.log(verse); //from VerseDisplay.js
+    //console.log(keywordsDictionary);//from words.js
   //x => verse.includes(x)
     let includingKeywords=[];
     let finalString="";

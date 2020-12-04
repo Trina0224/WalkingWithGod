@@ -49,6 +49,11 @@ function reducer(state, action) {
         console.log("// DEBUG: In reducer() Update chapter max verse.");
         return update(state, { "changedMaxVerse": {$set: action.data}});
 
+      //case 'UPDATE_BACKGROUND_ENABLE':
+        //console.log("// DEBUG: In reducer() Update chapter max verse.");
+        //return update(state, { "enableBackgroundChange": {$set: action.data}});
+
+
     default:
       return initialState;
   }
