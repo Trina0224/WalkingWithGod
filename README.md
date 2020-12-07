@@ -15,7 +15,7 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 17. Click on verses and can change display location on the screen.  
 18. Can Also change shading location on the background.  
 19. code clean.  
-20. Try submit to website, and check CORS issues.
+21. Design our own CORS server.
 
 # Done:  
 1. other API search.   ok.
@@ -30,6 +30,7 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 13. Constraint chapter number ok.  
 14. Constraint verse number. ok.  
 15. Fix no select but just search issue.  ok. fixed by add "if(typeof state.selectedBook === 'undefined')"
+20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.  
 
 
 MEMO: work on this link:
