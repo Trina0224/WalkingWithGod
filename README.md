@@ -33,19 +33,19 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.  
 
 
-MEMO: work on this link:
-https://codesandbox.io/s/jrze53pqr?file=/index.js:1092-1102
-because there is no onChange for Controller... = ="
-BTW, because react-select cannot bind to onSubmit of Form, need to create state for it.
-11/27 I tried state and context, both cannot reflect result at the same cycle, need twice. I don't like it.
-Change to use global variable.  --> X
-Use useEffect() can solve this issue. But still go back no re-render issue. Solved by dispatch.
+MEMO: work on this link:  
+https://codesandbox.io/s/jrze53pqr?file=/index.js:1092-1102  
+because there is no onChange for Controller... = ="  
+BTW, because react-select cannot bind to onSubmit of Form, need to create state for it.  
+11/27 I tried state and context, both cannot reflect result at the same cycle, need twice. I don't like it.  
+Change to use global variable.  --> X  
+Use useEffect() can solve this issue. But still go back no re-render issue. Solved by dispatch.  
 
-11/30 Done New columns for Search, (searchkey) and took out language origianl controller.
+11/30 Done New columns for Search, (searchkey) and took out language origianl controller.  
 
 
-https://cors-anywhere.herokuapp.com/
-https://getbible.net/json?passage=Gen 1:1-5&version=cnt
+https://cors-anywhere.herokuapp.com/  
+https://getbible.net/json?passage=Gen 1:1-5&version=cnt  
 https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=Gen 1:1-5&version=cnt  
 
-https://trina0224.github.io/WalkingWithGod/
+https://trina0224.github.io/WalkingWithGod/  
