@@ -1,10 +1,17 @@
+# Credit  
+1. https://cors-anywhere.herokuapp.com/ Rob--W's   
+2. http://ibibles.net/  
+3. https://getbible.net/  
+
 # Issues  
 1. Need to double click search.  <==
 https://stackoverflow.com/questions/54069253/usestate-set-method-not-reflecting-change-immediately
 The easy answer: useEffect instead useState.  
 2. In REACT, if you see something undefined in object but you are sure it's right. The problem is from
 react will run page two times and one is without data, so, we need to check the object is really exist.
-In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
+In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.  
+3. On Github Pages, it must query via https. http is not working.  
+
 
 
 # Todos:  
@@ -42,6 +49,8 @@ Change to use global variable.  --> X
 Use useEffect() can solve this issue. But still go back no re-render issue. Solved by dispatch.  
 
 11/30 Done New columns for Search, (searchkey) and took out language origianl controller.  
+12/07 copy paste Rob--m's code and create one repo on heroku.  
+
 
 
 https://cors-anywhere.herokuapp.com/  
