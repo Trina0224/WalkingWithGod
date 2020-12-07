@@ -10,6 +10,9 @@ function VerseDisplay(props){
 
   //from App.js
   const {state, dispatch} = useContext(AppContext);
+  const [changeDisplayLocation, setChangeDisplayLocation] = useState('Hero locationTopRight'); //form display
+  const [changeDimLocation, setChangeDimLocation] = useState('dim dimBlackTopRight'); //form display
+
   //console.log(state.searchQuery);
 
 
@@ -229,6 +232,30 @@ function VerseDisplay(props){
 
 //    let url = 'https://api.scripture.api.bible/v1/bibles/'
 
+  function handleDisplay(){
+    console.log("Get clicked on verse");
+    switch (changeDisplayLocation){
+      case "Hero locationTopRight":
+        setChangeDisplayLocation("Hero locationBotRight");
+        setChangeDimLocation("dim dimBlackBotRight");
+        break;
+      case "Hero locationBotRight":
+        setChangeDisplayLocation("Hero locationBotLeft");
+        setChangeDimLocation("dim dimBlackBotLeft");
+        break;
+      case "Hero locationBotLeft":
+        setChangeDisplayLocation("Hero locationTopLeft");
+        setChangeDimLocation("dim dimBlackTopLeft");
+        break;
+      case "Hero locationTopLeft":
+        setChangeDisplayLocation("Hero locationTopRight");
+        setChangeDimLocation("dim dimBlackTopRight");
+        break;
+      default:
+        setChangeDisplayLocation("Hero locationTopRight");
+        setChangeDimLocation("dim dimBlackTopRight");
+    }
+  }//handleDisplay()
 
 
 
@@ -236,13 +263,10 @@ function VerseDisplay(props){
   //console.log(noSmallTag);
 //          {state.grabbedText}
 
-
-
-
     return (
-      <div className="dim">
+      <div className={changeDimLocation}>
       <div className="pueDIV sticky">
-        <h1 className="Hero"><span className="highlight">{noSmallTag}</span></h1>
+        <h1 className={changeDisplayLocation} onClick={handleDisplay} ><span className="highlight">{noSmallTag}</span></h1>
       </div>
       </div>
     );

@@ -6,11 +6,12 @@
 # Issues  
 1. Need to double click search.  <==
 https://stackoverflow.com/questions/54069253/usestate-set-method-not-reflecting-change-immediately
-The easy answer: useEffect instead useState.  
+The easy answer: useEffect instead useState.(solved)  
 2. In REACT, if you see something undefined in object but you are sure it's right. The problem is from
 react will run page two times and one is without data, so, we need to check the object is really exist.
-In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.  
-3. On Github Pages, it must query via https. http is not working.  
+In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)  
+3. On Github Pages, it must query via https. http is not working.(solved)  
+
 
 
 
@@ -19,10 +20,7 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 9. no verse returned processing. ok.  ?? on checking
 11. Default generate random famous verses.  
 16. Bug, click hide/unhide and cause background change. ok. ??on checking  
-17. Click on verses and can change display location on the screen.  
-18. Can Also change shading location on the background.  
 19. code clean.  
-21. Design our own CORS server.
 
 # Done:  
 1. other API search.   ok.
@@ -38,6 +36,10 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 14. Constraint verse number. ok.  
 15. Fix no select but just search issue.  ok. fixed by add "if(typeof state.selectedBook === 'undefined')"
 20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.  
+17. Click on verses and can change display location on the screen. ok.(12/7)  
+18. Can Also change shading location on the background.ok. (12/7)  
+  
+
 
 
 MEMO: work on this link:  
@@ -49,12 +51,16 @@ Change to use global variable.  --> X
 Use useEffect() can solve this issue. But still go back no re-render issue. Solved by dispatch.  
 
 11/30 Done New columns for Search, (searchkey) and took out language origianl controller.  
-12/07 copy paste Rob--m's code and create one repo on heroku.  
+12/07 use Rob--W's code and create one repo on heroku.  
 
 
 
 https://cors-anywhere.herokuapp.com/  
 https://getbible.net/json?passage=Gen 1:1-5&version=cnt  
 https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=Gen 1:1-5&version=cnt  
+
+#License  
+NA  
+
 
 https://trina0224.github.io/WalkingWithGod/  
