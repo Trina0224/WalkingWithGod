@@ -14,7 +14,8 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.
 16. Bug, click hide/unhide and cause background change. ok. ??on checking  
 17. Click on verses and can change display location on the screen.  
 18. Can Also change shading location on the background.  
-19. code clean.
+19. code clean.  
+20. Try submit to website, and check CORS issues.
 
 # Done:  
 1. other API search.   ok.
