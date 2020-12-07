@@ -45,4 +45,6 @@ Use useEffect() can solve this issue. But still go back no re-render issue. Solv
 
 https://cors-anywhere.herokuapp.com/
 https://getbible.net/json?passage=Gen 1:1-5&version=cnt
-https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=Gen 1:1-5&version=cnt
+https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=Gen 1:1-5&version=cnt  
+
+https://trina0224.github.io/WalkingWithGod/
