@@ -24,7 +24,8 @@ function VerseDisplay(props){
 
       //first API query is for BBE only.
       const bbeVersionIndex = `bbe-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
-      const bbeQueryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${bbeVersionIndex}`;
+      //const bbeQueryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${bbeVersionIndex}`;
+      const bbeQueryUrl = `http://ibibles.net/quote.php?${bbeVersionIndex}`;
       console.log(bbeQueryUrl);
 
       await fetch(bbeQueryUrl,{
@@ -67,7 +68,8 @@ function VerseDisplay(props){
         // We got verse from here for default.
         //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
         const queryIndex = `${data.language}-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;
-        const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;
+        //const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;
+        const queryUrl = `http://ibibles.net/quote.php?${queryIndex}`;
         console.log(queryUrl);
 
         await fetch(queryUrl,{
@@ -131,7 +133,8 @@ function VerseDisplay(props){
         //參考FetchREsult.js 的url2 or url. 放入TODO.
         //passage=Acts15:1-5&version=akjv
         const queryIndex = `${data.bookAbbreviation} ${data.chapter}:${data.verseStart}-${data.verseEnd}&version=${data.language}`;
-        const queryUrl = `https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=${queryIndex}`;
+        //const queryUrl = `https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=${queryIndex}`;
+        const queryUrl = `https://getbible.net/json?passage=${queryIndex}`;
         console.log(queryUrl);
         await fetch(queryUrl,{
             'method': 'GET',
