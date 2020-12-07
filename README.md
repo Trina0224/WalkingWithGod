@@ -21,6 +21,8 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 11. Default generate random famous verses.  
 16. Bug, click hide/unhide and cause background change. ok. ??on checking  
 19. code clean.  
+21. Check background size.  
+
 
 # Done:  
 1. other API search.   ok.
@@ -35,10 +37,10 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 13. Constraint chapter number ok.  
 14. Constraint verse number. ok.  
 15. Fix no select but just search issue.  ok. fixed by add "if(typeof state.selectedBook === 'undefined')"
-20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.  
+20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.(12/7)  
 17. Click on verses and can change display location on the screen. ok.(12/7)  
 18. Can Also change shading location on the background.ok. (12/7)  
-  
+
 
 
 
@@ -60,7 +62,7 @@ https://getbible.net/json?passage=Gen 1:1-5&version=cnt
 https://cors-anywhere.herokuapp.com/https://getbible.net/json?passage=Gen 1:1-5&version=cnt  
 
 #License  
-NA  
+NA
 
 
 https://trina0224.github.io/WalkingWithGod/  
