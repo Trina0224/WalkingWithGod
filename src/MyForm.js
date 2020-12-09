@@ -6,6 +6,8 @@ import ReactSelect from "react-select";
 import bookOptions from "./constants/bookOptionsEng.js"; //English
 import bookOptionsCht from "./constants/bookOptionsCht.js"; //Chinese
 import bookOptionsJpn from "./constants/bookOptionsJpn.js"; //Japanese
+import bookOptionsDeu from "./constants/bookOptionsDeu.js"; //Deutsch
+import bookOptionsFra from "./constants/bookOptionsFra.js"; //French
 import languageOptions from "./constants/languageOptions.js";
 import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
@@ -57,8 +59,7 @@ function MyForm(props){
 
   const onSubmit = data =>{
     console.log(data);
-    //整理一下輸入的資料
-    //dispatch({ type: 'UPDATE_BACKGROUND_ENABLE', data: true,});
+    // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});
 
     setStateSuccess(data);
   }//onSubmit end.
@@ -182,7 +183,10 @@ useEffect(() => {
         defaultBibleVersion = bookOptions;
       break;
       case 'glm':
-        defaultBibleVersion = bookOptions;
+        defaultBibleVersion = bookOptionsDeu;
+      break;
+      case 'fda':
+        defaultBibleVersion = bookOptionsFra;
       break;
       case 'kjv':
         defaultBibleVersion = bookOptions;

@@ -36,6 +36,8 @@ const loadData = (options) => {
 function FetchBackground(){
 
   const {state, dispatch} = useContext(AppContext);
+  const [oldSearchQuery, setOldSearchQuery] = useState(defaultword); //for not reflash background so often.
+
   //below is an example code to check vocabulary.
   //console.log(state.searchBackgroundQuery);//any change, and background will also changed.
   //extract values to a new array for usage.
@@ -46,7 +48,7 @@ function FetchBackground(){
   //compare state.searchBackgroundQuery and vocabulary4Search.
   let verse;
   let searchQuery;
-
+  let searchSet;
 
   if(state.searchBackgroundQuery){
     verse = state.searchBackgroundQuery;
@@ -54,7 +56,14 @@ function FetchBackground(){
   else{
     verse = defaultword; //default word.
   }
-  searchQuery = queryWordsCreate(verse, map);
+  searchSet = queryWordsCreate(verse,map);
+  //searchQuery = queryWordsCreate(verse, map);
+  searchQuery = searchSet.final;
+  console.log(searchSet);
+  //setOldSearchQuery(searchQuery);
+  //  searchQuery = oldSearchQuery;
+
+
   if(searchQuery === state.searchBackgroundQuery){
     searchQuery = defaultword; //no mapping word in record. use default word.
   }
@@ -92,7 +101,8 @@ function FetchBackground(){
 //      ;//only hide/unhide form.
 //    }//if
 
-  }, [searchQuery, url]);
+  //}, [searchQuery, url]);
+}, [searchSet.keyWordsSet, url]);
 
   const searchPhotos = e => {
     //e.preventDefault();

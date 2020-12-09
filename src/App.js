@@ -49,10 +49,13 @@ function reducer(state, action) {
         console.log("// DEBUG: In reducer() Update chapter max verse.");
         return update(state, { "changedMaxVerse": {$set: action.data}});
 
-      //case 'UPDATE_BACKGROUND_ENABLE':
-        //console.log("// DEBUG: In reducer() Update chapter max verse.");
-        //return update(state, { "enableBackgroundChange": {$set: action.data}});
+      // case 'UPDATE_SEARCH_CLICKED':
+      //   console.log("// DEBUG: In reducer() search key is clicked.");
+      //   return update(state, { "isSearchKeyClicked": {$set: action.data}});
 
+      // case 'UPDATE_OLD_SEARCH_KEYWORD_FOR_BACKGROUND':
+      //   console.log("// DEBUG: In reducer() search key is clicked.");
+      //   return update(state, { "oldSearchQueryKeyword": {$set: action.data}});
 
     default:
       return initialState;

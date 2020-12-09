@@ -120,6 +120,7 @@ function VerseDisplay(props){
             //save to context for other components use.
             //dispatch({ type: 'UPDATE_INPUT', data: data4Reducer,});
             dispatch({ type: 'UPDATE_INPUT', data: noSmallTag,});
+            // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,}); //only successfully display verse and can clean this flag.
 
             return responseData;
             //this.setState({ author: responseData});
@@ -191,6 +192,7 @@ function VerseDisplay(props){
               //console.log(tempsub);
               //console.log(displayString);
               dispatch({ type: 'UPDATE_INPUT', data: displayString,});
+              // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,}); //only successfully display verse and can clean this flag.
 
 
 
@@ -260,6 +262,7 @@ function VerseDisplay(props){
 
 
   let noSmallTag = state.grabbedText;
+
   //console.log(noSmallTag);
 //          {state.grabbedText}
 

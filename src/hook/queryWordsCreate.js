@@ -32,10 +32,16 @@ function queryWordsCreate(verse, keywordsDictionary){
     ;
   }
   console.log(finalString);
+  let returnObj={final:"",keyWordsSet:""};
+  returnObj.keyWordsSet = includingKeywords;
     if(finalString){
-      return finalString;
+      returnObj.final=finalString;
+      //return finalString;
+      return returnObj;
     }else{
-      return verse;
+      returnObj.final=verse;
+      //return verse;
+      return returnObj;
     }
 
 

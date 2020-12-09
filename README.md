@@ -17,11 +17,15 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 
 # Todos:  
 8. Clean non-necessary console.log(). ok. (Can do it again later)
-9. no verse returned processing. ok.  ?? on checking
+9. no verse returned processing. ok.  ?? it not working some times.. need to dig in.
 11. Default generate random famous verses.  
 16. Bug, click hide/unhide and cause background change. ok. ??on checking  
 19. code clean.  
 21. Check background size.  
+23. Disable Search Key when processing.  
+
+working on FetchBackground.js current code is not working.  
+new obj let returnObj={final:"",keyWordsSet:""}; is queryWordsCreate.js (12/9) 
 
 
 # Done:  
@@ -40,6 +44,7 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.(12/7)  
 17. Click on verses and can change display location on the screen. ok.(12/7)  
 18. Can Also change shading location on the background.ok. (12/7)  
+22. Add Deutsch and French. ok. (12/9)
 
 
 
