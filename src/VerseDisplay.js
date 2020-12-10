@@ -228,7 +228,7 @@ function VerseDisplay(props){
   temp1.then(function(result) {  //因為temp1是 promise狀態, 需要用then取出
  // console.log(result.main.temp);
  // console.log(result.main.feels_like);
-    console.log(result);
+  //  console.log(result);
 
   });
 

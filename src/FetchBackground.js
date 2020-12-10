@@ -58,8 +58,15 @@ function FetchBackground(){
   }
   searchSet = queryWordsCreate(verse,map);
   //searchQuery = queryWordsCreate(verse, map);
-  searchQuery = searchSet.final;
   console.log(searchSet);
+  console.log(oldSearchQuery);
+  if(oldSearchQuery.keyWordsSet === searchSet.final){
+    //same set means no need to re-fetch background.
+    //可是如果set是空的怎麼辦？還不知道...後面要檢查一下怎麼辦...
+    searchQuery = oldSearchQuery.final;
+  }else{
+    searchQuery = searchSet.final;
+  }
   //setOldSearchQuery(searchQuery);
   //  searchQuery = oldSearchQuery;
 
@@ -100,14 +107,12 @@ function FetchBackground(){
 //    }else{
 //      ;//only hide/unhide form.
 //    }//if
+      setOldSearchQuery(searchSet);//save current searchSet to state.
 
-  //}, [searchQuery, url]);
-}, [searchSet.keyWordsSet, url]);
 
-  const searchPhotos = e => {
-    //e.preventDefault();
-    ;//setQuery(queryInput.current.value);
-  };
+  }, [searchQuery, url]);
+//}, [searchSet.keyWordsSet, url]);
+
 
   // let myBackgroundURL="";
   // let parser4BP="";

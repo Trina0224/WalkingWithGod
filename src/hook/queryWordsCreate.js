@@ -19,6 +19,9 @@ function queryWordsCreate(verse, keywordsDictionary){
   //from now, includingKeywords array has all the keywords we need.
   //Random select one from this array if the length of this array is >=2.
   console.log(includingKeywords);
+  if(includingKeywords.length==0){
+    includingKeywords.push("bible");//bible is default word.
+  }
   if(includingKeywords.length>=2){
     finalString = includingKeywords[Math.floor(Math.random()*includingKeywords.length)];
   }else{
@@ -47,7 +50,7 @@ function queryWordsCreate(verse, keywordsDictionary){
 
   }else{
     return verse;
-  }
+  }//if(verse.length)
 }
 
 export default queryWordsCreate;

@@ -23,9 +23,8 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 19. code clean.  
 21. Check background size.  
 23. Disable Search Key when processing.  
+24. FetchBackground.js need to modify. if verse cannot fit any querySet. 
 
-working on FetchBackground.js current code is not working.  
-new obj let returnObj={final:"",keyWordsSet:""}; is queryWordsCreate.js (12/9) 
 
 
 # Done:  
