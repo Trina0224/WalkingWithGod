@@ -58,13 +58,16 @@ function FetchBackground(){
   }
   searchSet = queryWordsCreate(verse,map);
   //searchQuery = queryWordsCreate(verse, map);
-  console.log(searchSet);
-  console.log(oldSearchQuery);
-  if(oldSearchQuery.keyWordsSet === searchSet.final){
+  console.log(searchSet.keyWordsSet);
+  console.log(oldSearchQuery.keyWordsSet);
+  if(arraysEqual(oldSearchQuery.keyWordsSet, searchSet.keyWordsSet)){
+  //if(oldSearchQuery.keyWordsSet == searchSet.keyWordsSet){
     //same set means no need to re-fetch background.
-    //可是如果set是空的怎麼辦？還不知道...後面要檢查一下怎麼辦...
+    //可是如果set是空的怎麼辦？還不知道...後面要檢查一下怎麼辦...因為進到bible會鎖住沒辦法換畫面
+    console.log("No Background Chgange require.");
     searchQuery = oldSearchQuery.final;
   }else{
+    console.log("Background Chgange require.");
     searchQuery = searchSet.final;
   }
   //setOldSearchQuery(searchQuery);
@@ -123,6 +126,22 @@ function FetchBackground(){
     dispatch({ type: 'UPDATE_INPUT', data: copyright,});
   }
 
+
+  function arraysEqual(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+
+    // If you don't care about the order of the elements inside
+    // the array, you should sort both arrays here.
+    // Please note that calling sort on an array will modify that array.
+    // you might want to clone your array first.
+
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  }
 
 
   return (

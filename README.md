@@ -11,19 +11,22 @@ The easy answer: useEffect instead useState.(solved)
 react will run page two times and one is without data, so, we need to check the object is really exist.
 In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)  
 3. On Github Pages, it must query via https. http is not working.(solved)  
+4. Arrary comapre is a little complex than I thought. Refer:  
+https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript  
+This is used in FetchBackground.js
 
 
 
 
 # Todos:  
 8. Clean non-necessary console.log(). ok. (Can do it again later)
-9. no verse returned processing. ok.  ?? it not working some times.. need to dig in.
+9. no verse returned processing. ok.  ?? it not working some times.. need to dig in. Dig out some issues are from API remote server, I cannot handle it. Need some workaround later.
 11. Default generate random famous verses.  
-16. Bug, click hide/unhide and cause background change. ok. ??on checking  
 19. code clean.  
 21. Check background size.  
 23. Disable Search Key when processing.  
-24. FetchBackground.js need to modify. if verse cannot fit any querySet. 
+24. FetchBackground.js need to modify. if verse cannot fit any querySet.  
+25. Remember to change back original API Key. (12/10)
 
 
 
@@ -43,7 +46,8 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 20. Try submit to website, and check CORS issues. ok. Even on github pages, we still need CORS walk-around.(12/7)  
 17. Click on verses and can change display location on the screen. ok.(12/7)  
 18. Can Also change shading location on the background.ok. (12/7)  
-22. Add Deutsch and French. ok. (12/9)
+22. Add Deutsch and French. ok. (12/9)  
+16. Bug, click hide/unhide and cause background change. ok. ??on checking (12/10) The issue is caused from fetchbacground process. If fetching set is the same, background will not fetch again for now. but need to check point 24 later.  
 
 
 

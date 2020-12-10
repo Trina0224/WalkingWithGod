@@ -36,7 +36,18 @@ function queryWordsCreate(verse, keywordsDictionary){
   }
   console.log(finalString);
   let returnObj={final:"",keyWordsSet:""};
-  returnObj.keyWordsSet = includingKeywords;
+  if(includingKeywords.length === 1){ //means only one words only, we can refalsh background everytime.
+  //  console.log(includingKeywords);
+  //  returnObj.keyWordsSet = includingKeywords;
+  //}else{
+  //   //random select keywords to put into keyWordsSet.
+    let retVal=[];
+    for ( let i = 0, n = keywordsDictionary.length; i < 3; ++i) {
+        retVal.push(keywordsDictionary[Math.floor(Math.random() * n)]);
+    }
+    console.log(retVal);
+    returnObj.keyWordsSet = retVal; // create random sets for dummy usage.-->in order to fix no background query issue.
+  }
     if(finalString){
       returnObj.final=finalString;
       //return finalString;
