@@ -21,6 +21,12 @@ function queryWordsCreate(verse, keywordsDictionary){
   console.log(includingKeywords);
   if(includingKeywords.length==0){
     includingKeywords.push("bible");//bible is default word.
+    //random select one keyword.
+//    for ( let i = 0, n = keywordsDictionary.length; i < 1; ++i) {
+    //includingKeywords.push(keywordsDictionary[Math.floor(Math.random() * keywordsDictionary.length)]);
+    //console.log(includingKeywords);
+//    }
+
   }
   if(includingKeywords.length>=2){
     finalString = includingKeywords[Math.floor(Math.random()*includingKeywords.length)];
@@ -42,7 +48,7 @@ function queryWordsCreate(verse, keywordsDictionary){
   //}else{
   //   //random select keywords to put into keyWordsSet.
     let retVal=[];
-    for ( let i = 0, n = keywordsDictionary.length; i < 3; ++i) {
+    for ( let i = 0, n = keywordsDictionary.length; i < 2; ++i) {
         retVal.push(keywordsDictionary[Math.floor(Math.random() * n)]);
     }
     console.log(retVal);

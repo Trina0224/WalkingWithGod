@@ -28,6 +28,7 @@ function MyForm(props){
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
   const [languageSelected, setlanguageInUI] = useState('niv'); //langauge select
+//  const [buttonDisableEnable, setButtonDisableEnable] = useState(false); //langauge select
 
 
   const {register, handleSubmit, control, errors } = useForm({
@@ -59,7 +60,9 @@ function MyForm(props){
 
   const onSubmit = data =>{
     console.log(data);
-    // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});
+    dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
+    dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server...",});
+//    setButtonDisableEnable(true);//disable button.
 
     setStateSuccess(data);
   }//onSubmit end.
@@ -267,7 +270,7 @@ useEffect(() => {
             </div>
 
             <div className="btn-block">
-              <button type="submit" >Search</button>
+              <button type="submit" disabled={state.isSearchKeyClicked}>Search</button>
             </div>
           </form>
         </div>

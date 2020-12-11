@@ -262,6 +262,8 @@ function VerseDisplay(props){
 
 
   let noSmallTag = state.grabbedText;
+  dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
+
 
   //console.log(noSmallTag);
 //          {state.grabbedText}
