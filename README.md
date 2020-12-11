@@ -25,8 +25,8 @@ This is used in FetchBackground.js
 19. code clean.  
 21. Check background size.  
 23. Disable Search Key when processing.  
-24. FetchBackground.js need to modify. if verse cannot fit any querySet.  
-25. Remember to change back original API Key. (12/10)
+24. FetchBackground.js need to modify. if verse cannot fit any querySet.  Right now focusing on 'bible'  query background issue. (12/10)
+
 
 
 
@@ -48,6 +48,8 @@ This is used in FetchBackground.js
 18. Can Also change shading location on the background.ok. (12/7)  
 22. Add Deutsch and French. ok. (12/9)  
 16. Bug, click hide/unhide and cause background change. ok. ??on checking (12/10) The issue is caused from fetchbacground process. If fetching set is the same, background will not fetch again for now. but need to check point 24 later.  
+25. Remember to change back original API Key. (12/10) ok.  
+
 
 
 
