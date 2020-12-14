@@ -92,7 +92,7 @@ function FetchBackground(){
 
   useEffect(() => {
 
-    const photosUrl = `${url}&query=${searchQuery}`;
+    let photosUrl = `${url}&query=${searchQuery}`;
     //console.log(photosUrl);
 //    if(state.enableBackgroundChange){
 //      //if only hide/unhide form, we dont need to go through this part.
@@ -101,6 +101,13 @@ function FetchBackground(){
       // shuffle(tempArray);
       // setPhotos(tempArray);
       // console.log(tempArray);
+      let tempuse = Math.floor(Math.random() * 10);     // returns a random integer from 0 to 9
+      if(tempuse>=5)
+        photosUrl = `${url}&query="Jesus"`;
+      else{
+        ;
+      }// means around 50 % use bible 50% Jesus
+      //console.log(photosUrl);
       loadData({
         url: photosUrl,
         onSuccess: res => {
@@ -112,7 +119,7 @@ function FetchBackground(){
           //console.log(res);
         }
       });
-      
+
 
     }else{
       loadData({
