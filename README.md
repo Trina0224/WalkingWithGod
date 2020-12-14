@@ -24,7 +24,9 @@ This is used in FetchBackground.js
 11. Default generate random famous verses.  
 19. code clean.  
 21. Check background size.  
-24. FetchBackground.js need to modify. if verse cannot fit any querySet.  Right now focusing on 'bible'  query background issue. (12/10)
+24. FetchBackground.js need to modify. if verse cannot fit any querySet.  Right now focusing on 'bible'  query background issue. (12/10)  
+26. shuffle an array for background images.(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)  (12/12)  --> seems I dont need to go this.
+27.
 
 
 
@@ -48,8 +50,8 @@ This is used in FetchBackground.js
 22. Add Deutsch and French. ok. (12/9)  
 16. Bug, click hide/unhide and cause background change. ok. ??on checking (12/10) The issue is caused from fetchbacground process. If fetching set is the same, background will not fetch again for now. but need to check point 24 later.  
 25. Remember to change back original API Key. (12/10) ok.  
-23. Disable Search Key when processing.(12/11) ok.(no different at dispaly, but backend.)  
-  
+23. Disable Search Key when processing.(12/11) ok.(no different at frontend, but backend.)  
+
 
 
 

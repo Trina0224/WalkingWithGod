@@ -10,6 +10,7 @@ import { AppContext } from './App'
 import './FetchBackground.css';
 import vocabulary4Search from './constants/words.js';
 import queryWordsCreate from './hook/queryWordsCreate.js';
+import shuffle from './hook/shuffle.js';
 
 //import ContextBP from './store/City_context.js'
 
@@ -95,7 +96,11 @@ function FetchBackground(){
     //console.log(photosUrl);
 //    if(state.enableBackgroundChange){
 //      //if only hide/unhide form, we dont need to go through this part.
-
+    if(searchQuery === defaultword){
+      // let tempArray=photos;
+      // shuffle(tempArray);
+      // setPhotos(tempArray);
+      // console.log(tempArray);
       loadData({
         url: photosUrl,
         onSuccess: res => {
@@ -104,8 +109,36 @@ function FetchBackground(){
           //let deliverMsg = [cityQuery,false,city4Now[2]];
           //setCity(deliverMsg);
           setPhotos(res);
+          //console.log(res);
         }
       });
+      
+
+    }else{
+      loadData({
+        url: photosUrl,
+        onSuccess: res => {
+          //console.log(cityQuery);
+          //console.log("debug Here!");
+          //let deliverMsg = [cityQuery,false,city4Now[2]];
+          //setCity(deliverMsg);
+          setPhotos(res);
+          //console.log(res);
+        }
+      });
+
+    }
+
+      // loadData({
+      //   url: photosUrl,
+      //   onSuccess: res => {
+      //     //console.log(cityQuery);
+      //     //console.log("debug Here!");
+      //     //let deliverMsg = [cityQuery,false,city4Now[2]];
+      //     //setCity(deliverMsg);
+      //     setPhotos(res);
+      //   }
+      // });
 
 //    }else{
 //      ;//only hide/unhide form.
@@ -162,14 +195,15 @@ function FetchBackground(){
     <footer className="myFooter">
     <p className="myFooterP"><span onClick={handleCopyrightDisplay}>Copyright © 2020 ART_Project</span>
     {
-        photos.map(photo => {
-        return (
-            <a className="footerA"
-            target="_blank"
-            href={photo.user.links.html}
-            >Photo {photo.user.name}/Unsplash ©</a>
-          );
-      })}
+      photos.map(photo => {
+      return (
+          <a className="footerA"
+          target="_blank"
+          href={photo.user.links.html}
+          >Photo {photo.user.name}/Unsplash ©</a>
+        );
+      })
+    }
 
 
     </p>
