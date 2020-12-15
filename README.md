@@ -13,19 +13,21 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 3. On Github Pages, it must query via https. http is not working.(solved)  
 4. Arrary comapre is a little complex than I thought. Refer:  
 https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript  
-This is used in FetchBackground.js
+This is used in FetchBackground.js  
+5. Cannot find 'react-native', solved by 'npm install react-native-web'  https://www.xspdf.com/resolution/52674239.html  
+6.
 
 
 
 
 # Todos:  
-8. Clean non-necessary console.log(). ok. (Can do it again later)
-9. no verse returned processing. ok.  ?? it not working some times.. need to dig in. Dig out some issues are from API remote server, I cannot handle it. Need some workaround later.
+8. Clean non-necessary console.log().
+9. no verse returned processing. ok.  ?? it not working some times.. need to dig in. Dig out some issues are from API remote server, I cannot handle it. Need some workaround later.  
 11. Default generate random famous verses.  
 19. code clean.  
 21. Check background size.  
-26. shuffle an array for background images.(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)  (12/12)  --> seems I dont need to go this.
-27.
+27. Verses at bottom side of screen, the layout is not good at small screen. (12/14)  
+30.
 
 
 
@@ -52,6 +54,13 @@ This is used in FetchBackground.js
 23. Disable Search Key when processing.(12/11) ok.(no different at frontend, but backend.)  
 24. FetchBackground.js need to modify. if verse cannot fit any querySet.  Right now focusing on 'bible'  query background issue. (12/10)  I try to solved this by add if(tempuse>=5)
   photosUrl = `${url}&query="Jesus"`;  
+26. shuffle an array for background images.(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)  (12/12)  --> seems I dont need to go this.  
+28. After searched verse, hide form. (12/15)  ok.  
+29. Detect Screen landscape or portrait. (12/15)  https://reactnative.dev/docs/dimensions  ok.
+  
+
+
+
 
 
 

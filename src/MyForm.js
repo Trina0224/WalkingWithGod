@@ -62,6 +62,7 @@ function MyForm(props){
     console.log(data);
     dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
     dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server...",});
+    sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
 
     setStateSuccess(data);

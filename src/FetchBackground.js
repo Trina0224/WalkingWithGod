@@ -1,5 +1,6 @@
 // ES Modules syntax
 import React,{useContext, useState, useEffect, useRef} from 'react';
+import { Dimensions } from 'react-native';
 import fetch from 'node-fetch';
 //import Unsplash, { toJson } from 'unsplash-js';
 
@@ -38,6 +39,24 @@ function FetchBackground(){
 
   const {state, dispatch} = useContext(AppContext);
   const [oldSearchQuery, setOldSearchQuery] = useState(defaultword); //for not reflash background so often.
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
+  const window = Dimensions.get("window");
+  const screen = Dimensions.get("screen");
+  let orientation = "landscape";//landscape for default.
+  const [dimensions, setDimensions] = useState({ window, screen });
+  console.log(`windowHeight=${windowHeight}, windowWidth=${windowWidth}`);
+
+  const onChange = ({ window, screen }) => {
+  setDimensions({ window, screen });
+  console.log(dimensions);
+  };
+  useEffect(() => {
+    Dimensions.addEventListener("change", onChange);
+    return () => {
+      Dimensions.removeEventListener("change", onChange);
+    };
+  });
 
   //below is an example code to check vocabulary.
   //console.log(state.searchBackgroundQuery);//any change, and background will also changed.
@@ -84,11 +103,22 @@ function FetchBackground(){
   let [photos, setPhotos] = useState([]);
   //let searchQuery='bible';//'christian';
   const numberOfPhotos = 1;
+  if(dimensions.window.width > dimensions.window.height){
+    orientation = "landscape";
+  }else{
+    if(dimensions.window.width === dimensions.window.height)
+      orientation = "squarish";
+    else
+      orientation = "portrait";
+  }
   const url =
     "https://api.unsplash.com/photos/random/?count=" +
     numberOfPhotos +
     "&client_id=" +
-    clientID;
+    clientID +
+    "&orientation=" +
+    orientation; //can be landscape,portrait or squarish.
+  console.log(orientation);
 
   useEffect(() => {
 

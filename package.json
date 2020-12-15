@@ -1,5 +1,5 @@
 {
-  "homepage":"https://trina0224.github.io/WalkingWithGod/",
+  "homepage": "https://trina0224.github.io/WalkingWithGod/",
   "name": "feelgod",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +14,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.11.0",
+    "react-native": "^0.63.4",
+    "react-native-web": "^0.14.9",
     "react-scripts": "4.0.0",
     "react-select": "^3.1.0",
     "swr": "^0.3.9",
