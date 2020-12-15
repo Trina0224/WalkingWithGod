@@ -27,7 +27,7 @@ This is used in FetchBackground.js
 19. code clean.  
 21. Check background size.  
 27. Verses at bottom side of screen, the layout is not good at small screen. (12/14)  
-30.
+30. seems too many Effect-re-rendering.
 
 
 
@@ -57,7 +57,7 @@ This is used in FetchBackground.js
 26. shuffle an array for background images.(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)  (12/12)  --> seems I dont need to go this.  
 28. After searched verse, hide form. (12/15)  ok.  
 29. Detect Screen landscape or portrait. (12/15)  https://reactnative.dev/docs/dimensions  ok.
-  
+
 
 
 

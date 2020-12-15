@@ -230,7 +230,7 @@ function FetchBackground(){
       }) : ""}
     </div>
     <footer className="myFooter">
-    <p className="myFooterP"><span onClick={handleCopyrightDisplay}>Copyright © 2020 ART_Project</span>
+    <p className="myFooterP"><span onClick={handleCopyrightDisplay}>✝︎ Copyright © 2020 ART_Project</span>
     {
       photos.map(photo => {
       return (
