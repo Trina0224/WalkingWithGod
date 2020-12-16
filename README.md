@@ -2,6 +2,7 @@
 1. https://cors-anywhere.herokuapp.com/ Rob--W's   
 2. http://ibibles.net/  
 3. https://getbible.net/  
+4. Upsplash.  
 
 # Issues  
 1. Need to double click search.  <==
@@ -15,7 +16,10 @@ In VerseDisplay.js, I put if(state.searchQuery) to prevent issue happen.(solved)
 https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript  
 This is used in FetchBackground.js  
 5. Cannot find 'react-native', solved by 'npm install react-native-web'  https://www.xspdf.com/resolution/52674239.html  
-6.
+6. Screen Resolution for CSS. https://stackoverflow.com/questions/46313640/iphone-x-8-8-plus-css-media-queries  
+https://stackoverflow.com/questions/58087446/all-media-queries-for-iphone-12-pro-max-mini-and-older-iphones  
+https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resources/Documents/index  
+7.  
 
 
 
@@ -27,7 +31,8 @@ This is used in FetchBackground.js
 19. code clean.  
 21. Check background size.  
 27. Verses at bottom side of screen, the layout is not good at small screen. (12/14)  
-30. seems too many Effect-re-rendering.
+30. seems too many Effect-re-rendering.  
+31. Rotate from landscape to portrait is fine but portrait to landscape.  
 
 
 
@@ -57,6 +62,8 @@ This is used in FetchBackground.js
 26. shuffle an array for background images.(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)  (12/12)  --> seems I dont need to go this.  
 28. After searched verse, hide form. (12/15)  ok.  
 29. Detect Screen landscape or portrait. (12/15)  https://reactnative.dev/docs/dimensions  ok.
+32. Cellphone support.(After did some research, small: <450px, regular: <1824px, full: >=1824px) ok. (12/16)  
+
 
 
 

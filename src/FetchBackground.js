@@ -44,6 +44,7 @@ function FetchBackground(){
   const window = Dimensions.get("window");
   const screen = Dimensions.get("screen");
   let orientation = "landscape";//landscape for default.
+  let backgroundImageSize = "regular";//can be small,full or regular, we will not use thumb and raw
   const [dimensions, setDimensions] = useState({ window, screen });
   console.log(`windowHeight=${windowHeight}, windowWidth=${windowWidth}`);
 
@@ -103,6 +104,7 @@ function FetchBackground(){
   let [photos, setPhotos] = useState([]);
   //let searchQuery='bible';//'christian';
   const numberOfPhotos = 1;
+  //control orientation
   if(dimensions.window.width > dimensions.window.height){
     orientation = "landscape";
   }else{
@@ -111,6 +113,17 @@ function FetchBackground(){
     else
       orientation = "portrait";
   }
+  //control size
+  if(dimensions.window.width < 450){ //current mobile phone portrait mode is less than 450.
+    backgroundImageSize = "small";
+  }else{
+    if(dimensions.window.width >=1824){
+      backgroundImageSize = "full";
+    }else{
+      backgroundImageSize = "regular";
+    }
+  }
+
   const url =
     "https://api.unsplash.com/photos/random/?count=" +
     numberOfPhotos +
@@ -213,17 +226,32 @@ function FetchBackground(){
     return true;
   }
 
-
   return (
     <div className="xxxxx divtest">
     <div className="grid ">
     { searchQuery ?
         photos.map(photo => {
+          let ttt;
+          switch(backgroundImageSize){
+            case "regular":
+              ttt = photo.urls.regular;
+            break;
+            case "small":
+              ttt = photo.urls.small;
+            break;
+            case "full":
+              ttt = photo.urls.full;
+            break;
+            default:
+              ttt = photo.urls.regular;
+          }
+          console.log(ttt);
         return (
           <div key={photo.id} className="item">
             <img
             className="img "
-            src={photo.urls.regular}
+            src={ttt}
+            alt="If you read this, means background API is abnoral. Please try again later. If it's on big screen, it's take time to render."
             />
           </div>
           );
