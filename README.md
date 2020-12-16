@@ -29,7 +29,6 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 9. no verse returned processing. ok.  ?? it not working some times.. need to dig in. Dig out some issues are from API remote server, I cannot handle it. Need some workaround later.  
 11. Default generate random famous verses.  
 19. code clean.  
-21. Check background size.  
 27. Verses at bottom side of screen, the layout is not good at small screen. (12/14)  
 30. seems too many Effect-re-rendering.  
 31. Rotate from landscape to portrait is fine but portrait to landscape.  
@@ -63,6 +62,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 28. After searched verse, hide form. (12/15)  ok.  
 29. Detect Screen landscape or portrait. (12/15)  https://reactnative.dev/docs/dimensions  ok.
 32. Cellphone support.(After did some research, small: <450px, regular: <1824px, full: >=1824px) ok. (12/16)  
+21. Check background size. (12/16) should be okay. Check some more days.
+
 
 
 

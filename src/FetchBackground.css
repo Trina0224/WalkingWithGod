@@ -21,7 +21,7 @@
   height: auto;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) { /* これらの2つのセクションを組み合わせることができます。*/
   body {
     flex-direction: row;
   }
