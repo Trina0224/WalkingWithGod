@@ -4,7 +4,9 @@
   left: 0;
 
   /* Preserve aspet ratio */
-  min-width: 100%;
+  /* min-width: 100%; 12/16 remove this one.*/
+  height: 100vh; /*12/16 add these two lines.*/
+  width: 100vw;
   /* min-height: 100%; */
   /* max-width: 100%; */
   max-height: auto;
