@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/WalkingWithGod/static/css/main.d93b9c8e.chunk.css",
+    "main.css": "/WalkingWithGod/static/css/main.9d56cc2f.chunk.css",
     "main.js": "/WalkingWithGod/static/js/main.082feea8.chunk.js",
     "main.js.map": "/WalkingWithGod/static/js/main.082feea8.chunk.js.map",
     "runtime-main.js": "/WalkingWithGod/static/js/runtime-main.f1358f44.js",
@@ -10,13 +10,13 @@
     "static/js/3.1e26ec5d.chunk.js": "/WalkingWithGod/static/js/3.1e26ec5d.chunk.js",
     "static/js/3.1e26ec5d.chunk.js.map": "/WalkingWithGod/static/js/3.1e26ec5d.chunk.js.map",
     "index.html": "/WalkingWithGod/index.html",
-    "static/css/main.d93b9c8e.chunk.css.map": "/WalkingWithGod/static/css/main.d93b9c8e.chunk.css.map",
+    "static/css/main.9d56cc2f.chunk.css.map": "/WalkingWithGod/static/css/main.9d56cc2f.chunk.css.map",
     "static/js/2.9d91a216.chunk.js.LICENSE.txt": "/WalkingWithGod/static/js/2.9d91a216.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f1358f44.js",
     "static/js/2.9d91a216.chunk.js",
-    "static/css/main.d93b9c8e.chunk.css",
+    "static/css/main.9d56cc2f.chunk.css",
     "static/js/main.082feea8.chunk.js"
   ]
 }
