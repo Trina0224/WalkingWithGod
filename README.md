@@ -35,6 +35,7 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 32. disable keyboard on ipad or iphone. (only display number keys.)  
 33. auto detect language and display user's language.
 34. Form is not realy ready for Cellphone.  
+35. Some languages are still waiting to translate.
 
 
 
