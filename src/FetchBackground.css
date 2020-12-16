@@ -21,6 +21,35 @@
   height: auto;
 }
 
+@media (orientation: landscape) {
+  body {
+    flex-direction: row;
+  }
+  .img {
+    width:auto;
+    min-height: 100%
+  }
+}
+
+@media (orientation: portrait) {
+  body {
+    flex-direction: column;
+  }
+  .img {
+    width:auto;
+    min-height: 100%
+  }
+}
+
+
+/* .item{
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
 
 .myFooter {
   position: fixed;
