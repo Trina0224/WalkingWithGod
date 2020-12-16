@@ -31,7 +31,10 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 19. code clean.  
 27. Verses at bottom side of screen, the layout is not good at small screen. (12/14)  
 30. seems too many Effect-re-rendering.  
-31. Rotate from landscape to portrait is fine but portrait to landscape.  
+31. Rotate from landscape to portrait is fine but portrait to landscape. (seems fixed. 12/16)  
+32. disable keyboard on ipad or iphone. (only display number keys.)  
+33. auto detect language and display user's language.
+34. Form is not realy ready for Cellphone.  
 
 
 
