@@ -283,3 +283,28 @@ button:hover {
     width: calc(50% - 8px);
   }
 }
+
+@media (orientation: landscape) { /* これらの2つのセクションを組み合わせることができます。*/
+  body {
+    flex-direction: row;
+  }
+}
+
+@media (orientation: portrait) {
+  body {
+    flex-direction: column;
+  }
+  form {
+    width: 100%;
+  }
+  .testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 20px;
+    /* width: 20vw; */
+    width: 60vw;
+  }
+
+}

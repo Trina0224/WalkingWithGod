@@ -34,7 +34,6 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 31. Rotate from landscape to portrait is fine but portrait to landscape. (seems fixed. 12/16)  
 32. disable keyboard on ipad or iphone. (only display number keys.)  
 33. auto detect language and display user's language.
-34. Form is not realy ready for Cellphone.  
 35. Some languages are still waiting to translate.
 
 
@@ -66,7 +65,9 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 28. After searched verse, hide form. (12/15)  ok.  
 29. Detect Screen landscape or portrait. (12/15)  https://reactnative.dev/docs/dimensions  ok.
 32. Cellphone support.(After did some research, small: <450px, regular: <1824px, full: >=1824px) ok. (12/16)  
-21. Check background size. (12/16) should be okay. Check some more days.
+21. Check background size. (12/16) should be okay. Check some more days.  
+34. Form is not realy ready for Cellphone. (ok 12/17)    
+
 
 
 
