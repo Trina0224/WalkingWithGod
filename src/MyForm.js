@@ -14,6 +14,7 @@ import bookVerses from "./constants/bookVerses.js";
 import FetchBackground from './FetchBackground';
 
 
+const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
 
 //let currentLanguageUserSelect="niv"; //default use niv.
 //let currentBookUserSelect="John";
@@ -65,12 +66,12 @@ function MyForm(props){
     sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
     console.log(state);
-    if(!state.searchQuery ||
-      state.searchQuery !== "NoSearchRequired"){
+//    if(!state.searchQuery || (state.grabbedText !== copyright
+//      && state.searchQuery !== "NoSearchRequired")){
       setStateSuccess(data);
-    }else{
-        ;
-    }//if, prevent mutilple query from API.
+//    }else{
+//        ;
+//    }//if, prevent mutilple query from API.
 
   }//onSubmit end.
 
