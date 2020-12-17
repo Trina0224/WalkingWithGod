@@ -18,6 +18,7 @@ import shuffle from './hook/shuffle.js';
 const defaultword = 'bible';
 
 
+const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
 
 
 const clientID = process.env.REACT_APP_UNSPLASH4GOD_API_KEY;
@@ -205,7 +206,6 @@ function FetchBackground(){
 
   function handleCopyrightDisplay(){
     //console.log("got clicked");
-    const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
     dispatch({ type: 'UPDATE_INPUT', data: copyright,});
   }
 
@@ -245,7 +245,6 @@ function FetchBackground(){
             default:
               ttt = photo.urls.regular;
           }
-          console.log(ttt);
         return (
           <div key={photo.id} className="item">
             <img

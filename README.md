@@ -30,11 +30,13 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 11. Default generate random famous verses.  
 19. code clean.  
 27. Verses at bottom side of screen, the layout is not good at small screen. (12/14)  
-30. seems too many Effect-re-rendering.  
-31. Rotate from landscape to portrait is fine but portrait to landscape. (seems fixed. 12/16)  
+30. seems too many reducer-re-rendering. (Check all `state.xxx` related code.) 
+31. Rotate from landscape to portrait is fine but portrait to landscape. (seems fixed. 12/16)
+32. disable keyboard on ipad or iphone. ( `readOnly="true"` is not working with react-select...)    
 33. auto detect language and display user's language.
 35. Some languages are still waiting to translate.
-36. Only display number keys on ipad or iphone.  
+36. Only display number keys on ipad or iphone.
+37. Display style is strange on Android phone.
 
 
 
@@ -67,7 +69,6 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 32. Cellphone support.(After did some research, small: <450px, regular: <1824px, full: >=1824px) ok. (12/16)  
 21. Check background size. (12/16) should be okay. Check some more days.  
 34. Form is not realy ready for Cellphone. (ok 12/17)    
-32. disable keyboard on ipad or iphone. (ok, add `readonly="true"` in the code. 12/17)   
 
 
 

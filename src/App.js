@@ -22,36 +22,44 @@ function reducer(state, action) {
     case 'UPDATE_INPUT'://save the string we really want to display on screen.
       console.log("// DEBUG: In reducer() Update Input.");
       return update(state, { "grabbedText": {$set: action.data}});
+    break;
       // return {
       //     "grabbedText": action.data  //<======
       // };
-      case 'UPDATE_SEARCH':
-        console.log("// DEBUG: In reducer() Update Search.");
-        return update(state, { "searchQuery": {$set: action.data}});
+    case 'UPDATE_SEARCH':
+      console.log("// DEBUG: In reducer() Update Search.");
+      return update(state, { "searchQuery": {$set: action.data}});
+    break;
 
-      case 'UPDATE_BACKGROUNDKEYWORD':
-        console.log("// DEBUG: In reducer() Update background keyword.");
-        return update(state, { "searchBackgroundQuery": {$set: action.data}});
+    case 'UPDATE_BACKGROUNDKEYWORD':
+      console.log("// DEBUG: In reducer() Update background keyword.");
+      return update(state, { "searchBackgroundQuery": {$set: action.data}});
+    break;
 
-      case 'UPDATE_BIBLEBOOKLANGUAGE':
-        console.log("// DEBUG: In reducer() Update bible language.");
-        return update(state, { "changeBookLanguage": {$set: action.data}});
+    case 'UPDATE_BIBLEBOOKLANGUAGE':
+      console.log("// DEBUG: In reducer() Update bible language.");
+      return update(state, { "changeBookLanguage": {$set: action.data}});
+    break;
 
-      case 'UPDATE_BOOKSELECT':
-        console.log("// DEBUG: In reducer() Update bible book.");
-        return update(state, { "selectedBook": {$set: action.data}});
+    case 'UPDATE_BOOKSELECT':
+      console.log("// DEBUG: In reducer() Update bible book.");
+      return update(state, { "selectedBook": {$set: action.data}});
+    break;
 
-      case 'UPDATE_BOOKCHAPTER':
-        console.log("// DEBUG: In reducer() Update book max chapter.");
-        return update(state, { "changedMaxChapter": {$set: action.data}});
+    case 'UPDATE_BOOKCHAPTER':
+      console.log("// DEBUG: In reducer() Update book max chapter.");
+      return update(state, { "changedMaxChapter": {$set: action.data}});
+    break;
 
-      case 'UPDATE_MAXVERSE':
-        console.log("// DEBUG: In reducer() Update chapter max verse.");
-        return update(state, { "changedMaxVerse": {$set: action.data}});
+    case 'UPDATE_MAXVERSE':
+      console.log("// DEBUG: In reducer() Update chapter max verse.");
+      return update(state, { "changedMaxVerse": {$set: action.data}});
+    break;
 
-       case 'UPDATE_SEARCH_CLICKED':
-         console.log("// DEBUG: In reducer() search key is clicked.");
-         return update(state, { "isSearchKeyClicked": {$set: action.data}});
+    case 'UPDATE_SEARCH_CLICKED':
+      console.log("// DEBUG: In reducer() search key is clicked.");
+      return update(state, { "isSearchKeyClicked": {$set: action.data}});
+    break;
 
       // case 'UPDATE_OLD_SEARCH_KEYWORD_FOR_BACKGROUND':
       //   console.log("// DEBUG: In reducer() search key is clicked.");

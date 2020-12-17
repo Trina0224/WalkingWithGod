@@ -4,6 +4,8 @@ import React, { useState,  useContext } from 'react';
 import { AppContext } from './App';
 import './VerseDisplay.css';
 
+const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
+
 
 //https://itnext.io/passing-data-between-sibling-components-in-react-using-context-api-and-react-hooks-fce60f12629a
 function VerseDisplay(props){
@@ -13,7 +15,6 @@ function VerseDisplay(props){
   const [changeDisplayLocation, setChangeDisplayLocation] = useState('Hero locationTopRight'); //form display
   const [changeDimLocation, setChangeDimLocation] = useState('dim dimBlackTopRight'); //form display
 
-  //console.log(state.searchQuery);
 
 
   //API to get verse.
@@ -22,7 +23,9 @@ function VerseDisplay(props){
     const data= state.searchQuery;
     //console.log(typeof datat);
 
-    if(state.searchQuery){
+    if(state.searchQuery && state.grabbedText !== copyright){
+      console.log(state);//Changer here，if state.grabbedText EQU copyright, dont run these code.
+
       //console.log(data.language);
 
       //first API query is for BBE only.

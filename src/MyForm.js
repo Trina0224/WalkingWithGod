@@ -237,9 +237,8 @@ useEffect(() => {
                 multi={true}
                 onChange={languageChange}
                 value={languageOptions.value}
-                defaultValue={{value: "niv", label: "English NIV"}}
+                defaultValue={{value: "niv", label: "English NIV", readOnly:true}}
                 name = "testing"
-                readonly="true"
               />
             </section>
 
@@ -251,9 +250,8 @@ useEffect(() => {
                 multi={true}
                 onChange={bookChange}
                 value={defaultBibleVersion.value}
-                defaultValue={{value:"Jhn",label:"John"}}
+                defaultValue={{value:"Jhn",label:"John", readOnly:true}}
                 name = "testing"
-                readonly="true"
               />
             </section>
 
