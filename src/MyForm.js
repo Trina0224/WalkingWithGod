@@ -239,6 +239,7 @@ useEffect(() => {
                 value={languageOptions.value}
                 defaultValue={{value: "niv", label: "English NIV"}}
                 name = "testing"
+                readonly="true"
               />
             </section>
 
@@ -252,6 +253,7 @@ useEffect(() => {
                 value={defaultBibleVersion.value}
                 defaultValue={{value:"Jhn",label:"John"}}
                 name = "testing"
+                readonly="true"
               />
             </section>
 
