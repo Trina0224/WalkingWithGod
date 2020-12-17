@@ -23,7 +23,9 @@ function VerseDisplay(props){
     const data= state.searchQuery;
     //console.log(typeof datat);
 
-    if(state.searchQuery && state.grabbedText !== copyright){
+    if(state.searchQuery && state.grabbedText !== copyright
+      && state.searchQuery !== "NoSearchRequired"
+    ){
       console.log(state);//Changer here，if state.grabbedText EQU copyright, dont run these code.
 
       //console.log(data.language);
@@ -77,7 +79,7 @@ function VerseDisplay(props){
         //const queryUrl = `https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;
         const queryUrl = `https://evening-bayou-31975.herokuapp.com/http://ibibles.net/quote.php?${queryIndex}`;
         console.log(queryUrl);
-
+        console.log(state.searchQuery);
         await fetch(queryUrl,{
             'method': 'GET',
             'headers': {
@@ -124,6 +126,7 @@ function VerseDisplay(props){
             //dispatch({ type: 'UPDATE_INPUT', data: data4Reducer,});
             dispatch({ type: 'UPDATE_INPUT', data: noSmallTag,});
             // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,}); //only successfully display verse and can clean this flag.
+            dispatch({ type: 'UPDATE_SEARCH', data: "NoSearchRequired",});//clear search query from Form.
 
             return responseData;
             //this.setState({ author: responseData});
@@ -196,6 +199,7 @@ function VerseDisplay(props){
               //console.log(displayString);
               dispatch({ type: 'UPDATE_INPUT', data: displayString,});
               // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,}); //only successfully display verse and can clean this flag.
+              dispatch({ type: 'UPDATE_SEARCH', data: "NoSearchRequired",});//clear search query from Form.
 
 
 

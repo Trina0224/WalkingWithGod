@@ -64,8 +64,14 @@ function MyForm(props){
     dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server...",});
     sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
+    console.log(state);
+    if(!state.searchQuery ||
+      state.searchQuery !== "NoSearchRequired"){
+      setStateSuccess(data);
+    }else{
+        ;
+    }//if, prevent mutilple query from API.
 
-    setStateSuccess(data);
   }//onSubmit end.
 
   //const setStateSuccess = async (data,e)=>{
