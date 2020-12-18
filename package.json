@@ -1,7 +1,7 @@
 {
   "homepage": "https://trina0224.github.io/WalkingWithGod/",
   "name": "feelgod",
-  "version": "0.7.0",
+  "version": "0.7.14",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",

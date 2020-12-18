@@ -43,6 +43,10 @@ export default [
   {key:"", value: "God", label: "God"},
   {key:"", value: "branches", label: "branches"},
   {key:"", value: "vine", label: "vine"},
+  {key:"", value: "strength", label: "strength"},
+  {key:"", value: "spirit", label: "spirit"},
+  {key:"", value: "harbour", label: "harbour"},
+  {key:"", value: "eagle", label: "eagle"},
   {key:"", value: "love", label: "love"}
 
 ];

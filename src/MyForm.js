@@ -12,9 +12,10 @@ import languageOptions from "./constants/languageOptions.js";
 import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
 import FetchBackground from './FetchBackground';
+import defaultVerses from "./constants/defaultVerses.js"
 
 
-const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
+//const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
 
 //let currentLanguageUserSelect="niv"; //default use niv.
 //let currentBookUserSelect="John";
@@ -29,17 +30,39 @@ function MyForm(props){
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
   const [languageSelected, setlanguageInUI] = useState('niv'); //langauge select
+
+  const [theVersesforInitial, setTheVersesforInitial] = useState(defaultVerses[Math.floor(Math.random() * defaultVerses.length)]);
+
 //  const [buttonDisableEnable, setButtonDisableEnable] = useState(false); //langauge select
+
+//const theVersesforInitial = defaultVerses[Math.floor(Math.random() * defaultVerses.length)];
+
+React.useEffect(() => {
+  // Runs after the first render() lifecycle
+  //Create default Verses for this initial run.
+  console.log(theVersesforInitial);
+  var result = bookOptions.filter(obj => {
+  return obj.searchKey === theVersesforInitial.label;
+  });
+  console.log(result[0].chapter);// because result is an array, need to put [0] to get result.
+  dispatch({ type: 'UPDATE_BOOKCHAPTER', data: result[0].chapter,});
+  //UPDATE_BOOKSELECT
+  dispatch({ type: 'UPDATE_BOOKSELECT', data: [theVersesforInitial.label, theVersesforInitial.value],});
+
+
+}, []); //useEffect只有一開始執行一次。
+
+
 
 
   const {register, handleSubmit, control, errors } = useForm({
     defaultValues:
     {
-      "chapterNumber": 3,
-      "verseStartNumber": 16,
-      "verseEndNumber": 16,
-      "bookSelect": {value:"Jhn",label:"John"},
-      "languageSelect": {value: "niv", label: "English NIV"},
+      "chapterNumber": theVersesforInitial.chapter,//3, //only working at first three values. 'select' is not working.
+      "verseStartNumber": theVersesforInitial.verseStart,//16,
+      "verseEndNumber": theVersesforInitial.verseEnd,//16,
+      //"bookSelect": {value:"Jhn",label:"John"},
+      //"languageSelect": {value: "niv", label: "English NIV"},
     }
   });
 
@@ -61,6 +84,15 @@ function MyForm(props){
 
   const onSubmit = data =>{
     console.log(data);
+    if(typeof data.language === 'undefined'&& typeof  data.bookName === 'undefined')
+    {
+      //dispatch({ type: 'UPDATE_BOOKSELECT', data: [theVersesforInitial.label, theVersesforInitial.value],});
+      data.language = 'niv';
+      data.bookName = theVersesforInitial.label;
+      data.bookAbbreviation = theVersesforInitial.value;
+    }
+    console.log(data);
+
     dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
     dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server...",});
     sethideOrNot("testbox noDisplay");
@@ -80,8 +112,8 @@ function MyForm(props){
     //console.log("in setStateSuccess()");
     let queryData={
       language:"niv",
-      bookName:"John",
-      bookAbbreviation:"Jhn",
+      bookName:theVersesforInitial.label,//"John",
+      bookAbbreviation:theVersesforInitial.value,//"Jhn",
       chapter:"3",
       verseStart:"16",
       verseEnd:"16"
@@ -152,6 +184,7 @@ async function languageChange(selectedOption){
 async function bookChange(selectedOption){
   //console.log(`Option selected:`, selectedOption);
   //maxChapter = selectedOption.chapter;
+  console.log(selectedOption);
   dispatch({ type: 'UPDATE_BOOKCHAPTER', data: selectedOption.chapter,});
   //UPDATE_BOOKSELECT
   dispatch({ type: 'UPDATE_BOOKSELECT', data: [selectedOption.searchKey, selectedOption.value],});
@@ -257,7 +290,7 @@ useEffect(() => {
                 multi={true}
                 onChange={bookChange}
                 value={defaultBibleVersion.value}
-                defaultValue={{value:"Jhn",label:"John", readOnly:true}}
+                defaultValue={{value:theVersesforInitial.value,label:theVersesforInitial.label, readOnly:true}}
                 name = "testing"
               />
             </section>
@@ -266,15 +299,15 @@ useEffect(() => {
 
             <div className="item">
               <p>Chapter</p>
-              <input type="number" step="1" min="1" max={state.changedMaxChapter} onChange={chapterChanged} name="chapterNumber" ref={register({ required: true })} />
+              <input inputmode="decimal" type="number" step="1" min="1" max={state.changedMaxChapter} onChange={chapterChanged} name="chapterNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse Start</p>
-              <input type="number" step="1" min="1" max={state.changedMaxVerse} name="verseStartNumber" ref={register({ required: true })} />
+              <input inputmode="decimal" type="number" step="1" min="1" max={state.changedMaxVerse} name="verseStartNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse End</p>
-              <input type="number" step="1" min="1" max={state.changedMaxVerse} name="verseEndNumber" ref={register({ required: true })} />
+              <input inputmode="decimal" type="number" step="1" min="1" max={state.changedMaxVerse} name="verseEndNumber" ref={register({ required: true })} />
             </div>
 
             <div className="btn-block">
