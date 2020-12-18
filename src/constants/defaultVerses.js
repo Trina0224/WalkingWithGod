@@ -26,7 +26,21 @@ export default [
   //And men will not say, See, it is here! or, There! for the kingdom of God is among you.
   {key:"", value:"Luk", label:"Luke", chapter:"17", verseStart:"21",verseEnd:"21"},
   //But he said, Things which are not possible with man are possible with God.
-  {key:"", value:"Luk", label:"Luke", chapter:"18", verseStart:"27",verseEnd:"27"}
+  {key:"", value:"Luk", label:"Luke", chapter:"18", verseStart:"27",verseEnd:"27"},
+  //Have no fear, for I am with you; do not be looking about in trouble, for I am your God; I will give you strength, yes, I will be your helper; yes, my true right hand will be your support.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"41", verseStart:"10",verseEnd:"10"},
+  //Have I not given you your orders? Take heart and be strong; have no fear and do not be troubled; for the Lord your God is with you wherever you go,
+  {key:"", value:"Jos", label:"Joshua", chapter:"1", verseStart:"9",verseEnd:"9"},
+  //For I am conscious of my thoughts about you, says the Lord, thoughts of peace and not of evil, to give you hope at the end.
+  {key:"", value:"Jer", label:"Jeremiah", chapter:"29", verseStart:"11",verseEnd:"11"},
+  //Put all your hope in God, not looking to your reason for support. In all your ways give ear to him, and he will make straight your footsteps.
+  {key:"", value:"Pro", label:"Proverbs", chapter:"3", verseStart:"5",verseEnd:"6"},
+  //But the fruit of the Spirit is love, joy, peace, a quiet mind, kind acts, well-doing, faith, Gentle behaviour, control over desires: against such there is no law.
+  {key:"", value:"Gal", label:"Galatians", chapter:"5", verseStart:"22",verseEnd:"23"},
+  //Have no cares; but in everything with prayer and praise put your requests before God. And the peace of God, which is deeper than all knowledge, will keep your hearts and minds in Christ Jesus.
+  {key:"", value:"Phl", label:"Philippians", chapter:"4", verseStart:"6",verseEnd:"7"},
+  //Lastly, be strong in the Lord, and in the strength of his power. Take up God's instruments of war, so that you may be able to keep your position against all the deceits of the Evil One. For our fight is not against flesh and blood, but against authorities and powers, against the world-rulers of this dark night, against the spirits of evil in the heavens. For this reason take up all the arms of God, so that you may be able to be strong in the evil day, and, having done all, to keep your place. Take your place, then, having your body clothed with the true word, and having put on the breastplate of righteousness; Be ready with the good news of peace as shoes on your feet; And most of all, using faith as a cover to keep off all the flaming arrows of the Evil One. And take salvation for your head-dress and the sword of the Spirit, which is the word of God: With prayers and deep desires, making requests at all times in the Spirit, and keeping watch, with strong purpose, in prayer for all the saints,
+  {key:"", value:"Eph", label:"Ephesians", chapter:"6", verseStart:"10",verseEnd:"18"}
 ];
 //
 //{key:"", value:"", label:"", chapter:"", verseStart:"",verseEnd:""},

@@ -47,6 +47,13 @@ export default [
   {key:"", value: "spirit", label: "spirit"},
   {key:"", value: "harbour", label: "harbour"},
   {key:"", value: "eagle", label: "eagle"},
+  {key:"", value: "heart", label: "heart"},
+  {key:"", value: "peace", label: "peace"},
+  {key:"", value: "hope", label: "hope"},
+  {key:"", value: "joy", label: "joy"},
+  {key:"", value: "holy", label: "holy"},
+  {key:"", value: "grace", label: "grace"},
+  {key:"", value: "footsteps", label: "footsteps"},
   {key:"", value: "love", label: "love"}
 
 ];
