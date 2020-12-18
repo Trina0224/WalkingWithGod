@@ -2,7 +2,7 @@
 1. https://cors-anywhere.herokuapp.com/ Rob--W's   
 2. http://ibibles.net/  
 3. https://getbible.net/  
-4. https://unsplash.com/ 
+4. https://unsplash.com/
 
 # Issues  
 1. Need to double click search.  <==
@@ -40,7 +40,7 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 35. Some languages are still waiting to translate.
 36. Only display number keys on iPad or iPhone.
 37. Display style is strange on the Android phone.
-
+38. need 希伯來文
 
 
 

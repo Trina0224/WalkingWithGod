@@ -8,6 +8,8 @@ import bookOptionsCht from "./constants/bookOptionsCht.js"; //Chinese
 import bookOptionsJpn from "./constants/bookOptionsJpn.js"; //Japanese
 import bookOptionsDeu from "./constants/bookOptionsDeu.js"; //Deutsch
 import bookOptionsFra from "./constants/bookOptionsFra.js"; //French
+import bookOptionsGek from "./constants/bookOptionsGek.js"; //Greek
+import bookOptionsKor from "./constants/bookOptionsKor.js"; //Korean
 import languageOptions from "./constants/languageOptions.js";
 import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
@@ -240,6 +242,12 @@ useEffect(() => {
       break;
       case 'jco':
         defaultBibleVersion = bookOptionsJpn;
+      break;
+      case 'kor':
+        defaultBibleVersion = bookOptionsKor;
+      break;
+      case 'gmv':
+        defaultBibleVersion = bookOptionsGek;
       break;
 
       default:
