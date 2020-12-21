@@ -1,4 +1,4 @@
-![my demo photo1](https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/IMG_0665.JPG?raw=true =250x)
+![my demo photo1](https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/IMG_0665.JPG =250x)
 # Credit  
 1. https://cors-anywhere.herokuapp.com/ Rob--W's   
 2. http://ibibles.net/  
