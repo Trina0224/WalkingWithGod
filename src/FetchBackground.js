@@ -116,7 +116,7 @@ function FetchBackground(){
   }
   //control size
   if(dimensions.window.width < 450){ //current mobile phone portrait mode is less than 450.
-    backgroundImageSize = "regular";//"small";
+    backgroundImageSize = "small";
   }else{
     if(dimensions.window.width >=1824){
       backgroundImageSize = "full";

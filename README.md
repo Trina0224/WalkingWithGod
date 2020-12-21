@@ -38,7 +38,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 32. disable keyboard on iPad or iPhone. ( `readOnly="true"` is not working with react-select...)    
 33. auto detect language and display the user's language.
 36. Only display number keys on iPad or iPhone. (it works sometimes... why?)
-37. Display style is strange on the Android phone.
+37. Display style is strange on the Android phone.  
+40. add some transparent effect on search icon.
 
 # Nice to have:  
 38. need Hebrew book names  
