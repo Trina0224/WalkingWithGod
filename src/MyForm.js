@@ -43,11 +43,11 @@ function MyForm(props){
 React.useEffect(() => {
   // Runs after the first render() lifecycle
   //Create default Verses for this initial run.
-  console.log(theVersesforInitial);
+  //console.log(theVersesforInitial);
   var result = bookOptions.filter(obj => {
   return obj.searchKey === theVersesforInitial.label;
   });
-  console.log(result[0].chapter);// because result is an array, need to put [0] to get result.
+  //console.log(result[0].chapter);// because result is an array, need to put [0] to get result.
   dispatch({ type: 'UPDATE_BOOKCHAPTER', data: result[0].chapter,});
   //UPDATE_BOOKSELECT
   dispatch({ type: 'UPDATE_BOOKSELECT', data: [theVersesforInitial.label, theVersesforInitial.value],});
@@ -86,7 +86,7 @@ React.useEffect(() => {
 
 
   const onSubmit = data =>{
-    console.log(data);
+    //console.log(data);
     if(typeof data.language === 'undefined'&& typeof  data.bookName === 'undefined')
     {
       //dispatch({ type: 'UPDATE_BOOKSELECT', data: [theVersesforInitial.label, theVersesforInitial.value],});
@@ -94,13 +94,13 @@ React.useEffect(() => {
       data.bookName = theVersesforInitial.label;
       data.bookAbbreviation = theVersesforInitial.value;
     }
-    console.log(data);
+    //console.log(data);
 
     dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
     dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server...",});
     sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
-    console.log(state);
+    //console.log(state);
 //    if(!state.searchQuery || (state.grabbedText !== copyright
 //      && state.searchQuery !== "NoSearchRequired")){
       setStateSuccess(data);
@@ -187,7 +187,7 @@ async function languageChange(selectedOption){
 async function bookChange(selectedOption){
   //console.log(`Option selected:`, selectedOption);
   //maxChapter = selectedOption.chapter;
-  console.log(selectedOption);
+  //console.log(selectedOption);
   dispatch({ type: 'UPDATE_BOOKCHAPTER', data: selectedOption.chapter,});
   //UPDATE_BOOKSELECT
   dispatch({ type: 'UPDATE_BOOKSELECT', data: [selectedOption.searchKey, selectedOption.value],});
@@ -292,7 +292,7 @@ useEffect(() => {
                 defaultValue={{value: "niv", label: "English NIV", readOnly:true}}
                 name = "testing"
                 />
-              </div>  
+              </div>
             </section>
 
             <section>

@@ -47,7 +47,7 @@ function FetchBackground(){
   let orientation = "landscape";//landscape for default.
   let backgroundImageSize = "regular";//can be small,full or regular, we will not use thumb and raw
   const [dimensions, setDimensions] = useState({ window, screen });
-  console.log(`windowHeight=${windowHeight}, windowWidth=${windowWidth}`);
+  //console.log(`windowHeight=${windowHeight}, windowWidth=${windowWidth}`);
 
   const onChange = ({ window, screen }) => {
   setDimensions({ window, screen });
@@ -132,7 +132,7 @@ function FetchBackground(){
     clientID +
     "&orientation=" +
     orientation; //can be landscape,portrait or squarish.
-  console.log(orientation);
+  //console.log(orientation);
 
   useEffect(() => {
 
