@@ -39,7 +39,6 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 33. auto detect language and display the user's language.
 36. Only display number keys on iPad or iPhone. (it works sometimes... why?)
 37. Display style is strange on the Android phone.  
-40. add some transparent effect on search icon.
 
 # Nice to have:  
 38. need Hebrew book names  
@@ -75,7 +74,9 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 34. Form is not really ready for Cellphones. (ok 12/17)  
 11. Default generates famous random verses. ok. 12/18  
 39. need to fix &lt &gt issue. (https://stackoverflow.com/questions/12328773/understanding-lt-and-gt/12328790)(https://stackoverflow.com/questions/5068951/what-do-lt-and-gt-stand-for#:~:text=%3C%20stands%20for%20lesser%20than,greater%20than%20(%3E)%20symbol%20.) (12/21)  
-35. Some languages are still waiting to translate. ok. (12/21)
+35. Some languages are still waiting to translate. ok. (12/21)  
+40. Put some transparent effect on search icon. (ok. App.css 12/21)
+
 
 
 
