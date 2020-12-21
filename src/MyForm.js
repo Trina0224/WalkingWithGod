@@ -10,6 +10,7 @@ import bookOptionsDeu from "./constants/bookOptionsDeu.js"; //Deutsch
 import bookOptionsFra from "./constants/bookOptionsFra.js"; //French
 import bookOptionsGek from "./constants/bookOptionsGek.js"; //Greek
 import bookOptionsKor from "./constants/bookOptionsKor.js"; //Korean
+import bookOptionsHeb from "./constants/bookOptionsHeb.js"; //Hebrew, still use English. No new testaments.
 import languageOptions from "./constants/languageOptions.js";
 import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
@@ -249,7 +250,9 @@ useEffect(() => {
       case 'gmv':
         defaultBibleVersion = bookOptionsGek;
       break;
-
+      case 'hac':
+        defaultBibleVersion = bookOptionsHeb;
+      break;
       default:
         defaultBibleVersion = bookOptions;
     }//switch

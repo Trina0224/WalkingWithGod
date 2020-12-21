@@ -54,6 +54,7 @@ export default [
   {key:"", value: "holy", label: "holy"},
   {key:"", value: "grace", label: "grace"},
   {key:"", value: "footsteps", label: "footsteps"},
+  {key:"", value: "wings", label: "wings"},
   {key:"", value: "love", label: "love"}
 
 ];

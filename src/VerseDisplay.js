@@ -120,6 +120,9 @@ function VerseDisplay(props){
             noSmallTag = noSmallTag.replaceAll(regEx,"");
             noSmallTag = noSmallTag.replaceAll("<br>"," ");
             noSmallTag = noSmallTag.replaceAll("Ref:","✝︎ ");
+            //12/21/20 fix &lt; &gt; display.
+            noSmallTag = noSmallTag.replaceAll("&lt;","〈");
+            noSmallTag = noSmallTag.replaceAll("&gt;","〉");
 
 
             //save to context for other components use.
