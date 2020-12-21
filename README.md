@@ -1,4 +1,6 @@
 <img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/IMG_0665.JPG" alt="drawing" width="300"/>
+<img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-15%20at%2010.49.50%20AM.png" alt="drawing" width="300"/>
+<img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-15%20at%2010.52.27%20AM.png" alt="drawing" width="300"/>
 
 # Credit  
 1. https://cors-anywhere.herokuapp.com/ Rob--W's   
