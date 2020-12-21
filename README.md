@@ -2,6 +2,9 @@
 <img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-15%20at%2010.49.50%20AM.png" alt="drawing" width="500"/>
 <img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-15%20at%2010.52.27%20AM.png" alt="drawing" width="500"/>
 
+# Brief  
+Online Bible verses search, multi-languages support. Detect keywords and fetch related background image.
+
 # Credit  
 1. https://cors-anywhere.herokuapp.com/ Rob--W's   
 2. http://ibibles.net/  
