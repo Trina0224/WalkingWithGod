@@ -66,6 +66,13 @@ h1 {
   z-index: 2;
 }
 
+h1.grabePhrase:hover{  /*12/21 add this ...*/
+  font-size: 50px;
+  color: #fff; /* Fallback for older browsers */
+  color: rgba(255, 255, 255, 0.8);
+
+}
+
 h2 {
   font-weight: 400;
 }
@@ -97,6 +104,8 @@ h2 {
   color: rgba(0, 0, 0, 0.3);
 
 }
+
+
 
 form {
   width: 80%;

@@ -281,8 +281,9 @@ useEffect(() => {
           <form onSubmit={handleSubmit(onSubmit)}>
 
             <section>
-              <label>Language<span>*</span></label>
-              <ReactSelect
+              <div className="item">
+                <p>Language</p>
+                <ReactSelect
                 id="languageop"
                 options={languageOptions}
                 multi={true}
@@ -290,12 +291,14 @@ useEffect(() => {
                 value={languageOptions.value}
                 defaultValue={{value: "niv", label: "English NIV", readOnly:true}}
                 name = "testing"
-              />
+                />
+              </div>  
             </section>
 
             <section>
-              <label>Book<span>*</span></label>
-              <ReactSelect
+              <div className="item">
+                <p>Book</p>
+                <ReactSelect
                 id="bookop"
                 options={defaultBibleVersion}
                 multi={true}
@@ -303,7 +306,8 @@ useEffect(() => {
                 value={defaultBibleVersion.value}
                 defaultValue={{value:theVersesforInitial.value,label:theVersesforInitial.label, readOnly:true}}
                 name = "testing"
-              />
+                />
+              </div>
             </section>
 
 
