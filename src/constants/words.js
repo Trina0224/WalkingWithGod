@@ -33,8 +33,8 @@ export default [
   {key:"", value: "wilderness", label: "wilderness"},
   {key:"", value: "church", label: "church"},
   {key:"", value: "christian", label: "christian"},
-  {key:"", value: "faith", label: "faith"},//29
-  {key:"", value: "wedding", label: "wedding"},
+  {key:"", value: "faith", label: "faith"},
+  {key:"", value: "wedding", label: "wedding"},//30
   {key:"", value: "bride", label: "bride"},
   {key:"", value: "husband", label: "husband"},
   {key:"", value: "sheep", label: "sheep"},
@@ -44,7 +44,7 @@ export default [
   {key:"", value: "branches", label: "branches"},
   {key:"", value: "vine", label: "vine"},
   {key:"", value: "strength", label: "strength"},
-  {key:"", value: "spirit", label: "spirit"},
+  {key:"", value: "spirit", label: "spirit"},//40
   {key:"", value: "harbour", label: "harbour"},
   {key:"", value: "eagle", label: "eagle"},
   {key:"", value: "heart", label: "heart"},
@@ -54,13 +54,24 @@ export default [
   {key:"", value: "holy", label: "holy"},
   {key:"", value: "grace", label: "grace"},
   {key:"", value: "footsteps", label: "footsteps"},
-  {key:"", value: "wings", label: "wings"},
-  {key:"", value: "angel", label: "angel"},
+  {key:"", value: "wings", label: "wings"},//50
   {key:"", value: "comfort", label: "comfort"},
+  {key:"", value: "silver", label: "silver"},
+  {key:"", value: "sister", label: "sister"},
+  {key:"", value: "rose", label: "rose"},
+  {key:"", value: "lilies", label: "lilies"},
+  {key:"", value: "wine", label: "wine"},
+  {key:"", value: "Jerusalem", label: "Jerusalem"},
+  {key:"", value: "curtains", label: "curtains"},
+  {key:"", value: "wealth", label: "wealth"},//replace by queryWordsCreate.js
+  {key:"", value: "feebly burning light", label: "feebly burning light"},//replace by queryWordsCreate.js
+  {key:"", value: "crushed stem", label: "crushed stem"},//replace by queryWordsCreate.js
+  {key:"", value: "straight roads", label: "straight roads"},
   {key:"", value: "love", label: "love"}
 
 ];
-
+//feeble?
+//
 
 // {key:"", value: "", label: ""},
 // {key:"", value: "", label: ""},

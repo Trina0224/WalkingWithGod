@@ -35,11 +35,26 @@ function queryWordsCreate(verse, keywordsDictionary){
   }
 
   //finalString = includingKeywords.join(" "); //it's for testing.
-  if(finalString === "God"){
-    finalString = "Jesus"; //if we just search God, other strange picture is coming.
-  }else{
-    ;
+  switch(finalString){
+    case 'God':
+      finalString = 'Jesus'; //if we just search God, other strange picture is coming.
+    break;
+    case 'feebly burning light':
+      finalString = 'candle'; //actually I hope i can also use 'candle light'
+    break;
+    case 'crushed stem':
+      finalString = 'reed';
+    break;
+    case 'wealth':
+      finalString = 'treasure';
+    default:
   }
+
+  // if(finalString === "God"){
+  //   finalString = "Jesus"; 
+  // }else{
+  //   ;
+  // }
   console.log(finalString);
   let returnObj={final:"",keyWordsSet:""};
   if(includingKeywords.length === 1){ //means only one words only, we can refalsh background everytime.

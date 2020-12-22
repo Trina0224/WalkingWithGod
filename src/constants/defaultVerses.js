@@ -3,6 +3,8 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"57", verseStart:"1",verseEnd:"1"},
   //Make a clean heart in me, O God; give me a right spirit again.
   {key:"", value:"Psm", label:"Psalms", chapter:"51", verseStart:"10",verseEnd:"10"},
+  //Put your cares on the Lord, and he will be your support; he will not let the upright man be moved.
+  {key:"", value:"Psm", label:"Psalms", chapter:"55", verseStart:"22",verseEnd:"22"},
   //Yes, though I go through the valley of deep shade, I will have no fear of evil; for you are with me, your rod and your support are my comfort.
   {key:"", value:"Psm", label:"Psalms", chapter:"23", verseStart:"4",verseEnd:"4"},
   //God is our harbour and our strength, a very present help in trouble.
@@ -11,8 +13,14 @@ export default [
   {key:"", value:"1Co", label:"1 Corinthians", chapter:"13", verseStart:"4",verseEnd:"8"},
   //Who gives us comfort in all our troubles, so that we may be able to give comfort to others who are in trouble, through the comfort with which we ourselves are comforted by God. For as we undergo more of the pain which Christ underwent, so through Christ does our comfort become greater.
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"1", verseStart:"4",verseEnd:"5"},
+  //For it is our desire that you may not be without knowledge of our trouble which came on us in Asia, that the weight of it was very great, more than our power, so that it seemed that we had no hope even of life: Yes, we ourselves have had the answer of death in ourselves, so that our hope might not be in ourselves, but in God who is able to give life to the dead:
+  {key:"", value:"2Co", label:"2 Corinthians", chapter:"1", verseStart:"8",verseEnd:"9"},
   //For which cause we do not give way to weariness; but though our outer man is getting feebler, our inner man is made new day by day. For our present trouble, which is only for a short time, is working out for us a much greater weight of glory;
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"16",verseEnd:"17"},
+  //But we have this wealth in vessels of earth, so that it may be seen that the power comes not from us but from God; Troubles are round us on every side, but we are not shut in; things are hard for us, but we see a way out of them; We are cruelly attacked, but not without hope; we are made low, but we are not without help; 
+  {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"7",verseEnd:"9"},
+  //And he said to me, My grace is enough for you, for my power is made complete in what is feeble. Most gladly, then, will I take pride in my feeble body, so that the power of Christ may be on me. 
+  {key:"", value:"2Co", label:"2 Corinthians", chapter:"12", verseStart:"9",verseEnd:"9"},
   //In all things I was an example to you of how, in your lives, you are to give help to the feeble, and keep in memory the words of the Lord Jesus, how he himself said, There is a greater blessing in giving than in getting.
   {key:"", value:"Act", label:"Acts", chapter:"20", verseStart:"35",verseEnd:"35"},
   //And we are conscious that all things are working together for good to those who have love for God, and have been marked out by his purpose.
@@ -43,6 +51,12 @@ export default [
   {key:"", value:"Isa", label:"Isaiah", chapter:"41", verseStart:"10",verseEnd:"10"},
   //But those who are waiting for the Lord will have new strength; they will get wings like eagles: running, they will not be tired, and walking, they will have no weariness.
   {key:"", value:"Isa", label:"Isaiah", chapter:"40", verseStart:"31",verseEnd:"31"},
+  //For the Lord, the Holy One of Israel, said, In quiet and rest is your salvation: peace and hope are your strength: but you would not have it so.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"30", verseStart:"15",verseEnd:"15"},
+  //He gives power to the feeble, increasing the strength of him who has no force. Even the young men will become feeble and tired, and the best of them will come to the end of his strength; But those who are waiting for the Lord will have new strength; they will get wings like eagles: running, they will not be tired, and walking, they will have no weariness.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"40", verseStart:"29",verseEnd:"31"},
+  //He will not let a crushed stem be quite broken, and he will not let a feebly burning light be put out: he will go on sending out the true word to the peoples. 
+  {key:"", value:"Isa", label:"Isaiah", chapter:"42", verseStart:"3",verseEnd:"3"},
   //And men will not say, See, it is here! or, There! for the kingdom of God is among you.
   {key:"", value:"Luk", label:"Luke", chapter:"17", verseStart:"21",verseEnd:"21"},
   //But he said, Things which are not possible with man are possible with God.
@@ -61,8 +75,18 @@ export default [
   {key:"", value:"Eph", label:"Ephesians", chapter:"6", verseStart:"10",verseEnd:"18"},
   //And after you have undergone pain for a little time, the God of all grace who has given you a part in his eternal glory through Christ Jesus, will himself give you strength and support, and make you complete in every good thing;
   {key:"", value:"1Pe", label:"1 Peter", chapter:"5", verseStart:"10",verseEnd:"10"},
+  //We have a young sister, and she has no breasts; what are we to do for our sister in the day when she is given to a man? If she is a wall, we will make on her a strong base of silver; and if she is a door, we will let her be shut up with cedar-wood. I am a wall, and my breasts are like towers; then was I in his eyes as one to whom good chance had come.
+  {key:"", value:"Son", label:"Song of Songs", chapter:"8", verseStart:"8",verseEnd:"10"},
+  //I am a rose of Sharon, a flower of the valleys.
+  {key:"", value:"Son", label:"Song of Songs", chapter:"2", verseStart:"1",verseEnd:"1"},
+  //I am for my loved one, and my loved one is for me; he takes food among the lilies.
+  {key:"", value:"Son", label:"Song of Songs", chapter:"6", verseStart:"3",verseEnd:"3"},
+  //Take me away with you-let us hurry! Let the king bring me into his chambers. We rejoice and delight in you ; we will praise your love more than wine. How right they are to adore you!
+  {key:"", value:"Son", label:"Song of Songs", chapter:"1", verseStart:"4",verseEnd:"4"},
   //For God had such love for the world that he gave his only Son, so that whoever has faith in him may not come to destruction but have eternal life.
   {key:"", value:"Jhn", label:"John", chapter:"3", verseStart:"16",verseEnd:"16"},
+  //For this cause let the hands which are hanging down be lifted up, and let the feeble knees be made strong, And make straight roads for your feet, so that the feeble may not be turned out of the way, but may be made strong.
+  {key:"", value:"Heb", label:"Hebrews", chapter:"12", verseStart:"12",verseEnd:"13"},
   //I have said all these things to you so that in me you may have peace. In the world you have trouble: but take heart! I have overcome the world.
   {key:"", value:"Jhn", label:"John", chapter:"16", verseStart:"33",verseEnd:"33"}
 
