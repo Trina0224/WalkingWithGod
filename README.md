@@ -46,6 +46,7 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 33. auto detect language and display the user's language.
 36. Only display number keys on iPad or iPhone. (it works sometimes... why?)
 37. Display style is strange on the Android phone.  
+41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.
 
 # Nice to have:  
 38. need Hebrew book names  

@@ -25,6 +25,10 @@ export default [
   {key:"", value:"Mat", label:"Matthew", chapter:"6", verseStart:"34",verseEnd:"34"},
   //But I say to you, Have love for those who are against you, and make prayer for those who are cruel to you
   {key:"", value:"Mat", label:"Matthew", chapter:"5", verseStart:"44",verseEnd:"44"},
+  //Come to me, all you who are troubled and weighted down with care, and I will give you rest. Take my yoke on you and become like me, for I am gentle and without pride, and you will have rest for your souls; For my yoke is good, and the weight I take up is not hard.
+  {key:"", value:"Mat", label:"Matthew", chapter:"11", verseStart:"28",verseEnd:"30"},
+  //Let this then be your prayer: Our Father in heaven, may your name be kept holy. Let your kingdom come. Let your pleasure be done, as in heaven, so on earth. Give us this day bread for our needs. And make us free of our debts, as we have made those free who are in debt to us. And let us not be put to the test, but keep us safe from the Evil One.
+  {key:"", value:"Mat", label:"Matthew", chapter:"6", verseStart:"9",verseEnd:"13"},
   //With nothing I came out of my mother's body, and with nothing I will go back there; the Lord gave and the Lord has taken away; let the Lord's name be praised.
   {key:"", value:"Job", label:"Job", chapter:"1", verseStart:"21",verseEnd:"21"},
   //He will keep you safe from six troubles, and in seven no evil will come near you. When there is need of food he will keep you from death, and in war from the power of the sword.
@@ -43,6 +47,8 @@ export default [
   {key:"", value:"Luk", label:"Luke", chapter:"17", verseStart:"21",verseEnd:"21"},
   //But he said, Things which are not possible with man are possible with God.
   {key:"", value:"Luk", label:"Luke", chapter:"18", verseStart:"27",verseEnd:"27"},
+  //And it came about that he was in prayer in a certain place, and when he came to an end, one of his disciples said to him, Lord, will you give us teaching about prayer, as John did to his disciples? And he said to them, When you say your prayers, say, Father, may your name be kept holy and your kingdom come. Give us every day bread for our needs. May we have forgiveness for our sins, as we make free all those who are in debt to us. And let us not be put to the test.
+  {key:"", value:"Luk", label:"Luke", chapter:"11", verseStart:"1",verseEnd:"4"},
   //Have I not given you your orders? Take heart and be strong; have no fear and do not be troubled; for the Lord your God is with you wherever you go,
   {key:"", value:"Jos", label:"Joshua", chapter:"1", verseStart:"9",verseEnd:"9"},
   //For I am conscious of my thoughts about you, says the Lord, thoughts of peace and not of evil, to give you hope at the end.
