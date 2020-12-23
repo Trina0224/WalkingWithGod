@@ -72,7 +72,11 @@ function VerseDisplay(props){
 
       if(data.language!=="cnt" &&
         data.language!=="nrsv" &&
-        data.language!=="akjv"){
+        data.language!=="akjv" &&
+        data.language!=="synodal" &&
+        data.language!=="makarij" &&
+        data.language!=="valera"
+        ){
         // We got verse from here for default.
         //url = "https://cors-anywhere.herokuapp.com/http://ibibles.net/quote.php?bbe-John/03:16-13";
         const queryIndex = `${data.language}-${data.bookName}/${data.chapter}:${data.verseStart}-${data.verseEnd}`;

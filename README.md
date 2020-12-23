@@ -28,6 +28,7 @@ https://stackoverflow.com/questions/58087446/all-media-queries-for-iphone-12-pro
 https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resources/Documents/index  
 7. working on myForm. around 68 lines... cannot default book and language... (Solved by useState)  
 8. in MyForm.js, useEffect(), there is a straightforward problem, Ref: https://stackoverflow.com/questions/13964155/get-javascript-object-from-array-of-objects-by-value-of-property  
+9. https://faithfoundedonfact.com/the-5-most-accurate-bible-translations/ I am studying which Bible version is good for here. Here is the best new testament in Greek.(Nestle-Aland) https://www.academic-bible.com/en/online-bibles/novum-testamentum-graece-na-28/read-the-bible-text/
 
 
 
@@ -46,7 +47,11 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 33. auto detect language and display the user's language.
 36. Only display number keys on iPad or iPhone. (it works sometimes... why?)
 37. Display style is strange on the Android phone.  
-41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.
+41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.  
+43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.)
+44. Can we do pull down and refresh everything? (https://stackoverflow.com/questions/46190436/how-to-detect-pull-to-refresh) or???(actually it's working on Android.)  
+46. Need to filter Russian language parts.  
+47. from source 2, we may get NULL feedback because wrong search.
 
 # Nice to have:  
 38. need Hebrew book names  
@@ -84,7 +89,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 39. need to fix &lt &gt issue. (https://stackoverflow.com/questions/12328773/understanding-lt-and-gt/12328790)(https://stackoverflow.com/questions/5068951/what-do-lt-and-gt-stand-for#:~:text=%3C%20stands%20for%20lesser%20than,greater%20than%20(%3E)%20symbol%20.) (12/21)  
 35. Some languages are still waiting to translate. ok. (12/21)  
 40. Put some transparent and larger effect on search icon. (ok. App.css 12/21)  
-42. Update queryWordsCreate to remap some vocabularies. Also update version to v0.8.2(12/22) 
+42. Update queryWordsCreate to remap some vocabularies. Also update version to v0.8.2(12/22)  
+45. I just know switch case cannot use || ... need to cascade cases, (in MyForm.js) (12/23)
 
 
 
