@@ -9,6 +9,10 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"23", verseStart:"4",verseEnd:"4"},
   //God is our harbour and our strength, a very present help in trouble.
   {key:"", value:"Psm", label:"Psalms", chapter:"46", verseStart:"1",verseEnd:"1"},
+  //Those who are without friends, God puts in families; he makes free those who are in chains; but those who are turned away from him are given a dry land.
+  {key:"", value:"Psm", label:"Psalms", chapter:"68", verseStart:"6",verseEnd:"6"},
+  //〈Of David.〉 The Lord is my light and my salvation; who is then a cause of fear to me? the Lord is the strength of my life; who is a danger to me?
+  {key:"", value:"Psm", label:"Psalms", chapter:"27", verseStart:"1",verseEnd:"1"},
   //Love is never tired of waiting; love is kind; love has no envy; love has no high opinion of itself, love has no pride; Love's ways are ever fair, it takes no thought for itself; it is not quickly made angry, it takes no account of evil; It takes no pleasure in wrongdoing, but has joy in what is true; Love has the power of undergoing all things, having faith in all things, hoping all things. Though the prophet's word may come to an end, tongues come to nothing, and knowledge have no more value, love has no end.
   {key:"", value:"1Co", label:"1 Corinthians", chapter:"13", verseStart:"4",verseEnd:"8"},
   //Who gives us comfort in all our troubles, so that we may be able to give comfort to others who are in trouble, through the comfort with which we ourselves are comforted by God. For as we undergo more of the pain which Christ underwent, so through Christ does our comfort become greater.
@@ -17,9 +21,9 @@ export default [
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"1", verseStart:"8",verseEnd:"9"},
   //For which cause we do not give way to weariness; but though our outer man is getting feebler, our inner man is made new day by day. For our present trouble, which is only for a short time, is working out for us a much greater weight of glory;
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"16",verseEnd:"17"},
-  //But we have this wealth in vessels of earth, so that it may be seen that the power comes not from us but from God; Troubles are round us on every side, but we are not shut in; things are hard for us, but we see a way out of them; We are cruelly attacked, but not without hope; we are made low, but we are not without help; 
+  //But we have this wealth in vessels of earth, so that it may be seen that the power comes not from us but from God; Troubles are round us on every side, but we are not shut in; things are hard for us, but we see a way out of them; We are cruelly attacked, but not without hope; we are made low, but we are not without help;
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"7",verseEnd:"9"},
-  //And he said to me, My grace is enough for you, for my power is made complete in what is feeble. Most gladly, then, will I take pride in my feeble body, so that the power of Christ may be on me. 
+  //And he said to me, My grace is enough for you, for my power is made complete in what is feeble. Most gladly, then, will I take pride in my feeble body, so that the power of Christ may be on me.
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"12", verseStart:"9",verseEnd:"9"},
   //In all things I was an example to you of how, in your lives, you are to give help to the feeble, and keep in memory the words of the Lord Jesus, how he himself said, There is a greater blessing in giving than in getting.
   {key:"", value:"Act", label:"Acts", chapter:"20", verseStart:"35",verseEnd:"35"},
@@ -37,6 +41,8 @@ export default [
   {key:"", value:"Mat", label:"Matthew", chapter:"11", verseStart:"28",verseEnd:"30"},
   //Let this then be your prayer: Our Father in heaven, may your name be kept holy. Let your kingdom come. Let your pleasure be done, as in heaven, so on earth. Give us this day bread for our needs. And make us free of our debts, as we have made those free who are in debt to us. And let us not be put to the test, but keep us safe from the Evil One.
   {key:"", value:"Mat", label:"Matthew", chapter:"6", verseStart:"9",verseEnd:"13"},
+  //Teaching them to keep all the rules which I have given you: and see, I am ever with you, even to the end of the world.
+  {key:"", value:"Mat", label:"Matthew", chapter:"28", verseStart:"20",verseEnd:"20"},
   //With nothing I came out of my mother's body, and with nothing I will go back there; the Lord gave and the Lord has taken away; let the Lord's name be praised.
   {key:"", value:"Job", label:"Job", chapter:"1", verseStart:"21",verseEnd:"21"},
   //He will keep you safe from six troubles, and in seven no evil will come near you. When there is need of food he will keep you from death, and in war from the power of the sword.
@@ -55,8 +61,10 @@ export default [
   {key:"", value:"Isa", label:"Isaiah", chapter:"30", verseStart:"15",verseEnd:"15"},
   //He gives power to the feeble, increasing the strength of him who has no force. Even the young men will become feeble and tired, and the best of them will come to the end of his strength; But those who are waiting for the Lord will have new strength; they will get wings like eagles: running, they will not be tired, and walking, they will have no weariness.
   {key:"", value:"Isa", label:"Isaiah", chapter:"40", verseStart:"29",verseEnd:"31"},
-  //He will not let a crushed stem be quite broken, and he will not let a feebly burning light be put out: he will go on sending out the true word to the peoples. 
+  //He will not let a crushed stem be quite broken, and he will not let a feebly burning light be put out: he will go on sending out the true word to the peoples.
   {key:"", value:"Isa", label:"Isaiah", chapter:"42", verseStart:"3",verseEnd:"3"},
+  //But now, says the Lord your Maker, O Jacob, and your life-giver, O Israel: have no fear, for I have taken up your cause; naming you by your name, I have made you mine.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"43", verseStart:"1",verseEnd:"1"},
   //And men will not say, See, it is here! or, There! for the kingdom of God is among you.
   {key:"", value:"Luk", label:"Luke", chapter:"17", verseStart:"21",verseEnd:"21"},
   //But he said, Things which are not possible with man are possible with God.
@@ -85,8 +93,16 @@ export default [
   {key:"", value:"Son", label:"Song of Songs", chapter:"1", verseStart:"4",verseEnd:"4"},
   //For God had such love for the world that he gave his only Son, so that whoever has faith in him may not come to destruction but have eternal life.
   {key:"", value:"Jhn", label:"John", chapter:"3", verseStart:"16",verseEnd:"16"},
+  //Now before the feast of the Passover, it was clear to Jesus that the time had come for him to go away from this world to the Father. Having once had love for those in the world who were his, his love for them went on to the end.
+  {key:"", value:"Jhn", label:"John", chapter:"13", verseStart:"1",verseEnd:"1"},
+  //And I will make prayer to the Father and he will give you another Helper to be with you for ever, Even the Spirit of true knowledge. That Spirit the world is not able to take to its heart because it sees him not and has no knowledge of him: but you have knowledge of him, because he is ever with you and will be in you. I will not let you be without a friend: I am coming to you.
+  {key:"", value:"Jhn", label:"John", chapter:"14", verseStart:"16",verseEnd:"18"},
   //For this cause let the hands which are hanging down be lifted up, and let the feeble knees be made strong, And make straight roads for your feet, so that the feeble may not be turned out of the way, but may be made strong.
   {key:"", value:"Heb", label:"Hebrews", chapter:"12", verseStart:"12",verseEnd:"13"},
+  //Be free from the love of money and pleased with the things which you have; for he himself has said, I will be with you at all times.
+  {key:"", value:"Heb", label:"Hebrews", chapter:"13", verseStart:"5",verseEnd:"5"},
+  //There is no fear in love: true love has no room for fear, because where fear is, there is pain; and he who is not free from fear is not complete in love.
+  {key:"", value:"1Jn", label:"1 John", chapter:"4", verseStart:"18",verseEnd:"18"},
   //I have said all these things to you so that in me you may have peace. In the world you have trouble: but take heart! I have overcome the world.
   {key:"", value:"Jhn", label:"John", chapter:"16", verseStart:"33",verseEnd:"33"}
 

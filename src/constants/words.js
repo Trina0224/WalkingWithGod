@@ -67,6 +67,14 @@ export default [
   {key:"", value: "feebly burning light", label: "feebly burning light"},//replace by queryWordsCreate.js
   {key:"", value: "crushed stem", label: "crushed stem"},//replace by queryWordsCreate.js
   {key:"", value: "straight roads", label: "straight roads"},
+  {key:"", value: "I am ever with you", label: "I am ever with you"},//replace by queryWordsCreate.js
+  {key:"", value: "friends", label: "friends"},
+  {key:"", value: "Helper", label: "Helper"},
+  {key:"", value: "salvation", label: "salvation"},
+  {key:"", value: "light", label: "light"},
+  {key:"", value: "Spirit", label: "Spirit"},//capital S.
+  {key:"", value: "families", label: "families"},//replace by queryWordsCreate.js
+
   {key:"", value: "love", label: "love"}
 
 ];

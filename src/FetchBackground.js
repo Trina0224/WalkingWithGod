@@ -89,8 +89,15 @@ function FetchBackground(){
     console.log("No Background Chgange require.");
     searchQuery = oldSearchQuery.final;
   }else{
-    console.log("Background Chgange require.");
-    searchQuery = searchSet.final;
+    //if search key clicked.
+    if(state.isSearchKeyClicked){
+      console.log("Background Chgange require becuase clicked");
+      searchQuery = searchSet.final;
+    }else{
+      console.log("No Background Chgange require. because no clicked");
+      searchQuery = oldSearchQuery.final;
+    }
+
   }
   //setOldSearchQuery(searchQuery);
   //  searchQuery = oldSearchQuery;

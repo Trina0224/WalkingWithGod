@@ -1,4 +1,12 @@
 
+
+//this function is help me internal usage in queryWordsCreate().
+function helpMePickOne(vocabularies){
+  const random = Math.floor(Math.random() * vocabularies.length);
+  return vocabularies[random];
+}
+
+
 function queryWordsCreate(verse, keywordsDictionary){
   if(verse.length){
     //console.log(verse); //from VerseDisplay.js
@@ -35,23 +43,35 @@ function queryWordsCreate(verse, keywordsDictionary){
   }
 
   //finalString = includingKeywords.join(" "); //it's for testing.
+  let tempArray=[];
   switch(finalString){
     case 'God':
       finalString = 'Jesus'; //if we just search God, other strange picture is coming.
     break;
     case 'feebly burning light':
-      finalString = 'candle'; //actually I hope i can also use 'candle light'
+      tempArray=['candle', 'candle light'];
+      finalString = helpMePickOne(tempArray);
+      //finalString = 'candle'; //actually I hope i can also use 'candle light'
     break;
     case 'crushed stem':
       finalString = 'reed';
     break;
     case 'wealth':
       finalString = 'treasure';
+    break;
+    case 'I am ever with you':
+      tempArray=['together', 'couple', 'romantic','love'];
+      finalString = helpMePickOne(tempArray);
+      //finalString = 'together'; //or couple.
+    break;
+    case 'families':
+      finalString = 'family';
+    break;
     default:
   }
 
   // if(finalString === "God"){
-  //   finalString = "Jesus"; 
+  //   finalString = "Jesus";
   // }else{
   //   ;
   // }
