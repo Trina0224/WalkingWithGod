@@ -50,8 +50,6 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.  
 43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.)
 44. Can we do pull down and refresh everything? (https://stackoverflow.com/questions/46190436/how-to-detect-pull-to-refresh) or???(actually it's working on Android.)  
-46. Need to filter Russian language parts.  
-47. from source 2, we may get NULL feedback because wrong search.
 
 # Nice to have:  
 38. need Hebrew book names  
@@ -91,6 +89,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 40. Put some transparent and larger effect on search icon. (ok. App.css 12/21)  
 42. Update queryWordsCreate to remap some vocabularies. Also update version to v0.8.2(12/22)  
 45. I just know switch case cannot use || ... need to cascade cases, (in MyForm.js) (12/23)
+46. Need to filter Russian language parts.  ok. (12/23)
+47. from source 2, we may get NULL feedback because wrong search. ok.(12/23) If no data, the server return us a string "NULL"
 
 
 
