@@ -48,8 +48,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 36. Only display number keys on iPad or iPhone. (it works sometimes... why?)
 37. Display style is strange on the Android phone.  
 41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.  
-43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.)
 44. Can we do pull down and refresh everything? (https://stackoverflow.com/questions/46190436/how-to-detect-pull-to-refresh) or???(actually it's working on Android.)  
+48. I found some verses from source 2. will cause huge data download from server. That's a bug.. will check later.
 
 # Nice to have:  
 38. need Hebrew book names  
@@ -90,7 +90,9 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 42. Update queryWordsCreate to remap some vocabularies. Also update version to v0.8.2(12/22)  
 45. I just know switch case cannot use || ... need to cascade cases, (in MyForm.js) (12/23)
 46. Need to filter Russian language parts.  ok. (12/23)
-47. from source 2, we may get NULL feedback because wrong search. ok.(12/23) If no data, the server return us a string "NULL"
+47. from source 2, we may get NULL feedback because wrong search. ok.(12/23) If no data, the server return us a string "NULL"  
+43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.) ok. (12/25)
+
 
 
 

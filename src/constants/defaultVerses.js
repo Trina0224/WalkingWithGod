@@ -55,6 +55,8 @@ export default [
   {key:"", value:"2Ti", label:"2 Timothy", chapter:"1", verseStart:"7",verseEnd:"7"},
   //Have no fear, for I am with you; do not be looking about in trouble, for I am your God; I will give you strength, yes, I will be your helper; yes, my true right hand will be your support.
   {key:"", value:"Isa", label:"Isaiah", chapter:"41", verseStart:"10",verseEnd:"10"},
+  //For to us a child has come, to us a son is given; and the government has been placed in his hands; and he has been named Wise Guide, Strong God, Father for ever, Prince of Peace.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"9", verseStart:"6",verseEnd:"6"},
   //But those who are waiting for the Lord will have new strength; they will get wings like eagles: running, they will not be tired, and walking, they will have no weariness.
   {key:"", value:"Isa", label:"Isaiah", chapter:"40", verseStart:"31",verseEnd:"31"},
   //For the Lord, the Holy One of Israel, said, In quiet and rest is your salvation: peace and hope are your strength: but you would not have it so.
