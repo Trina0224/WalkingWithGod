@@ -53,6 +53,12 @@ function queryWordsCreate(verse, keywordsDictionary){
       finalString = helpMePickOne(tempArray);
       //finalString = 'candle'; //actually I hope i can also use 'candle light'
     break;
+    case 'hands':
+    case 'hand of God':
+      tempArray=['hands', 'hand', 'hand of God'];
+      finalString = helpMePickOne(tempArray);
+      //finalString = 'candle'; //actually I hope i can also use 'candle light'
+    break;
     case 'crushed stem':
       finalString = 'reed';
     break;

@@ -74,7 +74,9 @@ export default [
   {key:"", value: "light", label: "light"},
   {key:"", value: "Spirit", label: "Spirit"},//capital S.
   {key:"", value: "families", label: "families"},//replace by queryWordsCreate.js
-
+  {key:"", value: "hand of God", label: "hand of God"},//replace by queryWordsCreate.js
+  {key:"", value: "hands", label: "hands"},//replace by queryWordsCreate.js
+  {key:"", value: "morning", label: "morning"},
   {key:"", value: "love", label: "love"}
 
 ];
