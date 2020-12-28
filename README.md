@@ -1,6 +1,8 @@
 <img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/IMG_0665.JPG" alt="drawing" width="300"/>
 <img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-15%20at%2010.49.50%20AM.png" alt="drawing" width="500"/>
+<img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-28%20at%201.59.54%20PM.png" alt="drawing" width="500"/>
 <img src="https://github.com/Trina0224/WalkingWithGod/blob/main/pic4github/Screen%20Shot%202020-12-15%20at%2010.52.27%20AM.png" alt="drawing" width="500"/>
+
 
 # Brief  
 Online Bible verses search, multi-languages support. Detect keywords and fetch related background image.
