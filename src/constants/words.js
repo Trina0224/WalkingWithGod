@@ -77,6 +77,7 @@ export default [
   {key:"", value: "hand of God", label: "hand of God"},//replace by queryWordsCreate.js
   {key:"", value: "hands", label: "hands"},//replace by queryWordsCreate.js
   {key:"", value: "morning", label: "morning"},
+  {key:"", value: "great things", label: "great things"},
   {key:"", value: "love", label: "love"}
 
 ];

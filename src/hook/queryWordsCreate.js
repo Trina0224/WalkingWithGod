@@ -70,6 +70,11 @@ function queryWordsCreate(verse, keywordsDictionary){
       finalString = helpMePickOne(tempArray);
       //finalString = 'together'; //or couple.
     break;
+    case 'great things':
+      tempArray=['great things', 'miracles', 'miracle'];
+      finalString = helpMePickOne(tempArray);
+      //finalString = 'together'; //or couple.
+    break;
     case 'families':
       finalString = 'family';
     break;

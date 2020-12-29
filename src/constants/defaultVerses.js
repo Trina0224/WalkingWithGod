@@ -67,6 +67,14 @@ export default [
   {key:"", value:"Job", label:"Job", chapter:"5", verseStart:"17",verseEnd:"20"},
   //He will keep you safe from six troubles, and in seven no evil will come near you. When there is need of food he will keep you from death, and in war from the power of the sword.
   {key:"", value:"Job", label:"Job", chapter:"5", verseStart:"19",verseEnd:"20"},
+  //Does God give wrong decisions? or is the Ruler of all not upright in his judging?
+  {key:"", value:"Job", label:"Job", chapter:"8", verseStart:"3",verseEnd:"3"},
+  //If you are clean and upright; then he will certainly be moved to take up your cause, and will make clear your righteousness by building up your house again. And though your start was small, your end will be very great.
+  {key:"", value:"Job", label:"Job", chapter:"8", verseStart:"6",verseEnd:"7"},
+  //Truly, God will not give up him who is without sin, and will not take evil-doers by the hand.
+  {key:"", value:"Job", label:"Job", chapter:"8", verseStart:"20",verseEnd:"20"},
+  //Who does great things not to be searched out; yes, wonders without number. 
+  {key:"", value:"Job", label:"Job", chapter:"9", verseStart:"10",verseEnd:"10"},
   //I am able to do all things through him who gives me strength.
   {key:"", value:"Phl", label:"Philippians", chapter:"4", verseStart:"13",verseEnd:"13"},
   //Have no cares; but in everything with prayer and praise put your requests before God. And the peace of God, which is deeper than all knowledge, will keep your hearts and minds in Christ Jesus.
