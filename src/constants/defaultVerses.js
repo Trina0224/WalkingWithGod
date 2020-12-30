@@ -19,6 +19,10 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"94", verseStart:"18",verseEnd:"19"},
   //Let the story of your mercy come to me in the morning, for my hope is in you: give me knowledge of the way in which I am to go; for my soul is lifted up to you.
   {key:"", value:"Psm", label:"Psalms", chapter:"143", verseStart:"8",verseEnd:"8"},
+  //Then I saw all the works which my hands had made, and everything I had been working to do; and I saw that all was to no purpose and desire for wind, and there was no profit under the sun.
+  {key:"", value:"Ecc", label:"Ecclesiastes", chapter:"2", verseStart:"11",verseEnd:"11"},
+  //He has made everything right in its time; but he has made their hearts without knowledge, so that man is unable to see the works of God, from the first to the last.
+  {key:"", value:"Ecc", label:"Ecclesiastes", chapter:"3", verseStart:"11",verseEnd:"11"},
   //Love is never tired of waiting; love is kind; love has no envy; love has no high opinion of itself, love has no pride; Love's ways are ever fair, it takes no thought for itself; it is not quickly made angry, it takes no account of evil; It takes no pleasure in wrongdoing, but has joy in what is true; Love has the power of undergoing all things, having faith in all things, hoping all things. Though the prophet's word may come to an end, tongues come to nothing, and knowledge have no more value, love has no end.
   {key:"", value:"1Co", label:"1 Corinthians", chapter:"13", verseStart:"4",verseEnd:"8"},
   //Who gives us comfort in all our troubles, so that we may be able to give comfort to others who are in trouble, through the comfort with which we ourselves are comforted by God. For as we undergo more of the pain which Christ underwent, so through Christ does our comfort become greater.
@@ -27,6 +31,8 @@ export default [
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"1", verseStart:"8",verseEnd:"9"},
   //For which cause we do not give way to weariness; but though our outer man is getting feebler, our inner man is made new day by day. For our present trouble, which is only for a short time, is working out for us a much greater weight of glory;
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"16",verseEnd:"17"},
+  //While our minds are not on the things which are seen, but on the things which are not seen: for the things which are seen are for a time; but the things which are not seen are eternal.
+  {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"18",verseEnd:"18"},
   //But we have this wealth in vessels of earth, so that it may be seen that the power comes not from us but from God; Troubles are round us on every side, but we are not shut in; things are hard for us, but we see a way out of them; We are cruelly attacked, but not without hope; we are made low, but we are not without help;
   {key:"", value:"2Co", label:"2 Corinthians", chapter:"4", verseStart:"7",verseEnd:"9"},
   //And he said to me, My grace is enough for you, for my power is made complete in what is feeble. Most gladly, then, will I take pride in my feeble body, so that the power of Christ may be on me.
@@ -39,6 +45,8 @@ export default [
   {key:"", value:"Rom", label:"Romans", chapter:"8", verseStart:"37",verseEnd:"39"},
   //And not only so, but let us have joy in our troubles: in the knowledge that trouble gives us the power of waiting; And waiting gives experience; and experience, hope: And hope does not put to shame; because our hearts are full of the love of God through the Holy Spirit which is given to us.
   {key:"", value:"Rom", label:"Romans", chapter:"5", verseStart:"3",verseEnd:"5"},
+  //And to make clear the wealth of his glory to vessels of mercy, which he had before made ready for glory, Even us, who were marked out by him, not only from the Jews, but from the Gentiles?
+  {key:"", value:"Rom", label:"Romans", chapter:"9", verseStart:"23",verseEnd:"24"},
   //Then have no care for tomorrow: tomorrow will take care of itself. Take the trouble of the day as it comes.
   {key:"", value:"Mat", label:"Matthew", chapter:"6", verseStart:"34",verseEnd:"34"},
   //Then do not be full of care, saying, What are we to have for food or drink? or, With what may we be clothed? Because the Gentiles go in search of all these things: for your Father in heaven has knowledge that you have need of all these things: But let your first care be for his kingdom and his righteousness; and all these other things will be given to you in addition. Then have no care for tomorrow: tomorrow will take care of itself. Take the trouble of the day as it comes.
@@ -49,6 +57,8 @@ export default [
   {key:"", value:"Mat", label:"Matthew", chapter:"11", verseStart:"28",verseEnd:"30"},
   //Let this then be your prayer: Our Father in heaven, may your name be kept holy. Let your kingdom come. Let your pleasure be done, as in heaven, so on earth. Give us this day bread for our needs. And make us free of our debts, as we have made those free who are in debt to us. And let us not be put to the test, but keep us safe from the Evil One.
   {key:"", value:"Mat", label:"Matthew", chapter:"6", verseStart:"9",verseEnd:"13"},
+  //For what profit has a man, if he gets all the world with the loss of his life? or what will a man give in exchange for his life?
+  {key:"", value:"Mat", label:"Matthew", chapter:"16", verseStart:"26",verseEnd:"26"},
   //Teaching them to keep all the rules which I have given you: and see, I am ever with you, even to the end of the world.
   {key:"", value:"Mat", label:"Matthew", chapter:"28", verseStart:"20",verseEnd:"20"},
   //With nothing I came out of my mother's body, and with nothing I will go back there; the Lord gave and the Lord has taken away; let the Lord's name be praised.
@@ -73,10 +83,12 @@ export default [
   {key:"", value:"Job", label:"Job", chapter:"8", verseStart:"6",verseEnd:"7"},
   //Truly, God will not give up him who is without sin, and will not take evil-doers by the hand.
   {key:"", value:"Job", label:"Job", chapter:"8", verseStart:"20",verseEnd:"20"},
-  //Who does great things not to be searched out; yes, wonders without number. 
+  //Who does great things not to be searched out; yes, wonders without number.
   {key:"", value:"Job", label:"Job", chapter:"9", verseStart:"10",verseEnd:"10"},
   //I am able to do all things through him who gives me strength.
   {key:"", value:"Phl", label:"Philippians", chapter:"4", verseStart:"13",verseEnd:"13"},
+  //But those things which were profit to me, I gave up for Christ. Yes truly, and I am ready to give up all things for the knowledge of Christ Jesus my Lord, which is more than all: for whom I have undergone the loss of all things, and to me they are less than nothing, so that I may have Christ as my reward,
+  {key:"", value:"Phl", label:"Philippians", chapter:"3", verseStart:"7",verseEnd:"8"},
   //Have no cares; but in everything with prayer and praise put your requests before God. And the peace of God, which is deeper than all knowledge, will keep your hearts and minds in Christ Jesus.
   {key:"", value:"Phl", label:"Philippians", chapter:"4", verseStart:"6",verseEnd:"7"},
   //Then he said to them, Go away now, and take the fat for your food and the sweet for your drink, and send some to him for whom nothing is made ready: for this day is holy to our Lord: and let there be no grief in your hearts; for the joy of the Lord is your strong place.
@@ -115,6 +127,10 @@ export default [
   {key:"", value:"Gal", label:"Galatians", chapter:"5", verseStart:"22",verseEnd:"23"},
   //Lastly, be strong in the Lord, and in the strength of his power. Take up God's instruments of war, so that you may be able to keep your position against all the deceits of the Evil One. For our fight is not against flesh and blood, but against authorities and powers, against the world-rulers of this dark night, against the spirits of evil in the heavens. For this reason take up all the arms of God, so that you may be able to be strong in the evil day, and, having done all, to keep your place. Take your place, then, having your body clothed with the true word, and having put on the breastplate of righteousness; Be ready with the good news of peace as shoes on your feet; And most of all, using faith as a cover to keep off all the flaming arrows of the Evil One. And take salvation for your head-dress and the sword of the Spirit, which is the word of God: With prayers and deep desires, making requests at all times in the Spirit, and keeping watch, with strong purpose, in prayer for all the saints,
   {key:"", value:"Eph", label:"Ephesians", chapter:"6", verseStart:"10",verseEnd:"18"},
+  //Take care then how you are living, not as unwise, but as wise; Making good use of the time, because the days are evil.
+  {key:"", value:"Eph", label:"Ephesians", chapter:"5", verseStart:"15",verseEnd:"16"},
+  //For it is said, All flesh is like grass, and all its glory like the flower of the grass. The grass becomes dry and the flower dead: But the word of the Lord is eternal. And this is the word of the good news which was given to you.
+  {key:"", value:"1Pe", label:"1 Peter", chapter:"1", verseStart:"24",verseEnd:"25"},
   //And after you have undergone pain for a little time, the God of all grace who has given you a part in his eternal glory through Christ Jesus, will himself give you strength and support, and make you complete in every good thing;
   {key:"", value:"1Pe", label:"1 Peter", chapter:"5", verseStart:"10",verseEnd:"10"},
   //Putting all your troubles on him, for he takes care of you.
@@ -129,6 +145,8 @@ export default [
   {key:"", value:"Son", label:"Song of Songs", chapter:"1", verseStart:"4",verseEnd:"4"},
   //For God had such love for the world that he gave his only Son, so that whoever has faith in him may not come to destruction but have eternal life.
   {key:"", value:"Jhn", label:"John", chapter:"3", verseStart:"16",verseEnd:"16"},
+  //Jesus said to her, Everyone who takes this water will be in need of it again: But whoever takes the water I give him will never be in need of drink again; for the water I give him will become in him a fountain of eternal life.
+  {key:"", value:"Jhn", label:"John", chapter:"4", verseStart:"13",verseEnd:"14"},
   //Now before the feast of the Passover, it was clear to Jesus that the time had come for him to go away from this world to the Father. Having once had love for those in the world who were his, his love for them went on to the end.
   {key:"", value:"Jhn", label:"John", chapter:"13", verseStart:"1",verseEnd:"1"},
   //And I will make prayer to the Father and he will give you another Helper to be with you for ever, Even the Spirit of true knowledge. That Spirit the world is not able to take to its heart because it sees him not and has no knowledge of him: but you have knowledge of him, because he is ever with you and will be in you. I will not let you be without a friend: I am coming to you.

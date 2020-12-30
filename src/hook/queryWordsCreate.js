@@ -73,7 +73,14 @@ function queryWordsCreate(verse, keywordsDictionary){
     case 'great things':
       tempArray=['great things', 'miracles', 'miracle'];
       finalString = helpMePickOne(tempArray);
-      //finalString = 'together'; //or couple.
+    break;
+    case 'eternal':
+      tempArray=['eternal', 'forever'];
+      finalString = helpMePickOne(tempArray);
+    break;
+    case 'water':
+      tempArray=['water', 'ocean', 'river', 'waterfall', 'sea', 'waves', 'spring water', 'water in the forest'];
+      finalString = helpMePickOne(tempArray);
     break;
     case 'families':
       finalString = 'family';

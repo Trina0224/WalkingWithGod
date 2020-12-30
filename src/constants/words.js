@@ -78,6 +78,13 @@ export default [
   {key:"", value: "hands", label: "hands"},//replace by queryWordsCreate.js
   {key:"", value: "morning", label: "morning"},
   {key:"", value: "great things", label: "great things"},
+  {key:"", value: "eternal", label: "eternal"},//replace by queryWordsCreate.js
+  {key:"", value: "Take care", label: "Take care"},
+  {key:"", value: "gress", label: "gress"},
+  {key:"", value: "flower", label: "flower"},
+  {key:"", value: "water", label: "water"},//replace by queryWordsCreate.js
+  {key:"", value: "fountain", label: "fountain"},
+  {key:"", value: "glory", label: "glory"},
   {key:"", value: "love", label: "love"}
 
 ];
