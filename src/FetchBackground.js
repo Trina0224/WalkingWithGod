@@ -80,6 +80,8 @@ function FetchBackground(){
   }
   searchSet = queryWordsCreate(verse,map);
   //searchQuery = queryWordsCreate(verse, map);
+  console.log(searchSet);
+  console.log(oldSearchQuery);
   console.log(searchSet.keyWordsSet);
   console.log(oldSearchQuery.keyWordsSet);
   if(arraysEqual(oldSearchQuery.keyWordsSet, searchSet.keyWordsSet)){
@@ -103,10 +105,20 @@ function FetchBackground(){
   //  searchQuery = oldSearchQuery;
 
 
-  if(searchQuery === state.searchBackgroundQuery){
-    searchQuery = defaultword; //no mapping word in record. use default word.
+  if(searchQuery === state.searchBackgroundQuery){// verses is the same one.
+    //searchQuery = defaultword; //no mapping word in record. use default word.
+    //if(searchSet.final !== defaultword && searchSet.final !=="")
+      searchQuery = searchSet.final;//i think this one is right, not defaultword.
+    //else
+      //searchQuery = defaultword; //no mapping word in record. use default word.
+
   }
+
   console.log(searchQuery);
+  //the reasone to put below line here is: after first time fetch background,
+  //if button clicked, related code will run again. if no, always put false is fine.
+  dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
+
 
 
   let [photos, setPhotos] = useState([]);

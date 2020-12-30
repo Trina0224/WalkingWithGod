@@ -283,7 +283,8 @@ function VerseDisplay(props){
 
 
   let noSmallTag = state.grabbedText;
-  dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
+  //below line should move to FetchBackground.js
+  //dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
 
 
   //console.log(noSmallTag);

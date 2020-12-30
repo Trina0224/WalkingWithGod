@@ -57,7 +57,7 @@ function reducer(state, action) {
     break;
 
     case 'UPDATE_SEARCH_CLICKED':
-      console.log("// DEBUG: In reducer() search key is clicked.");
+      console.log("// DEBUG: In reducer() search key is clicked. or status updated.");
       return update(state, { "isSearchKeyClicked": {$set: action.data}});
     break;
 

@@ -51,7 +51,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 37. Display style is strange on the Android phone.  
 41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.  
 44. Can we do pull down and refresh everything? (https://stackoverflow.com/questions/46190436/how-to-detect-pull-to-refresh) or???(actually it's working on Android.)  
-48. I found some verses from source 2. will cause huge data download from server. That's a bug.. will check later.
+48. I found some verses from source 2. will cause huge data download from server. That's a bug.. will check later.  
+49. Work on background change issue. (12/30)
 
 # Nice to have:  
 38. need Hebrew book names  

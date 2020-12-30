@@ -107,8 +107,12 @@ function queryWordsCreate(verse, keywordsDictionary){
     console.log(retVal);
     returnObj.keyWordsSet = retVal; // create random sets for dummy usage.-->in order to fix no background query issue.
   }
+  else{
+
+  }
     if(finalString){
       returnObj.final=finalString;
+      returnObj.keyWordsSet = includingKeywords;//12/30
       //return finalString;
       return returnObj;
     }else{
