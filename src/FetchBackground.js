@@ -115,9 +115,6 @@ function FetchBackground(){
   }
 
   console.log(searchQuery);
-  //the reasone to put below line here is: after first time fetch background,
-  //if button clicked, related code will run again. if no, always put false is fine.
-  dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
 
 
 
@@ -218,6 +215,7 @@ function FetchBackground(){
 
   }, [searchQuery, url]);
 //}, [searchSet.keyWordsSet, url]);
+
 
 
   // let myBackgroundURL="";

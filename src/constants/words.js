@@ -86,6 +86,10 @@ export default [
   {key:"", value: "fountain", label: "fountain"},
   {key:"", value: "glory", label: "glory"},
   {key:"", value: "love", label: "love"}
+  // {key:"", value: "anemone", label: "anemone"},//flower name. from page.1355~
+  // {key:"", value: "crocus", label: "crocus"},//flower name.
+  // {key:"", value: "cyclamen", label: "cyclamen"},//flower name.
+  // {key:"", value: "hyacinth", label: "hyacinth"},//flower name.
 
 ];
 //feeble?

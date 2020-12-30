@@ -134,6 +134,9 @@ function VerseDisplay(props){
             dispatch({ type: 'UPDATE_INPUT', data: noSmallTag,});
             // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,}); //only successfully display verse and can clean this flag.
             dispatch({ type: 'UPDATE_SEARCH', data: "NoSearchRequired",});//clear search query from Form.
+            //the reasone to put below line here is: after first time fetch background,
+            //if button clicked, related code will run again. if no, always put false is fine.
+            dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
 
             return responseData;
             //this.setState({ author: responseData});
@@ -167,6 +170,10 @@ function VerseDisplay(props){
               dispatch({ type: 'UPDATE_INPUT', data: "Not included in this bible version.",});
               // dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,}); //only successfully display verse and can clean this flag.
               dispatch({ type: 'UPDATE_SEARCH', data: "NoSearchRequired",});//clear search query from Form.
+              //the reasone to put below line here is: after first time fetch background,
+              //if button clicked, related code will run again. if no, always put false is fine.
+              dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: false,});//enable search button.
+
               return responseData;
 
             }else{
