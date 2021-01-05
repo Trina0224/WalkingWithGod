@@ -100,7 +100,7 @@ React.useEffect(() => {
     //console.log(data);
 
     dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
-    dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server...",});
+    dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server, it may take 30 secs for first search if no other seach happened in past hour...",});
     sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
     //console.log(state);
