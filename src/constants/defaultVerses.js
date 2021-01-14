@@ -1,4 +1,6 @@
 export default [
+  //And Jabez made a prayer to the God of Israel, saying, If only you would truly give me a blessing, and make wider the limits of my land, and let your hand be with me, and keep me from evil, so that I may not be troubled by it! And God gave him his desire.
+  {key:"", value:"1Ch", label:"1 Chronicles", chapter:"4", verseStart:"10",verseEnd:"10"},
   //&lt;To the chief music-maker; put to Al-tashheth. Michtam. Of David. When he went in flight from Saul, in the hole of the rock.&gt; Have mercy on me, O God, have mercy on me; for the hope of my soul is in you: I will keep myself safely under the shade of your wings, till these troubles are past.
   {key:"", value:"Psm", label:"Psalms", chapter:"57", verseStart:"1",verseEnd:"1"},
   //Make a clean heart in me, O God; give me a right spirit again.
