@@ -55,7 +55,8 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 49. Work on background change issue. (12/30)
 
 # Nice to have:  
-38. need Hebrew book names  
+38. need Hebrew book names. I learned bible Hebrew and updated OT parts to Hebrew. (1/15/2021)  
+
 
 
 # Done:  

@@ -10,7 +10,7 @@ import bookOptionsDeu from "./constants/bookOptionsDeu.js"; //Deutsch
 import bookOptionsFra from "./constants/bookOptionsFra.js"; //French
 import bookOptionsGek from "./constants/bookOptionsGek.js"; //Greek
 import bookOptionsKor from "./constants/bookOptionsKor.js"; //Korean
-import bookOptionsHeb from "./constants/bookOptionsHeb.js"; //Hebrew, still use English. No new testaments.
+import bookOptionsHeb from "./constants/bookOptionsHeb.js"; //Hebrew, still use English. No new testaments. 1/15/2021, updated to Hebrew
 import bookOptionsOT from "./constants/bookOptionsOT.js"; //only old testament
 import bookOptionsNT from "./constants/bookOptionsNT.js"; //only new testament
 
@@ -100,7 +100,7 @@ React.useEffect(() => {
     //console.log(data);
 
     dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
-    dispatch({ type: 'UPDATE_INPUT', data: "fetching data from server, it may take 30 secs for first search if no other seach happened in past hour...",});
+    dispatch({ type: 'UPDATE_INPUT', data: "Fetching data from the server, it may take 30 secs for the first search if no other search happened in the past an hour...",});
     sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
     //console.log(state);
