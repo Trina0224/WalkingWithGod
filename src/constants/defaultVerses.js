@@ -45,6 +45,8 @@ export default [
   {key:"", value:"Rom", label:"Romans", chapter:"8", verseStart:"28",verseEnd:"28"},
   //But we are able to overcome all these things and more through his love. For I am certain that not death, or life, or angels, or rulers, or things present, or things to come, or powers, Or things on high, or things under the earth, or anything which is made, will be able to come between us and the love of God which is in Christ Jesus our Lord.
   {key:"", value:"Rom", label:"Romans", chapter:"8", verseStart:"37",verseEnd:"39"},
+  //For which reason, because we have righteousness through faith, let us be at peace with God through our Lord Jesus Christ; Through whom, in the same way, we have been able by faith to come to this grace in which we now are; and let us have joy in hope of the glory of God.
+  {key:"", value:"Rom", label:"Romans", chapter:"5", verseStart:"1",verseEnd:"2"},
   //And not only so, but let us have joy in our troubles: in the knowledge that trouble gives us the power of waiting; And waiting gives experience; and experience, hope: And hope does not put to shame; because our hearts are full of the love of God through the Holy Spirit which is given to us.
   {key:"", value:"Rom", label:"Romans", chapter:"5", verseStart:"3",verseEnd:"5"},
   //And to make clear the wealth of his glory to vessels of mercy, which he had before made ready for glory, Even us, who were marked out by him, not only from the Jews, but from the Gentiles?
@@ -111,6 +113,8 @@ export default [
   {key:"", value:"Isa", label:"Isaiah", chapter:"42", verseStart:"3",verseEnd:"3"},
   //But now, says the Lord your Maker, O Jacob, and your life-giver, O Israel: have no fear, for I have taken up your cause; naming you by your name, I have made you mine.
   {key:"", value:"Isa", label:"Isaiah", chapter:"43", verseStart:"1",verseEnd:"1"},
+  //Up! let your face be bright, for your light has come, and the glory of the Lord is shining on you. For truly, the earth will be dark, and the peoples veiled in blackest night; but the Lord will be shining on you, and his glory will be seen among you. And nations will come to your light, and kings to your bright dawn.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"60", verseStart:"1",verseEnd:"3"},
   //And men will not say, See, it is here! or, There! for the kingdom of God is among you.
   {key:"", value:"Luk", label:"Luke", chapter:"17", verseStart:"21",verseEnd:"21"},
   //But he said, Things which are not possible with man are possible with God.
