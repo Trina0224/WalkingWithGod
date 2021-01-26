@@ -82,6 +82,10 @@ function queryWordsCreate(verse, keywordsDictionary){
       tempArray=['water', 'ocean', 'river', 'waterfall', 'sea', 'waves', 'spring water', 'water in the forest'];
       finalString = helpMePickOne(tempArray);
     break;
+    case 'snow':
+      tempArray=['snow', 'glacier', 'iceberg', 'sheep'];
+      finalString = helpMePickOne(tempArray);
+    break;
     case 'families':
       finalString = 'family';
     break;

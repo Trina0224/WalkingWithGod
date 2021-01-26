@@ -1,6 +1,16 @@
 export default [
+  //I am the Lord your God who took you out of the land of Egypt, out of the prison-house.
+  {key:"", value: "Exo", label:"Exodus", chapter:"20", verseStart:"2",verseEnd:"2"},
+  //The pillar of cloud went ever before them by day, and the pillar of fire by night.
+  {key:"", value: "Exo", label:"Exodus", chapter:"13", verseStart:"22",verseEnd:"22"},
+  //And the children of Israel went through the sea on dry land: and the waters were a wall on their right side and on their left.
+  {key:"", value: "Exo", label:"Exodus", chapter:"14", verseStart:"22",verseEnd:"22"},
+  //And it came between the army of Egypt and the army of Israel; and there was a dark cloud between them, and they went on through the night; but the one army came no nearer to the other all the night.
+  {key:"", value: "Exo", label:"Exodus", chapter:"14", verseStart:"20",verseEnd:"20"},
   //And Jabez made a prayer to the God of Israel, saying, If only you would truly give me a blessing, and make wider the limits of my land, and let your hand be with me, and keep me from evil, so that I may not be troubled by it! And God gave him his desire.
   {key:"", value:"1Ch", label:"1 Chronicles", chapter:"4", verseStart:"10",verseEnd:"10"},
+  //And when the players on horns, and those who made melody in song, with one voice were sounding the praise and glory of the Lord; with loud voices and with wind instruments, and brass and corded instruments of music, praising the Lord and saying, He is good; his mercy is unchanging for ever: then the house was full of the cloud of the glory of the Lord,
+  {key:"", value:"2Ch", label:"2 Chronicles", chapter:"5", verseStart:"13",verseEnd:"13"},
   //&lt;To the chief music-maker; put to Al-tashheth. Michtam. Of David. When he went in flight from Saul, in the hole of the rock.&gt; Have mercy on me, O God, have mercy on me; for the hope of my soul is in you: I will keep myself safely under the shade of your wings, till these troubles are past.
   {key:"", value:"Psm", label:"Psalms", chapter:"57", verseStart:"1",verseEnd:"1"},
   //Make a clean heart in me, O God; give me a right spirit again.
@@ -9,6 +19,8 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"55", verseStart:"22",verseEnd:"22"},
   //Yes, though I go through the valley of deep shade, I will have no fear of evil; for you are with me, your rod and your support are my comfort.
   {key:"", value:"Psm", label:"Psalms", chapter:"23", verseStart:"4",verseEnd:"4"},
+  //For he gave the word, and it was done; by his order it was fixed for ever.
+  {key:"", value:"Psm", label:"Psalms", chapter:"33", verseStart:"9",verseEnd:"9"},
   //God is our harbour and our strength, a very present help in trouble.
   {key:"", value:"Psm", label:"Psalms", chapter:"46", verseStart:"1",verseEnd:"1"},
   //Why are you crushed down, O my soul? and why are you troubled in me? put your hope in God; for I will again give him praise who is my help and my God.
@@ -19,6 +31,8 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"27", verseStart:"1",verseEnd:"1"},
   //If I say, My foot is slipping; your mercy, O Lord, is my support. Among all my troubled thoughts, your comforts are the delight of my soul.
   {key:"", value:"Psm", label:"Psalms", chapter:"94", verseStart:"18",verseEnd:"19"},
+  //The Lord is my strength and my song; he has become my salvation. The sound of joy and salvation is in the tents of the upright; the right hand of the Lord does works of power. The right hand of the Lord is lifted up; the right hand of the Lord does works of power. Life and not death will be my part, and I will give out the story of the works of the Lord.
+  {key:"", value:"Psm", label:"Psalms", chapter:"118", verseStart:"14",verseEnd:"17"},
   //Let the story of your mercy come to me in the morning, for my hope is in you: give me knowledge of the way in which I am to go; for my soul is lifted up to you.
   {key:"", value:"Psm", label:"Psalms", chapter:"143", verseStart:"8",verseEnd:"8"},
   //Then I saw all the works which my hands had made, and everything I had been working to do; and I saw that all was to no purpose and desire for wind, and there was no profit under the sun.
@@ -43,8 +57,14 @@ export default [
   {key:"", value:"Act", label:"Acts", chapter:"20", verseStart:"35",verseEnd:"35"},
   //And we are conscious that all things are working together for good to those who have love for God, and have been marked out by his purpose.
   {key:"", value:"Rom", label:"Romans", chapter:"8", verseStart:"28",verseEnd:"28"},
+  //And we are conscious that all things are working together for good to those who have love for God, and have been marked out by his purpose. Because those of whom he had knowledge before they came into existence, were marked out by him to be made like his Son, so that he might be the first among a band of brothers: And those who were marked out by him were named; and those who were named were given righteousness; and to those to whom he gave righteousness, in the same way he gave glory.
+  {key:"", value:"Rom", label:"Romans", chapter:"8", verseStart:"28",verseEnd:"30"},
   //But we are able to overcome all these things and more through his love. For I am certain that not death, or life, or angels, or rulers, or things present, or things to come, or powers, Or things on high, or things under the earth, or anything which is made, will be able to come between us and the love of God which is in Christ Jesus our Lord.
   {key:"", value:"Rom", label:"Romans", chapter:"8", verseStart:"37",verseEnd:"39"},
+  //For which reason, because we have righteousness through faith, let us be at peace with God through our Lord Jesus Christ; Through whom, in the same way, we have been able by faith to come to this grace in which we now are; and let us have joy in hope of the glory of God.
+  {key:"", value:"Rom", label:"Romans", chapter:"5", verseStart:"1",verseEnd:"2"},
+  //And they may have righteousness put to their credit, freely, by his grace, through the salvation which is in Christ Jesus:
+  {key:"", value:"Rom", label:"Romans", chapter:"3", verseStart:"24",verseEnd:"24"},
   //For which reason, because we have righteousness through faith, let us be at peace with God through our Lord Jesus Christ; Through whom, in the same way, we have been able by faith to come to this grace in which we now are; and let us have joy in hope of the glory of God.
   {key:"", value:"Rom", label:"Romans", chapter:"5", verseStart:"1",verseEnd:"2"},
   //And not only so, but let us have joy in our troubles: in the knowledge that trouble gives us the power of waiting; And waiting gives experience; and experience, hope: And hope does not put to shame; because our hearts are full of the love of God through the Holy Spirit which is given to us.
@@ -63,6 +83,8 @@ export default [
   {key:"", value:"Mat", label:"Matthew", chapter:"6", verseStart:"9",verseEnd:"13"},
   //For what profit has a man, if he gets all the world with the loss of his life? or what will a man give in exchange for his life?
   {key:"", value:"Mat", label:"Matthew", chapter:"16", verseStart:"26",verseEnd:"26"},
+  //For where two or three are come together in my name, there am I among them.
+  {key:"", value:"Mat", label:"Matthew", chapter:"18", verseStart:"20",verseEnd:"20"},
   //Teaching them to keep all the rules which I have given you: and see, I am ever with you, even to the end of the world.
   {key:"", value:"Mat", label:"Matthew", chapter:"28", verseStart:"20",verseEnd:"20"},
   //With nothing I came out of my mother's body, and with nothing I will go back there; the Lord gave and the Lord has taken away; let the Lord's name be praised.
@@ -93,18 +115,24 @@ export default [
   {key:"", value:"Phl", label:"Philippians", chapter:"4", verseStart:"13",verseEnd:"13"},
   //But those things which were profit to me, I gave up for Christ. Yes truly, and I am ready to give up all things for the knowledge of Christ Jesus my Lord, which is more than all: for whom I have undergone the loss of all things, and to me they are less than nothing, so that I may have Christ as my reward,
   {key:"", value:"Phl", label:"Philippians", chapter:"3", verseStart:"7",verseEnd:"8"},
+  //I go forward to the mark, even the reward of the high purpose of God in Christ Jesus.
+  {key:"", value:"Phl", label:"Philippians", chapter:"3", verseStart:"14",verseEnd:"14"},
   //Have no cares; but in everything with prayer and praise put your requests before God. And the peace of God, which is deeper than all knowledge, will keep your hearts and minds in Christ Jesus.
   {key:"", value:"Phl", label:"Philippians", chapter:"4", verseStart:"6",verseEnd:"7"},
   //Then he said to them, Go away now, and take the fat for your food and the sweet for your drink, and send some to him for whom nothing is made ready: for this day is holy to our Lord: and let there be no grief in your hearts; for the joy of the Lord is your strong place.
   {key:"", value:"Neh", label:"Nehemiah", chapter:"8", verseStart:"10",verseEnd:"10"},
   //For God did not give us a spirit of fear, but of power and of love and of self-control.
   {key:"", value:"2Ti", label:"2 Timothy", chapter:"1", verseStart:"7",verseEnd:"7"},
+  //Come now, and let us have an argument together, says the Lord: how may your sins which are red like blood be white as snow? how may their dark purple seem like wool?
+  {key:"", value:"Isa", label:"Isaiah", chapter:"1", verseStart:"18",verseEnd:"18"},
   //Have no fear, for I am with you; do not be looking about in trouble, for I am your God; I will give you strength, yes, I will be your helper; yes, my true right hand will be your support.
   {key:"", value:"Isa", label:"Isaiah", chapter:"41", verseStart:"10",verseEnd:"10"},
   //For to us a child has come, to us a son is given; and the government has been placed in his hands; and he has been named Wise Guide, Strong God, Father for ever, Prince of Peace.
   {key:"", value:"Isa", label:"Isaiah", chapter:"9", verseStart:"6",verseEnd:"6"},
   //But those who are waiting for the Lord will have new strength; they will get wings like eagles: running, they will not be tired, and walking, they will have no weariness.
   {key:"", value:"Isa", label:"Isaiah", chapter:"40", verseStart:"31",verseEnd:"31"},
+  //Have you no knowledge of it? has it not come to your ears? The eternal God, the Lord, the Maker of the ends of the earth, is never feeble or tired; there is no searching out of his wisdom.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"40", verseStart:"28",verseEnd:"28"},
   //For the Lord, the Holy One of Israel, said, In quiet and rest is your salvation: peace and hope are your strength: but you would not have it so.
   {key:"", value:"Isa", label:"Isaiah", chapter:"30", verseStart:"15",verseEnd:"15"},
   //He gives power to the feeble, increasing the strength of him who has no force. Even the young men will become feeble and tired, and the best of them will come to the end of his strength; But those who are waiting for the Lord will have new strength; they will get wings like eagles: running, they will not be tired, and walking, they will have no weariness.
@@ -113,8 +141,12 @@ export default [
   {key:"", value:"Isa", label:"Isaiah", chapter:"42", verseStart:"3",verseEnd:"3"},
   //But now, says the Lord your Maker, O Jacob, and your life-giver, O Israel: have no fear, for I have taken up your cause; naming you by your name, I have made you mine.
   {key:"", value:"Isa", label:"Isaiah", chapter:"43", verseStart:"1",verseEnd:"1"},
+  //But it was for our sins he was wounded, and for our evil doings he was crushed: he took the punishment by which we have peace, and by his wounds we are made well.
+  {key:"", value:"Isa", label:"Isaiah", chapter:"53", verseStart:"5",verseEnd:"5"},
   //Up! let your face be bright, for your light has come, and the glory of the Lord is shining on you. For truly, the earth will be dark, and the peoples veiled in blackest night; but the Lord will be shining on you, and his glory will be seen among you. And nations will come to your light, and kings to your bright dawn.
   {key:"", value:"Isa", label:"Isaiah", chapter:"60", verseStart:"1",verseEnd:"3"},
+  //Glory to God in the highest, and on the earth peace among men with whom he is well pleased.
+  {key:"", value:"Luk", label:"Luke", chapter:"2", verseStart:"14",verseEnd:"14"},
   //And men will not say, See, it is here! or, There! for the kingdom of God is among you.
   {key:"", value:"Luk", label:"Luke", chapter:"17", verseStart:"21",verseEnd:"21"},
   //But he said, Things which are not possible with man are possible with God.
@@ -129,14 +161,22 @@ export default [
   {key:"", value:"Pro", label:"Proverbs", chapter:"3", verseStart:"5",verseEnd:"6"},
   //The blessing of the Lord gives wealth: hard work makes it no greater.
   {key:"", value:"Pro", label:"Proverbs", chapter:"10", verseStart:"22",verseEnd:"22"},
+  //Before destruction the heart of man is full of pride, and before honour goes a gentle spirit.
+  {key:"", value:"Pro", label:"Proverbs", chapter:"18", verseStart:"12",verseEnd:"12"},
+  //Christ has truly made us free: then keep your free condition and let no man put a yoke on you again.
+  {key:"", value:"Gal", label:"Galatians", chapter:"5", verseStart:"1",verseEnd:"1"},
   //But the fruit of the Spirit is love, joy, peace, a quiet mind, kind acts, well-doing, faith, Gentle behaviour, control over desires: against such there is no law.
   {key:"", value:"Gal", label:"Galatians", chapter:"5", verseStart:"22",verseEnd:"23"},
   //Lastly, be strong in the Lord, and in the strength of his power. Take up God's instruments of war, so that you may be able to keep your position against all the deceits of the Evil One. For our fight is not against flesh and blood, but against authorities and powers, against the world-rulers of this dark night, against the spirits of evil in the heavens. For this reason take up all the arms of God, so that you may be able to be strong in the evil day, and, having done all, to keep your place. Take your place, then, having your body clothed with the true word, and having put on the breastplate of righteousness; Be ready with the good news of peace as shoes on your feet; And most of all, using faith as a cover to keep off all the flaming arrows of the Evil One. And take salvation for your head-dress and the sword of the Spirit, which is the word of God: With prayers and deep desires, making requests at all times in the Spirit, and keeping watch, with strong purpose, in prayer for all the saints,
   {key:"", value:"Eph", label:"Ephesians", chapter:"6", verseStart:"10",verseEnd:"18"},
   //Take care then how you are living, not as unwise, but as wise; Making good use of the time, because the days are evil.
   {key:"", value:"Eph", label:"Ephesians", chapter:"5", verseStart:"15",verseEnd:"16"},
+  //Because by grace you have salvation through faith; and that not of yourselves: it is given by God:
+  {key:"", value:"Eph", label:"Ephesians", chapter:"2", verseStart:"8",verseEnd:"8"},
   //For it is said, All flesh is like grass, and all its glory like the flower of the grass. The grass becomes dry and the flower dead: But the word of the Lord is eternal. And this is the word of the good news which was given to you.
   {key:"", value:"1Pe", label:"1 Peter", chapter:"1", verseStart:"24",verseEnd:"25"},
+  //To whom your love is given, though you have not seen him; and the faith which you have in him, though you do not see him now, gives you joy greater than words and full of glory:
+  {key:"", value:"1Pe", label:"1 Peter", chapter:"1", verseStart:"8",verseEnd:"8"},
   //And after you have undergone pain for a little time, the God of all grace who has given you a part in his eternal glory through Christ Jesus, will himself give you strength and support, and make you complete in every good thing;
   {key:"", value:"1Pe", label:"1 Peter", chapter:"5", verseStart:"10",verseEnd:"10"},
   //Putting all your troubles on him, for he takes care of you.
@@ -163,6 +203,8 @@ export default [
   {key:"", value:"Jhn", label:"John", chapter:"14", verseStart:"27",verseEnd:"27"},
   //For this cause let the hands which are hanging down be lifted up, and let the feeble knees be made strong, And make straight roads for your feet, so that the feeble may not be turned out of the way, but may be made strong.
   {key:"", value:"Heb", label:"Hebrews", chapter:"12", verseStart:"12",verseEnd:"13"},
+  //If then, we have a kingdom which will never be moved, let us have grace, so that we may give God such worship as is pleasing to him with fear and respect:
+  {key:"", value:"Heb", label:"Hebrews", chapter:"12", verseStart:"28",verseEnd:"28"},
   //Be free from the love of money and pleased with the things which you have; for he himself has said, I will be with you at all times.
   {key:"", value:"Heb", label:"Hebrews", chapter:"13", verseStart:"5",verseEnd:"5"},
   //There is no fear in love: true love has no room for fear, because where fear is, there is pain; and he who is not free from fear is not complete in love.

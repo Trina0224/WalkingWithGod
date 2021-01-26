@@ -85,6 +85,7 @@ export default [
   {key:"", value: "water", label: "water"},//replace by queryWordsCreate.js
   {key:"", value: "fountain", label: "fountain"},
   {key:"", value: "glory", label: "glory"},
+  {key:"", value: "snow", label: "snow"},
   {key:"", value: "love", label: "love"}
   // {key:"", value: "anemone", label: "anemone"},//flower name. from page.1355~
   // {key:"", value: "crocus", label: "crocus"},//flower name.
