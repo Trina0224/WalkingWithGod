@@ -7,6 +7,8 @@ export default [
   {key:"", value: "Exo", label:"Exodus", chapter:"14", verseStart:"22",verseEnd:"22"},
   //And it came between the army of Egypt and the army of Israel; and there was a dark cloud between them, and they went on through the night; but the one army came no nearer to the other all the night.
   {key:"", value: "Exo", label:"Exodus", chapter:"14", verseStart:"20",verseEnd:"20"},
+  //The Lord is slow to wrath and great in mercy, overlooking wrongdoing and evil, and will not let wrongdoers go free; sending punishment on children for the sins of their fathers, to the third and fourth generation.
+  {key:"", value: "Num", label:"Numbers", chapter:"14", verseStart:"18",verseEnd:"18"},
   //And Jabez made a prayer to the God of Israel, saying, If only you would truly give me a blessing, and make wider the limits of my land, and let your hand be with me, and keep me from evil, so that I may not be troubled by it! And God gave him his desire.
   {key:"", value:"1Ch", label:"1 Chronicles", chapter:"4", verseStart:"10",verseEnd:"10"},
   //And when the players on horns, and those who made melody in song, with one voice were sounding the praise and glory of the Lord; with loud voices and with wind instruments, and brass and corded instruments of music, praising the Lord and saying, He is good; his mercy is unchanging for ever: then the house was full of the cloud of the glory of the Lord,
@@ -29,6 +31,8 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"68", verseStart:"6",verseEnd:"6"},
   //〈Of David.〉 The Lord is my light and my salvation; who is then a cause of fear to me? the Lord is the strength of my life; who is a danger to me?
   {key:"", value:"Psm", label:"Psalms", chapter:"27", verseStart:"1",verseEnd:"1"},
+  //So give us knowledge of the number of our days, that we may get a heart of wisdom.
+  {key:"", value:"Psm", label:"Psalms", chapter:"90", verseStart:"12",verseEnd:"12"},
   //If I say, My foot is slipping; your mercy, O Lord, is my support. Among all my troubled thoughts, your comforts are the delight of my soul.
   {key:"", value:"Psm", label:"Psalms", chapter:"94", verseStart:"18",verseEnd:"19"},
   //The Lord is my strength and my song; he has become my salvation. The sound of joy and salvation is in the tents of the upright; the right hand of the Lord does works of power. The right hand of the Lord is lifted up; the right hand of the Lord does works of power. Life and not death will be my part, and I will give out the story of the works of the Lord.

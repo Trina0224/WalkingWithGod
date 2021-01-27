@@ -49,14 +49,13 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 33. auto detect language and display the user's language.
 36. Only display number keys on iPad or iPhone. (it works sometimes... why?)
 37. Display style is strange on the Android phone.  
-41. I incountered error default-verse a time. I got Job-5-44-44, need to follow up this issue.  
+41. I encountered an error default-verse a time. I got Job-5-44-44, need to follow up this issue.  
 44. Can we do pull down and refresh everything? (https://stackoverflow.com/questions/46190436/how-to-detect-pull-to-refresh) or???(actually it's working on Android.)  
 48. I found some verses from source 2. will cause huge data download from server. That's a bug.. will check later.  
 49. Work on background change issue. (12/30)
 
 # Nice to have:  
-38. need Hebrew book names. I learned bible Hebrew and updated OT parts to Hebrew. (1/15/2021)  
-
+(moved to Done section. 1/15/2021)  
 
 
 # Done:  
@@ -95,7 +94,9 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 45. I just know switch case cannot use || ... need to cascade cases, (in MyForm.js) (12/23)
 46. Need to filter Russian language parts.  ok. (12/23)
 47. from source 2, we may get NULL feedback because wrong search. ok.(12/23) If no data, the server return us a string "NULL"  
-43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.) ok. (12/25)
+43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.) ok. (12/25)  
+38. need Hebrew book names. I learned bible Hebrew and updated OT parts to Hebrew. (1/15/2021)  
+
 
 
 
