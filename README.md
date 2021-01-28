@@ -96,6 +96,7 @@ https://kapeli.com/cheat_sheets/CSS_Device_Media_Queries.docset/Contents/Resourc
 47. from source 2, we may get NULL feedback because wrong search. ok.(12/23) If no data, the server return us a string "NULL"  
 43. NRSV version is not working.  ( I cannot find NRSV, replaced by "Reina Valera,Spanish" and add simplified chinese.) ok. (12/25)  
 38. need Hebrew book names. I learned bible Hebrew and updated OT parts to Hebrew. (1/15/2021)  
+50. Add SSH key.  
 
 
 
