@@ -37,6 +37,8 @@ export default [
   {key:"", value:"Psm", label:"Psalms", chapter:"94", verseStart:"18",verseEnd:"19"},
   //The Lord is my strength and my song; he has become my salvation. The sound of joy and salvation is in the tents of the upright; the right hand of the Lord does works of power. The right hand of the Lord is lifted up; the right hand of the Lord does works of power. Life and not death will be my part, and I will give out the story of the works of the Lord.
   {key:"", value:"Psm", label:"Psalms", chapter:"118", verseStart:"14",verseEnd:"17"},
+  //My flesh was made by you, and my parts joined together in my mother's body. I will give you praise, for I am strangely and delicately formed; your works are great wonders, and of this my soul is fully conscious.
+  {key:"", value:"Psm", label:"Psalms", chapter:"139", verseStart:"13",verseEnd:"14"},
   //Let the story of your mercy come to me in the morning, for my hope is in you: give me knowledge of the way in which I am to go; for my soul is lifted up to you.
   {key:"", value:"Psm", label:"Psalms", chapter:"143", verseStart:"8",verseEnd:"8"},
   //Then I saw all the works which my hands had made, and everything I had been working to do; and I saw that all was to no purpose and desire for wind, and there was no profit under the sun.
