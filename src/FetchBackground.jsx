@@ -4,38 +4,24 @@ import './FetchBackground.css';
 import vocabulary4Search from './constants/words';
 import queryWordsCreate from './hook/queryWordsCreate';
 
+const photoServiceUrl =
+  'https://walking-with-god-photos.kozakurayuki.workers.dev/photo';
 const copyright =
-  'Bible text is provided by the GetBible API. Background images are provided by Wikimedia Commons.';
-const fallbackQuery = 'peaceful nature landscape';
+  'Bible text is provided by the GetBible API. Background photos are provided by Unsplash.';
 
-function stripHtml(value = '') {
-  const element = document.createElement('textarea');
-  element.innerHTML = value;
-  return element.value.replace(/<[^>]*>/g, '').trim();
-}
+function choosePhotoTheme(verse, keyword) {
+  const text = `${verse || ''} ${keyword || ''}`.toLowerCase();
 
-function chooseImage(payload) {
-  const pages = Object.values((payload.query && payload.query.pages) || {});
-  const candidates = pages
-    .map((page) => {
-      const info = page.imageinfo && page.imageinfo[0];
-      if (!info || !info.thumburl || !info.extmetadata) return null;
+  if (/(morning|dawn|light|hope|glory|resurrection)/.test(text)) return 'sunrise';
+  if (/(evening|night|rest|comfort|peace)/.test(text)) return 'sunset';
+  if (/(water|sea|ocean|river|fountain|harbour|beach)/.test(text)) return 'ocean';
+  if (/(flower|rose|lilies|spring|garden)/.test(text)) return 'flowers';
+  if (/(mountain|strength|eagle|wings|wilderness)/.test(text)) return 'mountains';
+  if (/(forest|tree|branches|vine|autumn)/.test(text)) return 'forest';
+  if (/(heaven|eternal|stars|night)/.test(text)) return 'stars';
+  if (/(peace|pray|faith|grace|holy)/.test(text)) return 'peaceful landscape';
 
-      return {
-        id: page.pageid,
-        url: info.thumburl,
-        descriptionUrl: info.descriptionurl,
-        artist: stripHtml(info.extmetadata.Artist?.value) || 'Wikimedia contributor',
-        license:
-          stripHtml(info.extmetadata.LicenseShortName?.value) ||
-          stripHtml(info.extmetadata.UsageTerms?.value) ||
-          'See license',
-      };
-    })
-    .filter(Boolean);
-
-  if (!candidates.length) return null;
-  return candidates[Math.floor(Math.random() * candidates.length)];
+  return 'nature';
 }
 
 function FetchBackground() {
@@ -44,39 +30,29 @@ function FetchBackground() {
   const [failed, setFailed] = useState(false);
 
   const searchQuery = useMemo(() => {
-    const verse = state.searchBackgroundQuery || fallbackQuery;
+    const verse = state.searchBackgroundQuery || '';
     const knownWords = vocabulary4Search.map((item) => item.value);
     const result = queryWordsCreate(verse, knownWords);
     const terms = result && result.final;
-    return terms && terms !== 'bible' ? `${terms} nature landscape` : fallbackQuery;
+    return choosePhotoTheme(verse, terms);
   }, [state.searchBackgroundQuery]);
 
   useEffect(() => {
     const controller = new AbortController();
-    const params = new URLSearchParams({
-      action: 'query',
-      generator: 'search',
-      gsrsearch: searchQuery,
-      gsrnamespace: '6',
-      gsrlimit: '12',
-      prop: 'imageinfo',
-      iiprop: 'url|extmetadata',
-      iiurlwidth: String(Math.min(2400, Math.max(1280, window.innerWidth * 2))),
-      format: 'json',
-      origin: '*',
-    });
+    const params = new URLSearchParams({ query: searchQuery });
 
-    fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+    fetch(`${photoServiceUrl}?${params}`, {
       signal: controller.signal,
     })
       .then((response) => {
-        if (!response.ok) throw new Error(`Wikimedia returned ${response.status}`);
+        if (!response.ok) throw new Error(`Photo service returned ${response.status}`);
         return response.json();
       })
-      .then((payload) => {
-        const nextImage = chooseImage(payload);
-        if (!nextImage) throw new Error('No suitable background image found');
-        setImage(nextImage);
+      .then((photo) => {
+        if (!photo.image || !photo.unsplashUrl || !photo.photographer) {
+          throw new Error('Photo service returned incomplete data');
+        }
+        setImage(photo);
         setFailed(false);
       })
       .catch((error) => {
@@ -96,9 +72,8 @@ function FetchBackground() {
         {image && !failed ? (
           <img
             className="img"
-            src={image.url}
-            alt=""
-            aria-hidden="true"
+            src={image.image}
+            alt={image.description || ''}
             referrerPolicy="no-referrer"
           />
         ) : null}
@@ -113,9 +88,9 @@ function FetchBackground() {
               className="footerA"
               target="_blank"
               rel="noreferrer"
-              href={image.descriptionUrl}
+              href={image.unsplashUrl}
             >
-              Photo: {image.artist} · {image.license}
+              Photo by {image.photographer} on Unsplash
             </a>
           ) : null}
         </p>
