@@ -1,6 +1,6 @@
 import React, { useState,  useContext, useEffect } from 'react';
 import {useForm, Controller} from 'react-hook-form';
-import { AppContext } from './App';
+import { AppContext } from './App.jsx';
 import {bibleBooks} from './bookName0';
 import ReactSelect from "react-select";
 import bookOptions from "./constants/bookOptionsEng.js"; //English
@@ -17,7 +17,7 @@ import bookOptionsNT from "./constants/bookOptionsNT.js"; //only new testament
 import languageOptions from "./constants/languageOptions.js";
 import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
-import FetchBackground from './FetchBackground';
+import FetchBackground from './FetchBackground.jsx';
 import defaultVerses from "./constants/defaultVerses.js"
 
 
@@ -35,7 +35,7 @@ function MyForm(props){
 
 
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
-  const [languageSelected, setlanguageInUI] = useState('niv'); //langauge select
+  const [languageSelected, setlanguageInUI] = useState('web'); //langauge select
 
   const [theVersesforInitial, setTheVersesforInitial] = useState(defaultVerses[Math.floor(Math.random() * defaultVerses.length)]);
 
@@ -93,7 +93,7 @@ React.useEffect(() => {
     if(typeof data.language === 'undefined'&& typeof  data.bookName === 'undefined')
     {
       //dispatch({ type: 'UPDATE_BOOKSELECT', data: [theVersesforInitial.label, theVersesforInitial.value],});
-      data.language = 'niv';
+      data.language = 'web';
       data.bookName = theVersesforInitial.label;
       data.bookAbbreviation = theVersesforInitial.value;
     }
@@ -117,7 +117,7 @@ React.useEffect(() => {
   async function setStateSuccess(data){
     //console.log("in setStateSuccess()");
     let queryData={
-      language:"niv",
+      language:"web",
       bookName:theVersesforInitial.label,//"John",
       bookAbbreviation:theVersesforInitial.value,//"Jhn",
       chapter:"3",
@@ -152,7 +152,7 @@ React.useEffect(() => {
     // }
 
     if(typeof languageSelected === 'undefined'){
-      queryData.language="niv";
+      queryData.language="web";
     }else{
       // await setLanguage(data.languageSelect.value);
       queryData.language=languageSelected;
@@ -224,44 +224,43 @@ useEffect(() => {
     //console.log(languageSelected);
     switch(languageSelected){
       case 'cut':
-        defaultBibleVersion = bookOptionsCht;
-      break;
+      case 'cus':
       case 'cnt':
         defaultBibleVersion = bookOptionsCht;
       break;
-      case 'niv':
+      case 'web':
         defaultBibleVersion = bookOptions;
       break;
-      case 'glm':
+      case 'luther1545':
         defaultBibleVersion = bookOptionsDeu;
       break;
-      case 'fda':
+      case 'darby':
         defaultBibleVersion = bookOptionsFra;
       break;
       case 'kjv':
         defaultBibleVersion = bookOptions;
       break;
-      case 'jcl':
+      case 'japbungo':
+      case 'japkougo':
         defaultBibleVersion = bookOptionsJpn;
       break;
-      case 'jco':
-        defaultBibleVersion = bookOptionsJpn;
-      break;
-      case 'kor':
+      case 'korean':
         defaultBibleVersion = bookOptionsKor;
       break;
-      case 'gmv':
-      case 'gwh':
+      case 'moderngreek':
         defaultBibleVersion = bookOptionsGek;
       break;
-      case 'hac':
+      case 'modernhebrew':
         defaultBibleVersion = bookOptionsHeb;
       break;
-      case 'makarij':
+      case 'westcotthort':
+        defaultBibleVersion = bookOptionsNT;
+      break;
+      case 'aleppo':
         defaultBibleVersion = bookOptionsOT;
       break;
       case 'synodal':
-        defaultBibleVersion = bookOptionsNT;
+        defaultBibleVersion = bookOptions;
       break;
       default:
         defaultBibleVersion = bookOptions;
@@ -299,7 +298,7 @@ useEffect(() => {
                 multi={true}
                 onChange={languageChange}
                 value={languageOptions.value}
-                defaultValue={{value: "niv", label: "English NIV", readOnly:true}}
+                defaultValue={{value: "web", label: "English WEB", readOnly:true}}
                 name = "testing"
                 />
               </div>
