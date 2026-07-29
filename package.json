@@ -1,32 +1,19 @@
 {
-  "homepage": "https://trina0224.github.io/WalkingWithGod/",
   "name": "feelgod",
-  "version": "0.8.2",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^12.2.0",
-    "axios": "^0.21.0",
-    "fetch-jsonp": "^1.1.3",
     "immutability-helper": "^3.1.1",
-    "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.11.0",
-    "react-native-web": "^0.14.9",
-    "react-scripts": "4.0.0",
-    "react-select": "^3.1.0",
-    "swr": "^0.3.9",
-    "web-vitals": "^0.2.4"
+    "react-select": "^5.10.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +34,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "@vitejs/plugin-react": "^6.0.4",
+    "vite": "^8.1.5"
   }
 }

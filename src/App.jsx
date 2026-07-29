@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import './App.css';
-import MyForm from './MyForm';
-import VerseDisplay from './VerseDisplay';
+import MyForm from './MyForm.jsx';
+import VerseDisplay from './VerseDisplay.jsx';
 //Import immutability-helper
 import update from 'immutability-helper';
 
