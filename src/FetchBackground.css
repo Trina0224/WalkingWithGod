@@ -32,6 +32,25 @@
     linear-gradient(135deg, #172033 0%, #38556e 48%, #c18f64 100%);
 }
 
+.backgroundAdvance,
+.backgroundAdvance:hover,
+.backgroundAdvance:focus,
+.backgroundAdvance:active {
+  position: fixed;
+  top: 33vh;
+  left: 33vw;
+  width: 34vw;
+  height: 34vh;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  opacity: 0;
+  background: transparent;
+  cursor: default;
+}
+
 /* .item{
   background-color: black;
   width: 100vw;
@@ -58,6 +77,15 @@
 
 .footerA {
   margin-left: 2em;
+}
+
+.footerAttribution {
+  margin-left: 2em;
+  color: white;
+}
+
+.footerAttribution .footerA {
+  margin-left: 0;
 }
 
 .footerButton {
