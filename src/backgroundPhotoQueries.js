@@ -6,12 +6,17 @@ export const PHOTO_QUERY_GROUPS = [
     id: 'light-and-hope',
     triggers: [
       'light',
+      'shine',
+      'brightness',
       'morning',
       'dawn',
       'hope',
+      'new every morning',
       'glory',
       'resurrection',
+      'rise again',
       'rejoice',
+      'joy',
       'salvation',
     ],
     queries: [
@@ -25,7 +30,17 @@ export const PHOTO_QUERY_GROUPS = [
   },
   {
     id: 'peace-and-rest',
-    triggers: ['peace', 'rest', 'comfort', 'grace', 'pray', 'prayer', 'quiet'],
+    triggers: [
+      'peace',
+      'rest',
+      'comfort',
+      'be still',
+      'quiet',
+      'gentle',
+      'do not be anxious',
+      'do not be troubled',
+      'take care of you',
+    ],
     queries: [
       'quiet-lake',
       'foggy-meadow',
@@ -46,6 +61,10 @@ export const PHOTO_QUERY_GROUPS = [
       'harbour',
       'beach',
       'baptism',
+      'living water',
+      'wash',
+      'clean heart',
+      'renew',
     ],
     queries: [
       'ocean-waves',
@@ -67,6 +86,10 @@ export const PHOTO_QUERY_GROUPS = [
       'follow',
       'walk',
       'wilderness',
+      'guide',
+      'lead me',
+      'wherever you go',
+      'send me',
     ],
     queries: [
       'mountain-path',
@@ -89,6 +112,11 @@ export const PHOTO_QUERY_GROUPS = [
       'refuge',
       'shelter',
       'rock',
+      'shield',
+      'deliver',
+      'do not fear',
+      'take heart',
+      'courage',
     ],
     queries: [
       'eagle-mountains',
@@ -112,6 +140,11 @@ export const PHOTO_QUERY_GROUPS = [
       'wedding',
       'together',
       'i am ever with you',
+      'forgive',
+      'kind',
+      'brother',
+      'sister',
+      'neighbour',
     ],
     queries: [
       'joined-hands',
@@ -135,6 +168,9 @@ export const PHOTO_QUERY_GROUPS = [
       'lilies',
       'wealth',
       'wine',
+      'grow',
+      'abundance',
+      'new heart',
     ],
     queries: [
       'vineyard',
@@ -147,7 +183,16 @@ export const PHOTO_QUERY_GROUPS = [
   },
   {
     id: 'eternity-and-heaven',
-    triggers: ['eternal', 'forever', 'heaven', 'stars', 'angel', 'holy', 'spirit'],
+    triggers: [
+      'eternal',
+      'forever',
+      'heaven',
+      'stars',
+      'angel',
+      'new heaven',
+      'no more death',
+      'raise the dead',
+    ],
     queries: [
       'milky-way',
       'stars-over-mountains',
@@ -174,6 +219,8 @@ export const PHOTO_QUERY_GROUPS = [
       'altar',
       'church',
       'faith',
+      'kingdom of god',
+      'son of god',
     ],
     queries: [
       'olive-trees',
@@ -197,6 +244,10 @@ export const PHOTO_QUERY_GROUPS = [
       'earth',
       'valley',
       'sheep',
+      'birds',
+      'grass',
+      'lilies',
+      'made',
     ],
     queries: [
       'autumn-forest',
@@ -205,6 +256,78 @@ export const PHOTO_QUERY_GROUPS = [
       'summer-coast',
       'sheep-hills',
       'green-valley',
+    ],
+  },
+  {
+    id: 'lament-and-solitude',
+    triggers: [
+      'sorrow',
+      'grief',
+      'weep',
+      'tears',
+      'darkness',
+      'forgotten',
+      'broken heart',
+      'crushed spirit',
+      'why have you',
+      'how long',
+      'no hope',
+      'trouble',
+    ],
+    queries: [
+      'rainy-window',
+      'solitary-tree',
+      'stormy-sea',
+      'foggy-mountain',
+      'empty-shore',
+      'dark-forest',
+    ],
+  },
+  {
+    id: 'justice-and-mercy',
+    triggers: [
+      'justice',
+      'righteousness',
+      'mercy',
+      'poor',
+      'hungry',
+      'stranger',
+      'prison',
+      'oppressed',
+      'widow',
+      'orphan',
+      'do what is right',
+    ],
+    queries: [
+      'open-hands',
+      'shared-bread',
+      'welcoming-door',
+      'people-helping',
+      'city-dawn',
+      'rainbow-after-storm',
+    ],
+  },
+  {
+    id: 'prayer-and-renewal',
+    triggers: [
+      'pray',
+      'prayer',
+      'seek',
+      'return to me',
+      'repent',
+      'forgive us',
+      'new spirit',
+      'renew',
+      'transform',
+      'call on',
+    ],
+    queries: [
+      'quiet-room-light',
+      'kneeling-silhouette',
+      'open-bible-window',
+      'rain-clearing',
+      'new-leaves',
+      'still-morning',
     ],
   },
 ];
@@ -234,13 +357,42 @@ function containsTrigger(text, trigger) {
 }
 
 export function getPhotoQueryCandidates(verse = '') {
+  return getPhotoQueryMatch(verse).candidates;
+}
+
+export function getPhotoQueryMatch(verse = '') {
   const text = normaliseVerse(verse);
-  const matchedGroups = PHOTO_QUERY_GROUPS.filter((group) =>
-    group.triggers.some((trigger) => containsTrigger(text, trigger))
+  const matchedGroups = PHOTO_QUERY_GROUPS.map((group) => {
+    const matchedTriggers = group.triggers.filter((trigger) =>
+      containsTrigger(text, trigger)
+    );
+    const score = matchedTriggers.reduce(
+      (total, trigger) => total + (trigger.includes(' ') ? 3 : 1),
+      0
+    );
+    return { ...group, matchedTriggers, score };
+  })
+    .filter((group) => group.score > 0)
+    .sort((left, right) => right.score - left.score);
+
+  if (!matchedGroups.length) {
+    return {
+      candidates: DEFAULT_QUERIES,
+      matchedGroupIds: [],
+      confidence: 0,
+    };
+  }
+
+  const strongestScore = matchedGroups[0].score;
+  const relevantGroups = matchedGroups.filter(
+    (group) => group.score >= Math.max(1, strongestScore - 1)
   );
 
-  if (!matchedGroups.length) return DEFAULT_QUERIES;
-  return unique(matchedGroups.flatMap((group) => group.queries));
+  return {
+    candidates: unique(relevantGroups.flatMap((group) => group.queries)),
+    matchedGroupIds: relevantGroups.map((group) => group.id),
+    confidence: strongestScore,
+  };
 }
 
 function readRecentQueries(storage) {
@@ -269,18 +421,39 @@ function writeRecentQuery(storage, queryId, previous) {
 }
 
 export function chooseBackgroundQuery(verse = '', options = {}) {
+  return chooseBackgroundQueries(verse, { ...options, count: 1 })[0];
+}
+
+export function chooseBackgroundQueries(verse = '', options = {}) {
   const candidates = getPhotoQueryCandidates(verse);
   const storage =
     options.storage ?? (typeof window !== 'undefined' ? window.localStorage : null);
   const random = options.random ?? Math.random;
+  const count = Math.max(1, Math.min(options.count ?? 4, candidates.length));
   const recent = readRecentQueries(storage);
   const unseen = candidates.filter((queryId) => !recent.includes(queryId));
-  const pool = unseen.length ? unseen : candidates;
-  const index = Math.min(pool.length - 1, Math.floor(random() * pool.length));
-  const queryId = pool[Math.max(0, index)];
+  const preferred = [...unseen, ...candidates.filter((queryId) => recent.includes(queryId))];
+  const available = [...preferred];
+  const chosen = [];
 
-  writeRecentQuery(storage, queryId, recent);
-  return queryId;
+  while (chosen.length < count && available.length) {
+    const index = Math.min(
+      available.length - 1,
+      Math.floor(random() * available.length)
+    );
+    chosen.push(available.splice(Math.max(0, index), 1)[0]);
+  }
+
+  chosen
+    .slice()
+    .reverse()
+    .forEach((queryId) => writeRecentQuery(storage, queryId, readRecentQueries(storage)));
+
+  return chosen;
+}
+
+export function shouldUsePhotoPreference(verse = '') {
+  return getPhotoQueryMatch(verse).confidence > 0;
 }
 
 export const ALL_PHOTO_QUERY_IDS = unique([

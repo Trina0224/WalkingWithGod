@@ -18,7 +18,10 @@ import languageOptions from "./constants/languageOptions.js";
 import bookVerses from "./constants/bookVerses.js";
 //import FetchResult from './FetchResult';
 import FetchBackground from './FetchBackground.jsx';
-import defaultVerses from "./constants/defaultVerses.js"
+import {
+  VERSE_CATEGORIES,
+  chooseRandomVerse,
+} from "./constants/verseLibrary.js";
 
 
 //const copyright="All verses are from m.ibibles.net and getbible.net. All Bible verses belong to the sources. "
@@ -37,7 +40,13 @@ function MyForm(props){
   const [hideOrNot, sethideOrNot] = useState('testbox Display'); //form display
   const [languageSelected, setlanguageInUI] = useState('web'); //langauge select
 
-  const [theVersesforInitial, setTheVersesforInitial] = useState(defaultVerses[Math.floor(Math.random() * defaultVerses.length)]);
+  const [theVersesforInitial, setTheVersesforInitial] = useState(() =>
+    chooseRandomVerse()
+  );
+  const [categorySelected, setCategorySelected] = useState(VERSE_CATEGORIES[0]);
+  const [selectedBookOption, setSelectedBookOption] = useState(() =>
+    bookOptions.find((option) => option.searchKey === theVersesforInitial.label)
+  );
 
 //  const [buttonDisableEnable, setButtonDisableEnable] = useState(false); //langauge select
 
@@ -61,7 +70,7 @@ React.useEffect(() => {
 
 
 
-  const {register, handleSubmit, control, errors } = useForm({
+  const {register, handleSubmit, setValue } = useForm({
     defaultValues:
     {
       "chapterNumber": theVersesforInitial.chapter,//3, //only working at first three values. 'select' is not working.
@@ -100,6 +109,10 @@ React.useEffect(() => {
     //console.log(data);
 
     dispatch({ type: 'UPDATE_SEARCH_CLICKED', data: true,});//disable search button.
+    dispatch({
+      type: 'UPDATE_PHOTO_PREFERENCE',
+      data: (data.photoPreference || '').trim(),
+    });
     dispatch({ type: 'UPDATE_INPUT', data: "Fetching data from the server, it may take 30 secs for the first search if no other search happened in the past an hour...",});
     sethideOrNot("testbox noDisplay");
 //    setButtonDisableEnable(true);//disable button.
@@ -194,8 +207,40 @@ async function bookChange(selectedOption){
   dispatch({ type: 'UPDATE_BOOKCHAPTER', data: selectedOption.chapter,});
   //UPDATE_BOOKSELECT
   dispatch({ type: 'UPDATE_BOOKSELECT', data: [selectedOption.searchKey, selectedOption.value],});
+  setSelectedBookOption(selectedOption);
 
 
+}
+
+function categoryChange(selectedOption) {
+  const nextCategory = selectedOption || VERSE_CATEGORIES[0];
+  const nextVerse = chooseRandomVerse(nextCategory.value);
+  const nextBook = defaultBibleVersion.find(
+    (option) => option.searchKey === nextVerse.label
+  );
+
+  setCategorySelected(nextCategory);
+  setTheVersesforInitial(nextVerse);
+  setValue('chapterNumber', nextVerse.chapter);
+  setValue('verseStartNumber', nextVerse.verseStart);
+  setValue('verseEndNumber', nextVerse.verseEnd);
+
+  if (nextBook) {
+    setSelectedBookOption(nextBook);
+    dispatch({ type: 'UPDATE_BOOKCHAPTER', data: nextBook.chapter });
+    dispatch({
+      type: 'UPDATE_BOOKSELECT',
+      data: [nextBook.searchKey, nextBook.value],
+    });
+
+    const verseCounts = bookVerses.find(
+      (book) => book.searchKey === nextBook.searchKey
+    );
+    const maxVerse = verseCounts?.value?.[Number(nextVerse.chapter) - 1];
+    if (maxVerse) {
+      dispatch({ type: 'UPDATE_MAXVERSE', data: maxVerse });
+    }
+  }
 }
 
 async function chapterChanged(e){
@@ -265,6 +310,14 @@ useEffect(() => {
       default:
         defaultBibleVersion = bookOptions;
     }//switch
+    const currentBookName =
+      state.selectedBook?.[0] || theVersesforInitial.label;
+    const translatedBookOption = defaultBibleVersion.find(
+      (option) => option.searchKey === currentBookName
+    );
+    if (translatedBookOption) {
+      setSelectedBookOption(translatedBookOption);
+    }
     //console.log(defaultBibleVersion);
     //below line is force re-render MyForm() only.
     dispatch({ type: 'UPDATE_BIBLEBOOKLANGUAGE', data: defaultBibleVersion,});
@@ -291,6 +344,19 @@ useEffect(() => {
 
             <section>
               <div className="item">
+                <p>Verse Theme</p>
+                <ReactSelect
+                id="verse-category"
+                options={VERSE_CATEGORIES}
+                onChange={categoryChange}
+                value={categorySelected}
+                name="verseCategory"
+              />
+            </div>
+          </section>
+
+            <section>
+              <div className="item">
                 <p>Bible Version</p>
                 <ReactSelect
                 id="languageop"
@@ -310,9 +376,8 @@ useEffect(() => {
                 <ReactSelect
                 id="bookop"
                 options={defaultBibleVersion}
-                multi={true}
                 onChange={bookChange}
-                value={defaultBibleVersion.value}
+                value={selectedBookOption}
                 defaultValue={{value:theVersesforInitial.value,label:theVersesforInitial.label, readOnly:true}}
                 name = "testing"
                 />
@@ -323,15 +388,26 @@ useEffect(() => {
 
             <div className="item">
               <p>Chapter</p>
-              <input inputmode="decimal" type="number" step="1" min="1" max={state.changedMaxChapter} onChange={chapterChanged} name="chapterNumber" ref={register({ required: true })} />
+              <input inputMode="decimal" type="number" step="1" min="1" max={state.changedMaxChapter} onChange={chapterChanged} name="chapterNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse Start</p>
-              <input inputmode="decimal" type="number" step="1" min="1" max={state.changedMaxVerse} name="verseStartNumber" ref={register({ required: true })} />
+              <input inputMode="decimal" type="number" step="1" min="1" max={state.changedMaxVerse} name="verseStartNumber" ref={register({ required: true })} />
             </div>
             <div className="item">
               <p>Verse End</p>
-              <input inputmode="decimal" type="number" step="1" min="1" max={state.changedMaxVerse} name="verseEndNumber" ref={register({ required: true })} />
+              <input inputMode="decimal" type="number" step="1" min="1" max={state.changedMaxVerse} name="verseEndNumber" ref={register({ required: true })} />
+            </div>
+
+            <div className="item">
+              <p>Photo Preference</p>
+              <input
+                type="text"
+                maxLength="60"
+                name="photoPreference"
+                placeholder="Kyoto, Japan, snow…"
+                ref={register}
+              />
             </div>
 
             <div className="btn-block">

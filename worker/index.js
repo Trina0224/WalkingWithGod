@@ -68,6 +68,24 @@ export const PHOTO_QUERIES = {
   'sunlit-meadow': 'sunlit meadow landscape',
   cloudscape: 'beautiful dramatic cloudscape',
   'lake-reflection': 'mountain lake reflection landscape',
+  'rainy-window': 'rain on window quiet moody landscape',
+  'solitary-tree': 'solitary tree wide landscape',
+  'stormy-sea': 'stormy sea dramatic landscape',
+  'foggy-mountain': 'foggy mountain subdued landscape',
+  'empty-shore': 'empty shore overcast landscape',
+  'dark-forest': 'dark quiet forest landscape',
+  'open-hands': 'open hands natural light',
+  'shared-bread': 'sharing bread at a simple table',
+  'welcoming-door': 'open welcoming doorway warm light',
+  'people-helping': 'people helping each other outdoors',
+  'city-dawn': 'city at dawn hopeful wide view',
+  'rainbow-after-storm': 'rainbow after storm wide landscape',
+  'quiet-room-light': 'quiet room soft window light',
+  'kneeling-silhouette': 'person kneeling silhouette peaceful landscape',
+  'open-bible-window': 'open Bible beside window natural light',
+  'rain-clearing': 'rain clouds clearing over landscape',
+  'new-leaves': 'fresh new leaves morning light',
+  'still-morning': 'still peaceful morning landscape',
 };
 
 const LEGACY_QUERIES = {
@@ -101,6 +119,32 @@ function json(data, options = {}) {
   });
 }
 
+function normalisePreference(value) {
+  return (value || '')
+    .normalize('NFKC')
+    .replace(/[^\p{L}\p{N}\s,'-]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 60);
+}
+
+async function fetchUnsplashPhoto(searchPhrase, env) {
+  const unsplashUrl = new URL('https://api.unsplash.com/photos/random');
+  unsplashUrl.searchParams.set('query', searchPhrase);
+  unsplashUrl.searchParams.set('orientation', 'landscape');
+  unsplashUrl.searchParams.set('content_filter', 'high');
+
+  const response = await fetch(unsplashUrl, {
+    headers: {
+      Authorization: `Client-ID ${env.UNSPLASH_ACCESS_KEY}`,
+      'Accept-Version': 'v1',
+    },
+  });
+
+  if (!response.ok) return null;
+  return response.json();
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -126,9 +170,16 @@ export default {
       ? requested
       : LEGACY_QUERIES[requested] || 'wide-nature';
     const searchPhrase = PHOTO_QUERIES[queryId];
+    const preference = normalisePreference(
+      requestUrl.searchParams.get('preference')
+    );
     const rotation = Math.floor(Date.now() / 3_600_000);
     const cacheKey = new Request(
-      `${requestUrl.origin}/photo?query=${encodeURIComponent(queryId)}&rotation=${rotation}`,
+      `${requestUrl.origin}/photo?query=${encodeURIComponent(
+        queryId
+      )}&preference=${encodeURIComponent(
+        preference.toLowerCase()
+      )}&rotation=${rotation}`,
       request
     );
     const cache = caches.default;
@@ -136,26 +187,22 @@ export default {
 
     if (cachedResponse) return cachedResponse;
 
-    const unsplashUrl = new URL('https://api.unsplash.com/photos/random');
-    unsplashUrl.searchParams.set('query', searchPhrase);
-    unsplashUrl.searchParams.set('orientation', 'landscape');
-    unsplashUrl.searchParams.set('content_filter', 'high');
+    const preferredSearchPhrase = preference
+      ? `${preference} ${searchPhrase}`
+      : searchPhrase;
+    let photo = await fetchUnsplashPhoto(preferredSearchPhrase, env);
 
-    const response = await fetch(unsplashUrl, {
-      headers: {
-        Authorization: `Client-ID ${env.UNSPLASH_ACCESS_KEY}`,
-        'Accept-Version': 'v1',
-      },
-    });
+    if (!photo && preference) {
+      photo = await fetchUnsplashPhoto(searchPhrase, env);
+    }
 
-    if (!response.ok) {
+    if (!photo) {
       return json(
         { error: 'Unable to retrieve an Unsplash photo' },
-        { status: response.status, headers: corsHeaders(origin) }
+        { status: 502, headers: corsHeaders(origin) }
       );
     }
 
-    const photo = await response.json();
     const workerResponse = json(
       {
         id: photo.id,

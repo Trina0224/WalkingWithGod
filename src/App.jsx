@@ -13,7 +13,8 @@ export const AppContext = React.createContext();
 
 // Set up Initial State
 const initialState = {
-  "grabbedText":""
+  "grabbedText":"",
+  "photoPreference":""
 };
 
 
@@ -34,6 +35,10 @@ function reducer(state, action) {
     case 'UPDATE_BACKGROUNDKEYWORD':
       console.log("// DEBUG: In reducer() Update background keyword.");
       return update(state, { "searchBackgroundQuery": {$set: action.data}});
+    break;
+
+    case 'UPDATE_PHOTO_PREFERENCE':
+      return update(state, { "photoPreference": {$set: action.data}});
     break;
 
     case 'UPDATE_BIBLEBOOKLANGUAGE':
