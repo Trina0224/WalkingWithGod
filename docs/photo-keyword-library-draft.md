@@ -8,12 +8,15 @@ Status: design draft only; no runtime code should consume this file yet.
 2. Prefer directly photographable nouns over concepts.
 3. If several nouns have the same priority, choose one randomly.
 4. Choose one Unsplash query randomly from that noun's stable candidate list.
-5. Use concept mappings only when no higher-priority concrete noun matched.
-6. If nothing matched, choose from the complete approved query library—not a nature-only fallback.
-7. Ask Unsplash for a new photo on every verse selection and every background advance.
-8. Remember recent Unsplash photo IDs and retry up to three times when a duplicate is returned.
-9. Never append `nature` or `landscape` unless the selected subject genuinely requires it.
-10. Preserve singular, plural, spelling, and important phrase variants.
+5. Build every query noun-first: `lilies white`, not `white lilies`; `cross wooden`, not `wooden cross`.
+6. Always append the optional location as the final term: `lilies white Kyoto`.
+7. Use concept mappings only when no higher-priority concrete noun matched.
+8. Use the safe global fallback only when no keyword matched at all.
+9. Ask Unsplash for a new photo on every verse selection and every background advance.
+10. Do not store recent photo IDs in the browser or Worker.
+11. Compare a new result only with the currently displayed photo; if identical, retry at most two additional Unsplash calls.
+12. Never append `nature` or `landscape` unless the selected subject genuinely requires it.
+13. Preserve singular, plural, spelling, and important phrase variants.
 
 Priority levels:
 
@@ -27,9 +30,9 @@ Priority levels:
 
 | Verse triggers | Stable Unsplash candidates | Priority |
 |---|---|---:|
-| God, Lord, kingdom of God | Jesus; Christian cross; worship; Christian worship; raised hands worship | 70 |
-| Jesus, Christ, Messiah, Saviour, Son of God | Jesus; Jesus cross; Christian cross; cross at sunrise | 70 |
-| cross | Christian cross; wooden cross; cross at sunrise; cross silhouette | 100 |
+| God, Lord, kingdom of God | Jesus; cross Christian; worship; worship Christian; hands raised worship | 70 |
+| Jesus, Christ, Messiah, Saviour, Son of God | Jesus; cross Jesus; cross Christian; cross sunrise | 70 |
+| cross | cross Christian; cross wooden; cross sunrise; cross silhouette | 100 |
 | worship, praise | Christian worship; raised hands worship; church worship; worship music | 70 |
 | prayer, pray, praying | kneeling prayer; hands in prayer; Bible and prayer; person praying | 70 |
 | Bible, scripture, word of God, gave the word | open Bible; Bible by window; Bible and candle; Bible pages | 100 |
@@ -80,8 +83,8 @@ Priority levels:
 
 | Verse triggers | Stable Unsplash candidates | Priority |
 |---|---|---:|
-| lily, lilies | white lily; lily flower; lilies in bloom | 100 |
-| rose, roses | rose; red rose; white rose; roses in bloom | 100 |
+| lily, lilies | lily white; lily flower; lilies blooming | 100 |
+| rose, roses | rose; rose red; rose white; roses blooming | 100 |
 | flower, flowers | flower close-up; flowers in bloom; wildflowers | 90 |
 | vine, vines | grape vine; vine branches; vineyard | 100 |
 | grape, grapes | grapes; grape vine; vineyard grapes | 100 |
@@ -336,10 +339,11 @@ Phrase precedence examples:
 9. `good shepherd` before `shepherd`
 10. `wedding rings` before `ring`
 
-## Open design questions
+## Confirmed design decisions
 
-1. Should violent or dark subjects (`sword`, `prison`, `death`, `serpent`) participate in the global no-match fallback, or only when explicitly present in the verse?
-2. Should location preference be appended to every selected query, or only to place-compatible subjects?
-3. Should recently seen photo IDs be stored per browser, globally in Worker cache, or both?
-4. Should the retry limit for duplicate photos be two or three additional Unsplash calls?
-5. Should the global fallback use every approved candidate or a smaller broadly safe subset?
+1. Violent or dark subjects (`sword`, `prison`, `death`, `serpent`) are eligible only when explicitly present in the verse.
+2. The optional location is always appended as the final query term. Unsplash decides whether it affects the result.
+3. Query order is always primary noun, descriptors, then location: `lilies white Kyoto`.
+4. Recent photo IDs are not stored in the browser or Worker.
+5. When Unsplash returns the currently displayed photo, retry at most two additional calls; compare only with the current photo ID.
+6. The global fallback runs only when no keyword matched and uses a broadly safe subset that excludes violent or dark subjects.
