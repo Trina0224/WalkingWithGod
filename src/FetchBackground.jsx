@@ -5,6 +5,7 @@ import {
   chooseBackgroundQueries,
   shouldUsePhotoPreference,
 } from './backgroundPhotoQueries';
+import { getBrowserPhotoWidth } from './photoSizing';
 
 const photoServiceUrl =
   'https://walking-with-god-photos.kozakurayuki.workers.dev/photo';
@@ -34,7 +35,10 @@ function FetchBackground() {
     setLoadingIndex(0);
 
     const controller = new AbortController();
-    const params = new URLSearchParams({ query: nextQueryPlan[0] });
+    const params = new URLSearchParams({
+      query: nextQueryPlan[0],
+      width: String(getBrowserPhotoWidth()),
+    });
     if (preference) params.set('preference', preference);
 
     fetch(`${photoServiceUrl}?${params}`, {
@@ -85,7 +89,10 @@ function FetchBackground() {
       ? state.photoPreference || ''
       : '';
     const session = sessionRef.current;
-    const params = new URLSearchParams({ query: queryPlan[nextIndex] });
+    const params = new URLSearchParams({
+      query: queryPlan[nextIndex],
+      width: String(getBrowserPhotoWidth()),
+    });
     if (preference) params.set('preference', preference);
     setLoadingIndex(nextIndex);
 
