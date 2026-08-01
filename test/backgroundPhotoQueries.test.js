@@ -3,69 +3,57 @@ import test from 'node:test';
 
 import {
   ALL_PHOTO_QUERY_IDS,
-  chooseBackgroundQueries,
+  GLOBAL_FALLBACK_QUERIES,
+  chooseBackgroundQuery,
   getPhotoQueryMatch,
-  shouldUsePhotoPreference,
 } from '../src/backgroundPhotoQueries.js';
 import { getPreferredPhotoWidth } from '../src/photoSizing.js';
 import {
-  PHOTO_QUERIES,
+  PHOTO_QUERY_IDS,
   buildHighQualityImageUrl,
+  buildSearchPhrase,
   normaliseWidth,
 } from '../worker/index.js';
 
-test('concrete objects outrank abstract moods', () => {
-  const match = getPhotoQueryMatch(
-    'He leads me beside still waters and gives me peace.'
-  );
-
-  assert.equal(match.matchedRuleIds[0], 'river-water');
-  assert.ok(match.primaryCandidates.includes('forest-river'));
-  assert.ok(!match.primaryCandidates.includes('quiet-lake'));
-  assert.ok(match.secondaryCandidates.includes('quiet-lake'));
+test('a concrete object outranks an abstract concept', () => {
+  const match = getPhotoQueryMatch('He leads me beside still waters and gives me peace.');
+  assert.equal(match.priority, 90);
+  assert.deepEqual(match.matchedRuleIds, ['water']);
+  assert.ok(match.candidates.includes('water-clear'));
 });
 
-test('abstract ideas are translated into curated visible scenes', () => {
-  const match = getPhotoQueryMatch('Peace I leave with you. Do not be anxious.');
-
-  assert.equal(match.matchedRuleIds[0], 'peace');
-  assert.deepEqual(match.primaryCandidates, [
-    'quiet-lake',
-    'calm-ocean',
-    'foggy-meadow',
-    'still-morning',
-  ]);
+test('an exact object phrase receives the highest priority', () => {
+  const match = getPhotoQueryMatch('The kingdom of heaven is like a mustard seed.');
+  assert.equal(match.priority, 100);
+  assert.ok(match.matchedRuleIds.includes('mustard-seed'));
+  assert.ok(match.candidates.includes('seed-mustard'));
 });
 
-test('trusted concepts retain direct, curated imagery', () => {
-  const match = getPhotoQueryMatch('Love one another as I have loved you.');
-
-  assert.equal(match.matchedRuleIds[0], 'love');
-  assert.ok(match.primaryCandidates.includes('love-silhouette'));
+test('same-priority noun groups and their candidates are selected randomly', () => {
+  const first = chooseBackgroundQuery('Bread and fish', { random: () => 0 });
+  const last = chooseBackgroundQuery('Bread and fish', { random: () => 0.999 });
+  assert.equal(first, 'bread-loaf');
+  assert.equal(last, 'fish-bread');
 });
 
-test('the first rotation stays inside the strongest concrete visual tier', () => {
-  const chosen = chooseBackgroundQueries(
-    'The path is bright with hope.',
-    { count: 4, random: () => 0, storage: null }
-  );
-
-  assert.deepEqual(chosen.slice(0, 4), [
-    'mountain-path',
-    'road-horizon',
-    'footsteps-sand',
-    'forest-trail',
-  ]);
+test('dark subjects are absent from global fallback', () => {
+  const match = getPhotoQueryMatch('A verse with no approved visual noun here.');
+  assert.deepEqual(match.candidates, GLOBAL_FALLBACK_QUERIES);
+  assert.ok(!match.candidates.some((query) => /sword|prison|snake|death/.test(query)));
+  assert.equal(getPhotoQueryMatch('He carried a sword.').matchedRuleIds[0], 'conflict');
 });
 
-test('location preferences are blocked for non-location objects', () => {
-  assert.equal(shouldUsePhotoPreference('Take up your cross and follow Jesus.'), false);
-  assert.equal(shouldUsePhotoPreference('Walk along the path before you.'), true);
-});
-
-test('every front-end query id is allow-listed by the Worker', () => {
-  const missing = ALL_PHOTO_QUERY_IDS.filter((queryId) => !PHOTO_QUERIES[queryId]);
+test('every front-end query id is exactly allow-listed by the Worker', () => {
+  const missing = ALL_PHOTO_QUERY_IDS.filter((queryId) => !PHOTO_QUERY_IDS.has(queryId));
+  const unused = [...PHOTO_QUERY_IDS].filter((queryId) => !ALL_PHOTO_QUERY_IDS.includes(queryId));
   assert.deepEqual(missing, []);
+  assert.deepEqual(unused, []);
+});
+
+test('query order is noun, descriptor, then optional location', () => {
+  assert.equal(buildSearchPhrase('lily-white', 'Kyoto'), 'lily white Kyoto');
+  assert.equal(buildSearchPhrase('cross-wooden', ''), 'cross wooden');
+  assert.equal(buildSearchPhrase('not-approved', 'Tokyo'), 'cross sunrise Tokyo');
 });
 
 test('Retina displays request an appropriate high-resolution bucket', () => {
@@ -78,13 +66,10 @@ test('Retina displays request an appropriate high-resolution bucket', () => {
 test('Worker normalises widths and builds a quality 92 image URL', () => {
   assert.equal(normaliseWidth('2048'), 2560);
   assert.equal(normaliseWidth('9000'), 3840);
-  const url = new URL(
-    buildHighQualityImageUrl(
-      { urls: { raw: 'https://images.unsplash.com/photo-test?ixid=abc' } },
-      3200
-    )
-  );
-
+  const url = new URL(buildHighQualityImageUrl(
+    { urls: { raw: 'https://images.unsplash.com/photo-test?ixid=abc' } },
+    3200
+  ));
   assert.equal(url.searchParams.get('w'), '3200');
   assert.equal(url.searchParams.get('q'), '92');
   assert.equal(url.searchParams.get('fit'), 'max');

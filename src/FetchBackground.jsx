@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AppContext } from './App.jsx';
 import './FetchBackground.css';
 import {
-  chooseBackgroundQueries,
-  shouldUsePhotoPreference,
+  chooseBackgroundQuery,
 } from './backgroundPhotoQueries';
 import { getBrowserPhotoWidth } from './photoSizing';
 
@@ -14,29 +13,22 @@ const copyright =
 
 function FetchBackground() {
   const { state, dispatch } = useContext(AppContext);
-  const [queryPlan, setQueryPlan] = useState([]);
-  const [images, setImages] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [loadingIndex, setLoadingIndex] = useState(null);
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const sessionRef = useRef(0);
 
   useEffect(() => {
     const verse = state.searchBackgroundQuery || '';
-    const preference = shouldUsePhotoPreference(verse)
-      ? state.photoPreference || ''
-      : '';
-    const nextQueryPlan = chooseBackgroundQueries(verse, { count: 4 });
+    const preference = state.photoPreference || '';
+    const query = chooseBackgroundQuery(verse);
     const session = sessionRef.current + 1;
     sessionRef.current = session;
-    setQueryPlan(nextQueryPlan);
-    setImages(new Array(nextQueryPlan.length));
-    setCurrentIndex(0);
-    setLoadingIndex(0);
+    setLoading(true);
 
     const controller = new AbortController();
     const params = new URLSearchParams({
-      query: nextQueryPlan[0],
+      query,
       width: String(getBrowserPhotoWidth()),
     });
     if (preference) params.set('preference', preference);
@@ -53,11 +45,7 @@ function FetchBackground() {
           throw new Error('Photo service returned incomplete data');
         }
         if (sessionRef.current !== session) return;
-        setImages((previous) => {
-          const next = [...previous];
-          next[0] = photo;
-          return next;
-        });
+        setImage(photo);
         setFailed(false);
       })
       .catch((error) => {
@@ -66,35 +54,26 @@ function FetchBackground() {
         }
       })
       .finally(() => {
-        if (sessionRef.current === session) setLoadingIndex(null);
+        if (sessionRef.current === session) setLoading(false);
       });
 
     return () => controller.abort();
   }, [state.searchBackgroundQuery, state.photoPreference]);
 
-  const image = images[currentIndex] || null;
-
   async function handleNextBackground() {
-    if (queryPlan.length < 2 || loadingIndex !== null) return;
-
-    const nextIndex = (currentIndex + 1) % queryPlan.length;
-    if (images[nextIndex]) {
-      setCurrentIndex(nextIndex);
-      setFailed(false);
-      return;
-    }
+    if (loading) return;
 
     const verse = state.searchBackgroundQuery || '';
-    const preference = shouldUsePhotoPreference(verse)
-      ? state.photoPreference || ''
-      : '';
+    const preference = state.photoPreference || '';
     const session = sessionRef.current;
+    const query = chooseBackgroundQuery(verse);
     const params = new URLSearchParams({
-      query: queryPlan[nextIndex],
+      query,
       width: String(getBrowserPhotoWidth()),
     });
     if (preference) params.set('preference', preference);
-    setLoadingIndex(nextIndex);
+    if (image?.id) params.set('exclude', image.id);
+    setLoading(true);
 
     try {
       const response = await fetch(`${photoServiceUrl}?${params}`);
@@ -107,17 +86,12 @@ function FetchBackground() {
       }
       if (sessionRef.current !== session) return;
 
-      setImages((previous) => {
-        const next = [...previous];
-        next[nextIndex] = photo;
-        return next;
-      });
-      setCurrentIndex(nextIndex);
+      setImage(photo);
       setFailed(false);
     } catch {
       if (sessionRef.current === session) setFailed(true);
     } finally {
-      if (sessionRef.current === session) setLoadingIndex(null);
+      if (sessionRef.current === session) setLoading(false);
     }
   }
 
