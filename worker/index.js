@@ -137,7 +137,13 @@ export default {
     const excludedId = (requestUrl.searchParams.get('exclude') || '').slice(0, 32);
     const width = normaliseWidth(requestUrl.searchParams.get('width'));
     const searchPhrase = buildSearchPhrase(queryId, location);
-    const photo = await fetchDifferentPhoto(searchPhrase, excludedId, env);
+    let photo = await fetchDifferentPhoto(searchPhrase, excludedId, env);
+
+    // A location is a preference, not a requirement. If the combined query is
+    // too narrow for Unsplash, keep the verse subject and retry without it.
+    if (!photo && location) {
+      photo = await fetchDifferentPhoto(buildSearchPhrase(queryId), excludedId, env);
+    }
 
     if (!photo) {
       return json(
