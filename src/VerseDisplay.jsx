@@ -64,9 +64,9 @@ function VerseDisplay() {
       try {
         const [displayText, backgroundText] = await Promise.all([
           fetchPassage(data.language, reference, controller.signal),
-          data.language === 'basicenglish'
+          data.language === 'web'
             ? fetchPassage(data.language, reference, controller.signal)
-            : fetchPassage('basicenglish', reference, controller.signal),
+            : fetchPassage('web', reference, controller.signal),
         ]);
 
         dispatch({

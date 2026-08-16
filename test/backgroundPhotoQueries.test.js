@@ -15,16 +15,16 @@ import {
   normaliseWidth,
 } from '../worker/index.js';
 
-test('a concrete object outranks an abstract concept', () => {
+test('an exact water phrase outranks abstract peace', () => {
   const match = getPhotoQueryMatch('He leads me beside still waters and gives me peace.');
-  assert.equal(match.priority, 90);
-  assert.deepEqual(match.matchedRuleIds, ['water']);
+  assert.equal(match.priority, 130);
+  assert.deepEqual(match.matchedRuleIds, ['still-waters']);
   assert.ok(match.candidates.includes('water-clear'));
 });
 
 test('an exact object phrase receives the highest priority', () => {
   const match = getPhotoQueryMatch('The kingdom of heaven is like a mustard seed.');
-  assert.equal(match.priority, 100);
+  assert.equal(match.priority, 130);
   assert.ok(match.matchedRuleIds.includes('mustard-seed'));
   assert.ok(match.candidates.includes('seed-mustard'));
 });
@@ -36,18 +36,54 @@ test('same-priority noun groups and their candidates are selected randomly', () 
   assert.equal(last, 'fish-bread');
 });
 
+test('water beats generic scenery and always sends a water query', () => {
+  const match = getPhotoQueryMatch('Water runs beside the mountain path.');
+  assert.deepEqual(match.matchedRuleIds, ['water']);
+  assert.deepEqual(match.candidates, ['water', 'water-clear', 'surface-water', 'water-flowing']);
+});
+
+test('eagle beats mountain and never falls back to generic eagle search', () => {
+  const match = getPhotoQueryMatch('They will mount up with wings like eagles above the mountains.');
+  assert.equal(match.priority, 120);
+  assert.deepEqual(match.matchedRuleIds, ['eagle', 'wings']);
+  assert.ok(match.candidates.every((query) => /eagle|wings/.test(query)));
+  assert.ok(!match.candidates.includes('eagle'));
+  assert.ok(!match.candidates.includes('mountain'));
+});
+
+test('different animal nouns never share one mixed candidate pool', () => {
+  assert.deepEqual(getPhotoQueryMatch('The lion roared.').candidates, ['lion']);
+  assert.deepEqual(getPhotoQueryMatch('He rode a donkey.').candidates, ['donkey']);
+  assert.deepEqual(getPhotoQueryMatch('The serpent was subtle.').candidates, ['snake']);
+});
+
+test('weather nouns never leak into one another', () => {
+  assert.deepEqual(getPhotoQueryMatch('The rain came down.').candidates, ['rain-window', 'water-flowing']);
+  assert.deepEqual(getPhotoQueryMatch('White as snow.').candidates, ['snow-field']);
+});
+
+test('ambiguous verbs do not become unrelated objects', () => {
+  assert.ok(!getPhotoQueryMatch('They cross over the river and all is well.').matchedRuleIds.includes('cross'));
+  assert.ok(!getPhotoQueryMatch('They cross over the river and all is well.').matchedRuleIds.includes('well'));
+  assert.deepEqual(getPhotoQueryMatch('Take up his cross and follow me.').matchedRuleIds, ['cross']);
+});
+
+test('Father in heaven uses faith imagery rather than a random family photo', () => {
+  const match = getPhotoQueryMatch('Pray to your Father in heaven.');
+  assert.deepEqual(match.matchedRuleIds, ['father-god']);
+  assert.ok(match.candidates.includes('worship-christian'));
+});
+
 test('dark subjects are absent from global fallback', () => {
   const match = getPhotoQueryMatch('A verse with no approved visual noun here.');
   assert.deepEqual(match.candidates, GLOBAL_FALLBACK_QUERIES);
   assert.ok(!match.candidates.some((query) => /sword|prison|snake|death/.test(query)));
-  assert.equal(getPhotoQueryMatch('He carried a sword.').matchedRuleIds[0], 'conflict');
+  assert.equal(getPhotoQueryMatch('He carried a sword.').matchedRuleIds[0], 'sword');
 });
 
-test('every front-end query id is exactly allow-listed by the Worker', () => {
+test('every front-end query id is allow-listed by the universal Worker', () => {
   const missing = ALL_PHOTO_QUERY_IDS.filter((queryId) => !PHOTO_QUERY_IDS.has(queryId));
-  const unused = [...PHOTO_QUERY_IDS].filter((queryId) => !ALL_PHOTO_QUERY_IDS.includes(queryId));
   assert.deepEqual(missing, []);
-  assert.deepEqual(unused, []);
 });
 
 test('query order is noun, descriptor, then optional location', () => {
