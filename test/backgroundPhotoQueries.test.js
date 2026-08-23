@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   ALL_PHOTO_QUERY_IDS,
   GLOBAL_FALLBACK_QUERIES,
+  PHOTO_QUERY_RULES,
   chooseBackgroundQuery,
   getPhotoQueryMatch,
 } from '../src/backgroundPhotoQueries.js';
@@ -79,6 +80,22 @@ test('dark subjects are absent from global fallback', () => {
   assert.deepEqual(match.candidates, GLOBAL_FALLBACK_QUERIES);
   assert.ok(!match.candidates.some((query) => /sword|prison|snake|death/.test(query)));
   assert.equal(getPhotoQueryMatch('He carried a sword.').matchedRuleIds[0], 'sword');
+});
+
+test('abstract concepts and global fallback never use generic landscapes', () => {
+  const landscapeQueries = new Set([
+    'water-still', 'sea-calm', 'sunrise', 'dawn', 'tree-ancient',
+    'mountain', 'path', 'road', 'rain-window', 'tree-solitary',
+    'flowers', 'stars', 'horizon', 'sky-night', 'cross-sunrise',
+    'vineyard', 'river-flowing', 'valley-green', 'path-forest',
+    'stars-mountains',
+  ]);
+  const abstractQueries = PHOTO_QUERY_RULES
+    .filter((item) => item.priority === 50)
+    .flatMap((item) => item.queries);
+
+  assert.ok(!abstractQueries.some((query) => landscapeQueries.has(query)));
+  assert.ok(!GLOBAL_FALLBACK_QUERIES.some((query) => landscapeQueries.has(query)));
 });
 
 test('every front-end query id is allow-listed by the universal Worker', () => {

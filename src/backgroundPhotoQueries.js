@@ -151,26 +151,29 @@ export const PHOTO_QUERY_RULES = [
   rule('prayer', 70, ['praying', 'prayer', 'pray'], ['prayer-kneeling', 'hands-prayer', 'bible-prayer', 'person-praying']),
   rule('love', 70, ['beloved', 'love'], ['parent-child', 'mother-child', 'father-child', 'rings-wedding', 'family-embrace', 'baby-holding']),
 
-  // Abstract ideas are the last resort.
-  rule('peace', 50, ['be still', 'peace', 'rest'], ['water-still', 'sea-calm', 'dove-white']),
-  rule('hope', 50, ['hope'], ['sunrise', 'door-open', 'seedling', 'dawn']),
-  rule('strength', 50, ['strength', 'power', 'courage'], ['tree-ancient', 'mountain', 'shield', 'eagle-flying']),
-  rule('protection', 50, ['protection', 'safe', 'refuge', 'shelter'], ['shield', 'shelter', 'wings-sheltering', 'fortress']),
-  rule('guidance', 50, ['guidance', 'guide', 'lead', 'follow'], ['path', 'lighthouse', 'road', 'lamp']),
+  // Abstract ideas become concrete, human-scale scenes. Generic landscapes
+  // are reserved for verses that explicitly mention their visible subjects.
+  rule('peace', 50, ['be still', 'peace', 'rest'], ['child-sleeping', 'dove-white', 'candle-light', 'room-sunlit']),
+  rule('hope', 50, ['hope'], ['door-open', 'seedling', 'candle-light', 'hands-open']),
+  rule('strength', 50, ['strength', 'power', 'courage'], ['shield', 'eagle-flying', 'hands-woodworking', 'fortress-stone']),
+  rule('protection', 50, ['protection', 'safe', 'refuge', 'shelter'], ['shield', 'shelter', 'wings-sheltering', 'family-embrace']),
+  rule('guidance', 50, ['guidance', 'guide', 'lead', 'follow'], ['lamp-oil', 'feet-walking', 'door-light', 'shepherd-flock']),
   rule('mercy', 50, ['compassion', 'forgiveness', 'forgive', 'mercy', 'grace'], ['hand-helping', 'parent-child', 'embrace-comforting', 'cross']),
-  rule('sorrow', 50, ['sorrow', 'grief', 'trouble', 'tears', 'weeping'], ['tears', 'rain-window', 'chair-empty', 'tree-solitary']),
-  rule('joy', 50, ['rejoice', 'joy'], ['child-laughing', 'celebration', 'sunrise', 'flowers']),
-  rule('eternal', 50, ['eternal', 'forever', 'heaven'], ['stars', 'horizon', 'sky-night']),
+  rule('sorrow', 50, ['sorrow', 'grief', 'trouble', 'tears', 'weeping'], ['tears', 'chair-empty', 'embrace-comforting', 'hands-prayer']),
+  rule('joy', 50, ['rejoice', 'joy'], ['child-laughing', 'children-playing', 'celebration', 'family-embrace']),
+  rule('eternal', 50, ['eternal', 'forever', 'heaven'], ['bible-open', 'cross-christian', 'candle-light', 'church-window']),
   rule('freedom', 50, ['freedom', 'free'], ['chains-broken', 'gate-open', 'bird-flying']),
   rule('wisdom', 50, ['wisdom', 'knowledge'], ['book-old', 'bible', 'lamp', 'reading']),
 ];
 
-// Used only if absolutely no approved trigger exists. No violent/dark terms.
+// Used only if absolutely no approved trigger exists. Keep this pool concrete,
+// varied and human-scale: no generic scenery and no violent/dark subjects.
 export const GLOBAL_FALLBACK_QUERIES = [
-  'cross-sunrise', 'bible-window', 'worship-christian', 'parent-child',
-  'family-embrace', 'lily-white', 'vineyard', 'bread-table', 'river-flowing',
-  'sea-calm', 'mountain', 'valley-green', 'path-forest', 'sunrise',
-  'stars-mountains', 'dove-white', 'church-window', 'tree-ancient',
+  'bible-open', 'bible-window', 'bible-candle', 'bread-table',
+  'candle-light', 'parent-child', 'family-embrace', 'hands-prayer',
+  'worship-christian', 'rings-wedding', 'lily-white', 'dove-white',
+  'seed-hand', 'cup-table', 'church-window', 'scroll-ancient',
+  'lamp-oil', 'hand-helping',
 ];
 
 function normaliseVerse(verse = '') {
