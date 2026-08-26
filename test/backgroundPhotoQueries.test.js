@@ -30,6 +30,15 @@ test('an exact object phrase receives the highest priority', () => {
   assert.ok(match.candidates.includes('seed-mustard'));
 });
 
+test('Isaiah 42:3 locks onto the bruised reed instead of its incidental light', () => {
+  const match = getPhotoQueryMatch(
+    'He will not let a crushed stem be quite broken, and he will not let a feebly burning light be put out.'
+  );
+  assert.equal(match.priority, 130);
+  assert.deepEqual(match.matchedRuleIds, ['bruised-reed']);
+  assert.deepEqual(match.candidates, ['reed', 'reed-single', 'reeds-water']);
+});
+
 test('same-priority noun groups and their candidates are selected randomly', () => {
   const first = chooseBackgroundQuery('Bread and fish', { random: () => 0 });
   const last = chooseBackgroundQuery('Bread and fish', { random: () => 0.999 });

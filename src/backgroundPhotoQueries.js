@@ -12,6 +12,7 @@ export const PHOTO_QUERY_RULES = [
   rule('pillar-cloud', 130, ['pillar of cloud'], ['cloud-desert', 'clouds-dramatic', 'cloud']),
   rule('crown-thorns', 130, ['crown of thorns'], ['thorns-crown', 'thorns-closeup']),
   rule('good-shepherd', 130, ['good shepherd'], ['shepherd', 'shepherd-flock', 'staff-shepherd']),
+  rule('bruised-reed', 130, ['bruised reed', 'crushed reed', 'crushed stem'], ['reed', 'reed-single', 'reeds-water']),
   rule('word-god', 130, ['word of god'], ['bible-open', 'bible-window', 'bible-pages']),
   rule('father-god', 130, ['father in heaven', 'heavenly father', 'god our father', 'god the father'], ['jesus', 'cross-christian', 'worship-christian', 'hands-raised-worship']),
 
