@@ -8,7 +8,8 @@ import {
 } from '../src/constants/verseLibrary.js';
 
 const OUTPUT_PATH = new URL('../docs/default-verse-photo-audit.md', import.meta.url);
-const CONCURRENCY = 6;
+const BBE_SOURCE_URL =
+  'https://raw.githubusercontent.com/thiagobodruk/bible/master/json/en_bbe.json';
 
 function referenceFor(verse) {
   const end = Number(verse.verseEnd) === Number(verse.verseStart)
@@ -17,47 +18,21 @@ function referenceFor(verse) {
   return `${verse.label} ${verse.chapter}:${verse.verseStart}${end}`;
 }
 
-function extractPassage(payload) {
-  return Object.values(payload || {})
-    .flatMap((chapter) => chapter.verses || [])
-    .map((verse) => verse.text?.trim())
-    .filter(Boolean)
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+async function loadBbeBible() {
+  const response = await fetch(BBE_SOURCE_URL);
+  if (!response.ok) throw new Error(`BBE source returned ${response.status}`);
+  return response.json();
 }
 
-async function fetchPassage(reference, attempt = 1) {
-  const url = `https://query.getbible.net/v2/web/${encodeURIComponent(reference)}`;
-  const response = await fetch(url);
-  if (response.ok) {
-    const text = extractPassage(await response.json());
-    if (text) return text;
-  }
+function passageFromBible(book, verse) {
+  const chapter = book?.chapters?.[Number(verse.chapter) - 1];
+  if (!chapter) throw new Error('Chapter not found');
 
-  if (attempt < 3) {
-    await new Promise((resolve) => setTimeout(resolve, attempt * 750));
-    return fetchPassage(reference, attempt + 1);
-  }
-  throw new Error(`GetBible returned ${response.status}`);
-}
-
-async function mapConcurrent(items, mapper) {
-  const results = new Array(items.length);
-  let nextIndex = 0;
-
-  async function worker() {
-    while (nextIndex < items.length) {
-      const index = nextIndex;
-      nextIndex += 1;
-      results[index] = await mapper(items[index], index);
-    }
-  }
-
-  await Promise.all(
-    Array.from({ length: Math.min(CONCURRENCY, items.length) }, worker)
-  );
-  return results;
+  const start = Number(verse.verseStart) - 1;
+  const end = Number(verse.verseEnd);
+  const text = chapter.slice(start, end).join(' ').replace(/\s+/g, ' ').trim();
+  if (!text) throw new Error('Passage not found');
+  return text;
 }
 
 function statusFor(priority) {
@@ -71,13 +46,19 @@ function markdownText(text) {
   return text.replaceAll('|', '\\|');
 }
 
-const rows = await mapConcurrent(verseLibrary, async (verse, index) => {
+const bbeBible = await loadBbeBible();
+const booksByName = new Map(
+  bbeBible.map((book) => [book.name.toLowerCase(), book])
+);
+booksByName.set('song of songs', booksByName.get('song of solomon'));
+
+const rows = verseLibrary.map((verse, index) => {
   const reference = referenceFor(verse);
   let text;
   try {
-    text = await fetchPassage(reference);
+    text = passageFromBible(booksByName.get(verse.label.toLowerCase()), verse);
   } catch (error) {
-    text = `[Unable to load WEB text: ${error.message}]`;
+    text = `[Unable to load BBE text: ${error.message}]`;
   }
 
   const match = getPhotoQueryMatch(text);
@@ -101,7 +82,7 @@ const report = [
   '',
   `Generated from the current code on 2026-08-25. Total preselected passages: **${rows.length}**.`,
   '',
-  'The site always uses the English WEB passage for background matching, even when another display language is selected. The photo query is randomly selected from the candidate list, so this report shows every query that may be sent to Unsplash.',
+  'The site uses the English BBE passage for background matching, even when another display language is selected. If BBE is temporarily unavailable, the live site falls back to WEB. The photo query is randomly selected from all matched rules, so this report shows every query that may be sent to Unsplash.',
   '',
   '## Summary',
   '',
@@ -126,7 +107,7 @@ const report = [
     ]),
   '## All preselected passages',
   '',
-  '| # | Reference | Categories | WEB passage used for matching | Match type | Matched rule(s) | Candidate Unsplash queries |',
+  '| # | Reference | Categories | BBE passage used for matching | Match type | Matched rule(s) | Candidate Unsplash queries |',
   '| ---: | --- | --- | --- | --- | --- | --- |',
   ...rows.map((row) => {
     const rules = row.match.matchedRuleIds.length

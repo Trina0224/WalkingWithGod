@@ -24,8 +24,8 @@ export const PHOTO_QUERY_RULES = [
   rule('sea', 120, ['ocean', 'waves', 'wave', 'sea'], ['sea', 'waves-ocean', 'sea-calm']),
   rule('shore', 120, ['harbour', 'harbor', 'shore', 'beach'], ['shore-empty', 'harbour-fishing', 'waves-ocean']),
 
-  rule('eagle', 120, ['eagles', 'eagle'], ['eagle-flying', 'wings-eagle']),
-  rule('wings', 120, ['wings', 'wing'], ['wings-eagle', 'wings-bird', 'wings-sheltering']),
+  rule('eagle', 120, ['eagles', 'eagle'], ['eagle', 'eagle-flying', 'wings-eagle']),
+  rule('wings', 120, ['wings', 'wing'], ['wings', 'wings-eagle', 'wings-bird', 'wings-sheltering']),
   rule('sheep', 120, ['sheep', 'flock'], ['sheep', 'flock-sheep', 'sheep-hillside']),
   rule('lamb', 120, ['lamb'], ['lamb', 'lamb-field', 'lamb-young']),
   rule('dove', 120, ['dove'], ['dove', 'dove-white', 'dove-flying']),
@@ -125,7 +125,16 @@ export const PHOTO_QUERY_RULES = [
   rule('carpenter', 120, ['carpenter'], ['carpenter', 'hands-woodworking', 'tools-wooden']),
   rule('potter', 120, ['potter'], ['potter', 'vessel-clay', 'clay-shaping']),
 
-  // Generic scenery is valid, but never beats a distinctive object.
+  // Concrete actions and life scenes. These keep long passages from being
+  // reduced to one incidental object such as "stone".
+  rule('birth', 110, ['newborn', 'born', 'birth'], ['baby', 'baby-holding', 'mother-baby']),
+  rule('death', 110, ['death', 'dead', 'die'], ['tomb-empty', 'candle', 'flower-fading']),
+  rule('planting', 110, ['planting', 'planted', 'plant', 'pluck', 'uproot'], ['seed-hand', 'seed-soil', 'seed-planting']),
+  rule('healing', 110, ['healing', 'healed', 'heal'], ['hand-helping', 'embrace-comforting', 'hands-open']),
+  rule('building', 110, ['building', 'build', 'built'], ['carpenter', 'hands-woodworking', 'tools-wooden']),
+
+  // Generic scenery is valid when the passage actually names it. It shares the
+  // draw with other matched subjects instead of replacing or being discarded.
   rule('mountain', 100, ['mountains', 'mountain'], ['mountain', 'peak-mountain', 'mountains-mist']),
   rule('hill', 100, ['hills', 'hill'], ['hills-green', 'hills-rolling', 'hill-sunrise']),
   rule('valley', 100, ['valley'], ['valley', 'valley-green', 'valley-mist']),
@@ -144,12 +153,13 @@ export const PHOTO_QUERY_RULES = [
   rule('tower', 100, ['tower'], ['tower-stone']),
   rule('sky', 100, ['sky'], ['sky-open', 'sky-night']),
   rule('light', 100, ['light'], ['light-beam', 'light-clouds', 'morning-window']),
+  rule('morning', 100, ['morning', 'daybreak'], ['dawn', 'morning-window', 'sunlight']),
 
-  // Curated concepts run only when no visible subject matched.
+  // Curated concepts may participate beside visible subjects.
   rule('god', 70, ['kingdom of god', 'son of god', 'jesus', 'christ', 'messiah', 'saviour', 'savior', 'lord', 'god'], ['jesus', 'cross-christian', 'worship-christian', 'hands-raised-worship']),
-  rule('worship', 70, ['worship', 'praise', 'faith', 'gospel', 'redemption', 'salvation'], ['worship-christian', 'hands-raised-worship', 'church-worship', 'bible-open', 'cross']),
+  rule('worship', 70, ['holy spirit', 'spirit', 'holy', 'worship', 'praise', 'faith', 'gospel', 'redemption', 'salvation', 'miracle', 'great things'], ['worship-christian', 'hands-raised-worship', 'church-worship', 'bible-open', 'cross']),
   rule('prayer', 70, ['praying', 'prayer', 'pray'], ['prayer-kneeling', 'hands-prayer', 'bible-prayer', 'person-praying']),
-  rule('love', 70, ['beloved', 'love'], ['parent-child', 'mother-child', 'father-child', 'rings-wedding', 'family-embrace', 'baby-holding']),
+  rule('love', 70, ['embracing', 'embrace', 'together', 'beloved', 'love'], ['parent-child', 'mother-child', 'father-child', 'rings-wedding', 'family-embrace', 'baby-holding']),
 
   // Abstract ideas become concrete, human-scale scenes. Generic landscapes
   // are reserved for verses that explicitly mention their visible subjects.
@@ -159,8 +169,8 @@ export const PHOTO_QUERY_RULES = [
   rule('protection', 50, ['protection', 'safe', 'refuge', 'shelter'], ['shield', 'shelter', 'wings-sheltering', 'family-embrace']),
   rule('guidance', 50, ['guidance', 'guide', 'lead', 'follow'], ['lamp-oil', 'feet-walking', 'door-light', 'shepherd-flock']),
   rule('mercy', 50, ['compassion', 'forgiveness', 'forgive', 'mercy', 'grace'], ['hand-helping', 'parent-child', 'embrace-comforting', 'cross']),
-  rule('sorrow', 50, ['sorrow', 'grief', 'trouble', 'tears', 'weeping'], ['tears', 'chair-empty', 'embrace-comforting', 'hands-prayer']),
-  rule('joy', 50, ['rejoice', 'joy'], ['child-laughing', 'children-playing', 'celebration', 'family-embrace']),
+  rule('sorrow', 50, ['mourning', 'mourn', 'sorrow', 'grief', 'trouble', 'tears', 'weeping', 'weep'], ['tears', 'chair-empty', 'embrace-comforting', 'hands-prayer']),
+  rule('joy', 50, ['laughing', 'laugh', 'dancing', 'dance', 'rejoice', 'joy'], ['child-laughing', 'children-playing', 'celebration', 'family-embrace']),
   rule('eternal', 50, ['eternal', 'forever', 'heaven'], ['bible-open', 'cross-christian', 'candle-light', 'church-window']),
   rule('freedom', 50, ['freedom', 'free'], ['chains-broken', 'gate-open', 'bird-flying']),
   rule('wisdom', 50, ['wisdom', 'knowledge'], ['book-old', 'bible', 'lamp', 'reading']),
@@ -169,11 +179,7 @@ export const PHOTO_QUERY_RULES = [
 // Used only if absolutely no approved trigger exists. Keep this pool concrete,
 // varied and human-scale: no generic scenery and no violent/dark subjects.
 export const GLOBAL_FALLBACK_QUERIES = [
-  'bible-open', 'bible-window', 'bible-candle', 'bread-table',
-  'candle-light', 'parent-child', 'family-embrace', 'hands-prayer',
-  'worship-christian', 'rings-wedding', 'lily-white', 'dove-white',
-  'seed-hand', 'cup-table', 'church-window', 'scroll-ancient',
-  'lamp-oil', 'hand-helping',
+  'bible-open', 'jesus', 'cross-christian',
 ];
 
 function normaliseVerse(verse = '') {
@@ -200,12 +206,16 @@ export function getPhotoQueryMatch(verse = '') {
     return { matchedRuleIds: [], priority: 10, candidates: GLOBAL_FALLBACK_QUERIES };
   }
 
-  const priority = Math.max(...matched.map((item) => item.priority));
-  const strongest = matched.filter((item) => item.priority === priority);
+  // Exact phrases describe one unmistakable image and may take exclusive
+  // control. Otherwise every meaningful match participates, just as in the
+  // earliest version; a lone high-priority noun cannot hijack a whole passage.
+  const exact = matched.filter((item) => item.priority === 130);
+  const participating = exact.length ? exact : matched;
+  const priority = Math.max(...participating.map((item) => item.priority));
   return {
-    matchedRuleIds: strongest.map((item) => item.id),
+    matchedRuleIds: participating.map((item) => item.id),
     priority,
-    candidates: [...new Set(strongest.flatMap((item) => item.queries))],
+    candidates: [...new Set(participating.flatMap((item) => item.queries))],
   };
 }
 
@@ -213,7 +223,7 @@ export function chooseBackgroundQuery(verse = '', options = {}) {
   const random = options.random ?? Math.random;
   const match = getPhotoQueryMatch(verse);
   const matchingRules = PHOTO_QUERY_RULES.filter(
-    (item) => item.priority === match.priority && match.matchedRuleIds.includes(item.id)
+    (item) => match.matchedRuleIds.includes(item.id)
   );
   if (!matchingRules.length) return randomItem(match.candidates, random);
   return randomItem(randomItem(matchingRules, random).queries, random);
