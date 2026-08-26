@@ -20,7 +20,7 @@ test('an exact water phrase outranks abstract peace', () => {
   const match = getPhotoQueryMatch('He leads me beside still waters and gives me peace.');
   assert.equal(match.priority, 130);
   assert.deepEqual(match.matchedRuleIds, ['still-waters']);
-  assert.ok(match.candidates.includes('water-clear'));
+  assert.deepEqual(match.candidates, ['water']);
 });
 
 test('an exact object phrase receives the highest priority', () => {
@@ -36,7 +36,7 @@ test('Isaiah 42:3 locks onto the bruised reed instead of its incidental light', 
   );
   assert.equal(match.priority, 130);
   assert.deepEqual(match.matchedRuleIds, ['bruised-reed']);
-  assert.deepEqual(match.candidates, ['reed', 'reed-single', 'reeds-water']);
+  assert.deepEqual(match.candidates, ['reed']);
 });
 
 test('same-priority noun groups and their candidates are selected randomly', () => {
@@ -109,8 +109,36 @@ test('ambiguous verbs do not become unrelated objects', () => {
 
 test('Father in heaven uses faith imagery rather than a random family photo', () => {
   const match = getPhotoQueryMatch('Pray to your Father in heaven.');
-  assert.deepEqual(match.matchedRuleIds, ['father-god']);
+  assert.ok(match.matchedRuleIds.includes('father-god'));
+  assert.ok(match.matchedRuleIds.includes('prayer'));
+  assert.ok(!match.matchedRuleIds.includes('father'));
   assert.ok(match.candidates.includes('worship-christian'));
+});
+
+test('theological phrases join the phrase sea without hiding concrete nouns', () => {
+  const father = getPhotoQueryMatch(
+    'See the birds, seeds, grain, and flowers; your Father in heaven gives them food.'
+  );
+  assert.ok(father.matchedRuleIds.includes('father-god'));
+  assert.ok(father.matchedRuleIds.includes('bird'));
+  assert.ok(father.matchedRuleIds.includes('seed'));
+  assert.ok(father.matchedRuleIds.includes('grain'));
+  assert.ok(father.matchedRuleIds.includes('flower'));
+
+  const word = getPhotoQueryMatch(
+    'Take the armor of God, the shield of faith, and the sword of the Spirit, which is the word of God.'
+  );
+  assert.deepEqual(word.matchedRuleIds, ['armor-god']);
+  assert.ok(word.suppressedRuleIds.includes('word-god'));
+  assert.deepEqual(word.candidates, ['armor-ancient', 'shield', 'sword-ancient']);
+});
+
+test('negative wording does not create the opposite photo', () => {
+  assert.ok(!getPhotoQueryMatch('I have not taken wine or strong drink.').matchedRuleIds.includes('wine'));
+  assert.ok(!getPhotoQueryMatch('Be free from the love of money.').matchedRuleIds.includes('love'));
+  assert.ok(!getPhotoQueryMatch('A child who has no father.').matchedRuleIds.includes('father'));
+  assert.ok(!getPhotoQueryMatch('A flock of sparrows.').matchedRuleIds.includes('sheep'));
+  assert.ok(!getPhotoQueryMatch('There is no room for fear.').matchedRuleIds.includes('room'));
 });
 
 test('dark subjects are absent from global fallback', () => {

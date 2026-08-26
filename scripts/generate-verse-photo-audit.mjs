@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 
 import {
+  PHOTO_PHRASE_RULES,
   getPhotoQueryMatch,
 } from '../src/backgroundPhotoQueries.js';
 import {
@@ -84,11 +85,21 @@ const report = [
   '',
   'The site uses the English BBE passage for background matching, even when another display language is selected. If BBE is temporarily unavailable, the live site falls back to WEB. The photo query is randomly selected from all matched rules, so this report shows every query that may be sent to Unsplash.',
   '',
+  'Phrase rules are global: they apply to every passage containing the wording, not only to the verse that motivated the rule. A visually decisive phrase may suppress incidental matches; theological phrases remain part of the wider candidate pool.',
+  '',
   '## Summary',
   '',
   '| Match type | Count |',
   '| --- | ---: |',
   ...[...statusCounts.entries()].map(([label, count]) => `| ${label} | ${count} |`),
+  '',
+  '## Global phrase sea',
+  '',
+  '| Phrase rule | Exclusive visual phrase? | Trigger wording | Unsplash queries |',
+  '| --- | --- | --- | --- |',
+  ...PHOTO_PHRASE_RULES.map((item) =>
+    `| \`${item.id}\` | ${item.exclusive ? 'Yes' : 'No'} | ${item.triggers.map((trigger) => `\`${trigger}\``).join(', ')} | ${item.queries.map((query) => `\`${query.replaceAll('-', ' ')}\``).join(', ')} |`
+  ),
   '',
   '## Review first: fallback and abstract matches',
   '',
@@ -100,6 +111,7 @@ const report = [
       '',
       `- Categories: ${row.categories.map((category) => `\`${category}\``).join(', ')}`,
       `- Matched rules: ${row.match.matchedRuleIds.length ? row.match.matchedRuleIds.map((id) => `\`${id}\``).join(', ') : '**none**'}`,
+      `- Suppressed incidental rules: ${row.match.suppressedRuleIds.length ? row.match.suppressedRuleIds.map((id) => `\`${id}\``).join(', ') : '**none**'}`,
       `- Candidate Unsplash queries: ${row.match.candidates.map((query) => `\`${query.replaceAll('-', ' ')}\``).join(', ')}`,
       '',
       `> ${row.text}`,
@@ -107,8 +119,8 @@ const report = [
     ]),
   '## All preselected passages',
   '',
-  '| # | Reference | Categories | BBE passage used for matching | Match type | Matched rule(s) | Candidate Unsplash queries |',
-  '| ---: | --- | --- | --- | --- | --- | --- |',
+  '| # | Reference | Categories | BBE passage used for matching | Match type | Matched rule(s) | Suppressed incidental rule(s) | Candidate Unsplash queries |',
+  '| ---: | --- | --- | --- | --- | --- | --- | --- |',
   ...rows.map((row) => {
     const rules = row.match.matchedRuleIds.length
       ? row.match.matchedRuleIds.map((id) => `\`${id}\``).join(', ')
@@ -116,7 +128,10 @@ const report = [
     const queries = row.match.candidates
       .map((query) => `\`${query.replaceAll('-', ' ')}\``)
       .join(', ');
-    return `| ${row.index} | **${row.reference}** | ${row.categories.join(', ')} | ${markdownText(row.text)} | ${row.status.label} | ${rules} | ${queries} |`;
+    const suppressed = row.match.suppressedRuleIds.length
+      ? row.match.suppressedRuleIds.map((id) => `\`${id}\``).join(', ')
+      : '—';
+    return `| ${row.index} | **${row.reference}** | ${row.categories.join(', ')} | ${markdownText(row.text)} | ${row.status.label} | ${rules} | ${suppressed} | ${queries} |`;
   }),
   '',
 ].join('\n');

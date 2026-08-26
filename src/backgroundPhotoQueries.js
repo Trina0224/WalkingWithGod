@@ -1,20 +1,55 @@
-const rule = (id, priority, triggers, queries) => ({ id, priority, triggers, queries });
+const rule = (id, priority, triggers, queries, options = {}) => ({
+  id,
+  priority,
+  triggers,
+  queries,
+  excludes: options.excludes || [],
+  kind: options.kind || 'word',
+  exclusive: Boolean(options.exclusive),
+});
+
+const phrase = (id, priority, triggers, queries, options = {}) =>
+  rule(id, priority, triggers, queries, { ...options, kind: 'phrase' });
+
+// Global phrase sea. These rules are based on wording, never on one hard-coded
+// verse reference, so the same phrase works anywhere it appears. Only visually
+// decisive phrases are exclusive; theological phrases join the wider draw.
+export const PHOTO_PHRASE_RULES = [
+  phrase('living-water', 130, ['living water'], ['water'], { exclusive: true }),
+  phrase('still-waters', 130, ['still waters'], ['water'], { exclusive: true }),
+  phrase('sea-of-galilee', 130, ['sea of galilee'], ['sea'], { exclusive: true }),
+  phrase('mustard-seed', 130, ['mustard seed'], ['seed-mustard'], { exclusive: true }),
+  phrase('pillar-fire', 130, ['pillar of fire'], ['fire'], { exclusive: true }),
+  phrase('pillar-cloud', 130, ['pillar of cloud'], ['cloud'], { exclusive: true }),
+  phrase('crown-thorns', 130, ['crown of thorns'], ['thorns-crown'], { exclusive: true }),
+  phrase('good-shepherd', 130, ['good shepherd'], ['shepherd'], { exclusive: true }),
+  phrase('bruised-reed', 130, ['bruised reed', 'crushed reed', 'crushed stem'], ['reed'], { exclusive: true }),
+  phrase('armor-god', 130, ['armor of god', 'armour of god', 'arms of god', "god's instruments of war"], ['armor-ancient', 'shield', 'sword-ancient'], { exclusive: true }),
+  phrase('where-you-go', 130, ['where you go i will go', 'wherever you go i will go'], ['friends-walking', 'family-walking', 'hands-friendship'], { exclusive: true }),
+  phrase('friend-all-times', 130, ['friend is loving at all times', 'friend loves at all times'], ['friends-together', 'hands-friendship', 'friends-walking'], { exclusive: true }),
+  phrase('fatherless-child', 130, ['child who has no father', 'fatherless child', 'the fatherless'], ['child-hand', 'hand-helping', 'child'], { exclusive: true }),
+  phrase('least-of-these', 130, ['least of these', 'in need of food', 'i was hungry'], ['hands-serving', 'food-serving', 'service-humble', 'hand-helping'], { exclusive: true }),
+  phrase('by-his-wounds', 130, ['by his wounds', 'with his wounds', 'by whose wounds'], ['cross-christian', 'cross-wooden'], { exclusive: true }),
+  phrase('word-god', 120, ['word of god'], ['bible-open', 'bible-pages']),
+  phrase('gave-word', 120, ['gave the word', 'his word'], ['bible-open', 'bible-pages']),
+  phrase('father-god', 70, ['father in heaven', 'heavenly father', 'god our father', 'god the father', 'father for ever', 'everlasting father'], ['jesus', 'cross-christian', 'worship-christian', 'hands-raised-worship']),
+  phrase('cast-cares', 70, ['cast all your cares', 'cast all your anxiety', 'put your cares on the lord', 'putting all your troubles on him'], ['hands-open', 'hands-prayer', 'hand-helping']),
+  phrase('no-anxiety', 70, ['no care for tomorrow', 'do not worry', "don't worry", 'do not be anxious', 'do not be troubled', 'let not your heart be troubled'], ['child-sleeping', 'dove-white', 'hands-open']),
+  phrase('ever-with-you', 70, ['i am ever with you', 'i am with you always', 'i will be with you at all times'], ['jesus', 'worship-christian', 'hands-open']),
+  phrase('guard-heart', 70, ['keep watch over your heart', 'guard your heart'], ['hands-open', 'bible-open', 'family-embrace']),
+  phrase('clean-heart', 70, ['clean heart', 'new heart'], ['hands-open', 'bible-prayer', 'light-beam']),
+  phrase('broken-hearted', 70, ['broken-hearted', 'brokenhearted', 'heart is broken'], ['embrace-comforting', 'hand-helping', 'hands-prayer']),
+  phrase('time-season', 100, ['fixed time', 'good use of the time', 'a time for', 'right in its time'], ['hourglass', 'clock', 'sundial']),
+  phrase('numbered-days', 100, ['number of our days', 'number our days', 'days are numbered'], ['hourglass', 'clock', 'sundial']),
+  phrase('help-weak', 70, ['give help to the feeble', 'help the weak', 'support the weak'], ['hands-serving', 'service-humble', 'hand-helping']),
+  phrase('gathered-together', 70, ['two or three are come together', 'two or three are gathered together', 'two or three gather in my name'], ['worship-christian', 'friends-together', 'hands-prayer']),
+  phrase('sacred-house', 120, ['house of god', 'house of the lord', 'house was full of the cloud'], ['temple-ancient', 'church-interior']),
+];
 
 // Stable visual dictionary. Every candidate in one rule must show that same
 // subject. Unrelated nouns must never share a candidate pool.
 export const PHOTO_QUERY_RULES = [
-  // Exact Biblical phrases.
-  rule('living-water', 130, ['living water'], ['water-spring-clear', 'river-flowing', 'spring-water']),
-  rule('still-waters', 130, ['still waters'], ['water-still', 'sea-calm', 'water-clear']),
-  rule('sea-of-galilee', 130, ['sea of galilee'], ['galilee-shore', 'sea-calm', 'boat-lake']),
-  rule('mustard-seed', 130, ['mustard seed'], ['seed-mustard', 'seed-tiny-hand', 'plant-mustard']),
-  rule('pillar-fire', 130, ['pillar of fire'], ['fire', 'flame', 'fire-camp']),
-  rule('pillar-cloud', 130, ['pillar of cloud'], ['cloud-desert', 'clouds-dramatic', 'cloud']),
-  rule('crown-thorns', 130, ['crown of thorns'], ['thorns-crown', 'thorns-closeup']),
-  rule('good-shepherd', 130, ['good shepherd'], ['shepherd', 'shepherd-flock', 'staff-shepherd']),
-  rule('bruised-reed', 130, ['bruised reed', 'crushed reed', 'crushed stem'], ['reed', 'reed-single', 'reeds-water']),
-  rule('word-god', 130, ['word of god'], ['bible-open', 'bible-window', 'bible-pages']),
-  rule('father-god', 130, ['father in heaven', 'heavenly father', 'god our father', 'god the father'], ['jesus', 'cross-christian', 'worship-christian', 'hands-raised-worship']),
+  ...PHOTO_PHRASE_RULES,
 
   // Distinctive objects. These outrank generic scenery.
   rule('water', 120, ['waters', 'water'], ['water', 'water-clear', 'surface-water', 'water-flowing']),
@@ -27,7 +62,7 @@ export const PHOTO_QUERY_RULES = [
 
   rule('eagle', 120, ['eagles', 'eagle'], ['eagle', 'eagle-flying', 'wings-eagle']),
   rule('wings', 120, ['wings', 'wing'], ['wings', 'wings-eagle', 'wings-bird', 'wings-sheltering']),
-  rule('sheep', 120, ['sheep', 'flock'], ['sheep', 'flock-sheep', 'sheep-hillside']),
+  rule('sheep', 120, ['sheep'], ['sheep', 'flock-sheep', 'sheep-hillside']),
   rule('lamb', 120, ['lamb'], ['lamb', 'lamb-field', 'lamb-young']),
   rule('dove', 120, ['dove'], ['dove', 'dove-white', 'dove-flying']),
   rule('sparrow', 120, ['sparrows', 'sparrow'], ['bird-sparrow']),
@@ -47,7 +82,7 @@ export const PHOTO_QUERY_RULES = [
   rule('baptism', 120, ['baptism'], ['baptism-water', 'baptism-river', 'baptism-church']),
 
   rule('bread', 120, ['loaf', 'bread'], ['bread-loaf', 'bread-table', 'bread-breaking']),
-  rule('wine', 120, ['wine'], ['wine-glass', 'cup-wine', 'wine-red']),
+  rule('wine', 120, ['wine'], ['wine-glass', 'cup-wine', 'wine-red'], { excludes: ['not taken wine', 'have not taken wine'] }),
   rule('cup', 120, ['cup'], ['cup', 'cup-wooden', 'cup-wine', 'cup-table']),
   rule('grape', 120, ['grapes', 'grape'], ['grapes', 'vine-grape', 'vineyard']),
   rule('vine', 120, ['vineyard', 'vines', 'vine'], ['vine-grape', 'vine-branches', 'vineyard']),
@@ -93,6 +128,9 @@ export const PHOTO_QUERY_RULES = [
   rule('gate', 120, ['gate'], ['gate-ancient', 'gate-open']),
   rule('sword', 120, ['sword'], ['sword-ancient']),
   rule('shield', 120, ['shield'], ['shield-ancient', 'shield']),
+  rule('armor', 120, ['armour', 'armor', 'breastplate'], ['armor-ancient', 'shield-ancient']),
+  rule('yoke', 120, ['yoke'], ['yoke-wooden']),
+  rule('clothing', 120, ['clothing', 'garment'], ['clothing-linen', 'garment-white', 'wool-white']),
   rule('prison', 120, ['prison'], ['bars-prison']),
   rule('chains', 120, ['chains', 'chain'], ['chains-broken']),
   rule('crown', 120, ['crown'], ['crown', 'crown-golden']),
@@ -113,12 +151,12 @@ export const PHOTO_QUERY_RULES = [
   rule('egypt', 120, ['egypt'], ['egypt-desert']),
 
   // People stay separate too.
-  rule('father', 120, ['father'], ['father-child', 'father-baby', 'father-daughter', 'father-son']),
+  rule('father', 120, ['father'], ['father-child', 'father-baby', 'father-daughter', 'father-son'], { excludes: ['no father', 'fatherless', 'father in heaven', 'father for ever', 'everlasting father'] }),
   rule('mother', 120, ['mother'], ['mother-child', 'mother-baby', 'mother-daughter', 'mother-son']),
-  rule('child', 120, ['children', 'child'], ['child', 'children-playing', 'child-hand', 'child-sunlight']),
+  rule('child', 120, ['children', 'child'], ['child', 'children-playing', 'child-hand', 'child-sunlight'], { excludes: ['children of israel', 'little children'] }),
   rule('baby', 120, ['infant', 'baby'], ['baby', 'baby-holding', 'baby-sleeping']),
   rule('family', 120, ['families', 'family', 'parents', 'parent'], ['family-embrace', 'family-walking', 'parent-child', 'family-hands']),
-  rule('wedding', 120, ['bridegroom', 'marriage', 'wedding', 'bride', 'groom', 'husband', 'wife'], ['rings-wedding', 'bride-groom', 'hands-wedding', 'ceremony-wedding']),
+  rule('wedding', 120, ['bridegroom', 'marriage', 'wedding', 'bride', 'groom'], ['rings-wedding', 'bride-groom', 'hands-wedding', 'ceremony-wedding']),
   rule('friend', 120, ['friends', 'friend'], ['friends-together', 'hands-friendship', 'friends-walking']),
   rule('shepherd', 120, ['shepherd'], ['shepherd', 'shepherd-flock', 'staff-shepherd']),
   rule('fisherman', 120, ['fisherman'], ['fisherman', 'net-fishing', 'boat-fishing']),
@@ -148,8 +186,8 @@ export const PHOTO_QUERY_RULES = [
   rule('field', 100, ['field'], ['tree-field', 'field-wheat']),
   rule('garden', 100, ['garden'], ['garden-path', 'flowers-blooming']),
   rule('grass', 100, ['grass'], ['grass-dew']),
-  rule('house', 100, ['house', 'home'], ['house-countryside']),
-  rule('room', 100, ['room'], ['room-sunlit']),
+  rule('house', 100, ['house', 'home'], ['house-countryside'], { excludes: ['prison-house', 'house of god', 'house of the lord', 'house was full of the cloud'] }),
+  rule('room', 100, ['upper room', 'the room', 'a room'], ['room-sunlit']),
   rule('wall', 100, ['wall'], ['wall-stone-ancient']),
   rule('tower', 100, ['tower'], ['tower-stone']),
   rule('sky', 100, ['sky'], ['sky-open', 'sky-night']),
@@ -158,9 +196,10 @@ export const PHOTO_QUERY_RULES = [
 
   // Curated concepts may participate beside visible subjects.
   rule('god', 70, ['kingdom of god', 'son of god', 'jesus', 'christ', 'messiah', 'saviour', 'savior', 'lord', 'god'], ['jesus', 'cross-christian', 'worship-christian', 'hands-raised-worship']),
-  rule('worship', 70, ['holy spirit', 'spirit', 'holy', 'worship', 'praise', 'faith', 'gospel', 'redemption', 'salvation', 'miracle', 'great things'], ['worship-christian', 'hands-raised-worship', 'church-worship', 'bible-open', 'cross']),
+  rule('worship', 70, ['holy spirit', 'spirit of god', 'spirit of the lord', 'put my spirit', 'my spirit in you', 'worship', 'praise', 'faith', 'gospel', 'redemption', 'salvation', 'miracle', 'great things'], ['worship-christian', 'hands-raised-worship', 'church-worship', 'bible-open', 'cross']),
   rule('prayer', 70, ['praying', 'prayer', 'pray'], ['prayer-kneeling', 'hands-prayer', 'bible-prayer', 'person-praying']),
-  rule('love', 70, ['embracing', 'embrace', 'together', 'beloved', 'love'], ['parent-child', 'mother-child', 'father-child', 'rings-wedding', 'family-embrace', 'baby-holding']),
+  rule('love', 70, ['embracing', 'embrace', 'beloved', 'love'], ['parent-child', 'mother-child', 'father-child', 'rings-wedding', 'family-embrace', 'baby-holding'], { excludes: ['love of money'] }),
+  rule('comfort', 70, ['comforted', 'comfort'], ['embrace-comforting', 'hand-helping', 'parent-child']),
 
   // Abstract ideas become concrete, human-scale scenes. Generic landscapes
   // are reserved for verses that explicitly mention their visible subjects.
@@ -170,10 +209,10 @@ export const PHOTO_QUERY_RULES = [
   rule('protection', 50, ['protection', 'safe', 'refuge', 'shelter'], ['shield', 'shelter', 'wings-sheltering', 'family-embrace']),
   rule('guidance', 50, ['guidance', 'guide', 'lead', 'follow'], ['lamp-oil', 'feet-walking', 'door-light', 'shepherd-flock']),
   rule('mercy', 50, ['compassion', 'forgiveness', 'forgive', 'mercy', 'grace'], ['hand-helping', 'parent-child', 'embrace-comforting', 'cross']),
-  rule('sorrow', 50, ['mourning', 'mourn', 'sorrow', 'grief', 'trouble', 'tears', 'weeping', 'weep'], ['tears', 'chair-empty', 'embrace-comforting', 'hands-prayer']),
+  rule('sorrow', 50, ['mourning', 'mourn', 'sorrow', 'grief', 'troubles', 'trouble', 'tears', 'weeping', 'weep'], ['tears', 'chair-empty', 'embrace-comforting', 'hands-prayer'], { excludes: ['no care for tomorrow', 'do not be troubled', 'let not your heart be troubled', 'putting all your troubles on him'] }),
   rule('joy', 50, ['laughing', 'laugh', 'dancing', 'dance', 'rejoice', 'joy'], ['child-laughing', 'children-playing', 'celebration', 'family-embrace']),
-  rule('eternal', 50, ['eternal', 'forever', 'heaven'], ['bible-open', 'cross-christian', 'candle-light', 'church-window']),
-  rule('freedom', 50, ['freedom', 'free'], ['chains-broken', 'gate-open', 'bird-flying']),
+  rule('eternal', 50, ['eternal', 'forever'], ['bible-open', 'cross-christian', 'candle-light', 'church-window']),
+  rule('freedom', 50, ['freedom', 'free'], ['chains-broken', 'gate-open', 'bird-flying'], { excludes: ['not let wrongdoers go free'] }),
   rule('wisdom', 50, ['wisdom', 'knowledge'], ['book-old', 'bible', 'lamp', 'reading']),
 ];
 
@@ -200,21 +239,30 @@ function randomItem(items, random = Math.random) {
 export function getPhotoQueryMatch(verse = '') {
   const text = normaliseVerse(verse);
   const matched = PHOTO_QUERY_RULES.filter((item) =>
-    item.triggers.some((trigger) => containsTrigger(text, trigger))
+    item.triggers.some((trigger) => containsTrigger(text, trigger)) &&
+    !item.excludes.some((excluded) => containsTrigger(text, excluded))
   );
 
   if (!matched.length) {
-    return { matchedRuleIds: [], priority: 10, candidates: GLOBAL_FALLBACK_QUERIES };
+    return {
+      matchedRuleIds: [],
+      suppressedRuleIds: [],
+      priority: 10,
+      candidates: GLOBAL_FALLBACK_QUERIES,
+    };
   }
 
   // Exact phrases describe one unmistakable image and may take exclusive
   // control. Otherwise every meaningful match participates, just as in the
   // earliest version; a lone high-priority noun cannot hijack a whole passage.
-  const exact = matched.filter((item) => item.priority === 130);
-  const participating = exact.length ? exact : matched;
+  const exclusive = matched.filter((item) => item.exclusive);
+  const participating = exclusive.length ? exclusive : matched;
   const priority = Math.max(...participating.map((item) => item.priority));
   return {
     matchedRuleIds: participating.map((item) => item.id),
+    suppressedRuleIds: exclusive.length
+      ? matched.filter((item) => !item.exclusive).map((item) => item.id)
+      : [],
     priority,
     candidates: [...new Set(participating.flatMap((item) => item.queries))],
   };
