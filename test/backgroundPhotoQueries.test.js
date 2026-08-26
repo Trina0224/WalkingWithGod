@@ -37,19 +37,48 @@ test('same-priority noun groups and their candidates are selected randomly', () 
   assert.equal(last, 'fish-bread');
 });
 
-test('water beats generic scenery and always sends a water query', () => {
+test('all meaningful nouns participate instead of one noun hijacking the verse', () => {
   const match = getPhotoQueryMatch('Water runs beside the mountain path.');
-  assert.deepEqual(match.matchedRuleIds, ['water']);
-  assert.deepEqual(match.candidates, ['water', 'water-clear', 'surface-water', 'water-flowing']);
+  assert.deepEqual(match.matchedRuleIds, ['water', 'mountain', 'path']);
+  assert.ok(match.candidates.includes('water'));
+  assert.ok(match.candidates.includes('mountain'));
+  assert.ok(match.candidates.includes('path'));
 });
 
-test('eagle beats mountain and never falls back to generic eagle search', () => {
+test('eagle, wings, and mountain all remain available', () => {
   const match = getPhotoQueryMatch('They will mount up with wings like eagles above the mountains.');
   assert.equal(match.priority, 120);
-  assert.deepEqual(match.matchedRuleIds, ['eagle', 'wings']);
-  assert.ok(match.candidates.every((query) => /eagle|wings/.test(query)));
-  assert.ok(!match.candidates.includes('eagle'));
-  assert.ok(!match.candidates.includes('mountain'));
+  assert.deepEqual(match.matchedRuleIds, ['eagle', 'wings', 'mountain']);
+  assert.ok(match.candidates.includes('eagle'));
+  assert.ok(match.candidates.includes('wings'));
+  assert.ok(match.candidates.includes('mountain'));
+});
+
+test('a long passage is not reduced to one incidental stone', () => {
+  const match = getPhotoQueryMatch(
+    'A time to be born, and a time to die; a time to plant, and a time to pluck up; ' +
+    'a time to heal, and a time to build up; a time to weep, and a time to laugh; ' +
+    'a time to mourn, and a time to dance; a time to cast away stones.'
+  );
+  assert.ok(match.matchedRuleIds.includes('birth'));
+  assert.ok(match.matchedRuleIds.includes('death'));
+  assert.ok(match.matchedRuleIds.includes('planting'));
+  assert.ok(match.matchedRuleIds.includes('healing'));
+  assert.ok(match.matchedRuleIds.includes('building'));
+  assert.ok(match.matchedRuleIds.includes('stone'));
+  assert.ok(match.matchedRuleIds.includes('sorrow'));
+  assert.ok(match.matchedRuleIds.includes('joy'));
+});
+
+test('old BBE-style wording produces several evocative choices', () => {
+  const match = getPhotoQueryMatch(
+    'God is our harbour and our strength, a very present help in trouble.'
+  );
+  assert.deepEqual(match.matchedRuleIds, ['shore', 'god', 'strength', 'sorrow']);
+  assert.ok(match.candidates.includes('harbour-fishing'));
+  assert.ok(match.candidates.includes('jesus'));
+  assert.ok(match.candidates.includes('shield'));
+  assert.ok(match.candidates.includes('tears'));
 });
 
 test('different animal nouns never share one mixed candidate pool', () => {
@@ -66,7 +95,7 @@ test('weather nouns never leak into one another', () => {
 test('ambiguous verbs do not become unrelated objects', () => {
   assert.ok(!getPhotoQueryMatch('They cross over the river and all is well.').matchedRuleIds.includes('cross'));
   assert.ok(!getPhotoQueryMatch('They cross over the river and all is well.').matchedRuleIds.includes('well'));
-  assert.deepEqual(getPhotoQueryMatch('Take up his cross and follow me.').matchedRuleIds, ['cross']);
+  assert.deepEqual(getPhotoQueryMatch('Take up his cross and follow me.').matchedRuleIds, ['cross', 'guidance']);
 });
 
 test('Father in heaven uses faith imagery rather than a random family photo', () => {
@@ -79,6 +108,7 @@ test('dark subjects are absent from global fallback', () => {
   const match = getPhotoQueryMatch('A verse with no approved visual noun here.');
   assert.deepEqual(match.candidates, GLOBAL_FALLBACK_QUERIES);
   assert.ok(!match.candidates.some((query) => /sword|prison|snake|death/.test(query)));
+  assert.deepEqual(GLOBAL_FALLBACK_QUERIES, ['bible-open', 'jesus', 'cross-christian']);
   assert.equal(getPhotoQueryMatch('He carried a sword.').matchedRuleIds[0], 'sword');
 });
 
