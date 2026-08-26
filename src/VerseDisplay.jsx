@@ -38,6 +38,24 @@ async function fetchPassage(translation, reference, signal) {
   return text;
 }
 
+async function fetchBackgroundPassage(reference, signal) {
+  try {
+    const url = `https://bible-api.com/${encodeURIComponent(reference)}?translation=bbe`;
+    const response = await fetch(url, { signal });
+    if (!response.ok) throw new Error(`Bible API returned ${response.status}`);
+
+    const payload = await response.json();
+    const text = payload?.text?.replace(/\s+/g, ' ').trim();
+    if (!text) throw new Error('The BBE passage is empty.');
+    return text;
+  } catch (error) {
+    if (error.name === 'AbortError') throw error;
+    // Background matching should never prevent the selected verse from
+    // displaying. WEB is a reliable semantic fallback if BBE is unavailable.
+    return fetchPassage('web', reference, signal);
+  }
+}
+
 function VerseDisplay() {
   const { state, dispatch } = useContext(AppContext);
   const [changeDisplayLocation, setChangeDisplayLocation] = useState(
@@ -64,9 +82,7 @@ function VerseDisplay() {
       try {
         const [displayText, backgroundText] = await Promise.all([
           fetchPassage(data.language, reference, controller.signal),
-          data.language === 'web'
-            ? fetchPassage(data.language, reference, controller.signal)
-            : fetchPassage('web', reference, controller.signal),
+          fetchBackgroundPassage(reference, controller.signal),
         ]);
 
         dispatch({
